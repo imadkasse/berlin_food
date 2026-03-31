@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Manager | Berlin Food</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be_Vietnam_Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#F0EDED",
+              "inverse-surface": "#1C1B1B",
+              "surface-variant": "#E5E2E1",
+              "on-tertiary-container": "#523800",
+              "on-primary-fixed": "#1C1B1B",
+              "tertiary-fixed": "#f9b522",
+              "secondary-fixed": "#ffc96f",
+              "primary-container": "#F27121",
+              "secondary-container": "#ffc96f",
+              "tertiary-container": "#f9b522",
+              "surface-bright": "#FCF9F8",
+              "on-secondary": "#FCF9F8",
+              "secondary": "#7b5400",
+              "on-tertiary": "#FCF9F8",
+              "inverse-primary": "#F27121",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1C1B1B",
+              "on-secondary-container": "#614100",
+              "error-container": "#f95630",
+              "background": "#F6F3F2",
+              "outline": "#787676",
+              "outline-variant": "#afacac",
+              "secondary-fixed-dim": "#ffb623",
+              "tertiary-dim": "#6a4a00",
+              "on-error": "#ffefec",
+              "on-secondary-fixed-variant": "#6c4a00",
+              "on-primary": "#FFFFFF",
+              "on-tertiary-fixed": "#372400",
+              "primary-dim": "#9F4200",
+              "on-secondary-fixed": "#483000",
+              "on-background": "#1C1B1B",
+              "surface-dim": "#D9D6D5",
+              "on-primary-container": "#FFFFFF",
+              "on-primary-fixed-variant": "#4f1d00",
+              "primary": "#F27121",
+              "tertiary-fixed-dim": "#eaa70d",
+              "surface-container-highest": "#E5E2E1",
+              "tertiary": "#7a5500",
+              "secondary-dim": "#6b4900",
+              "on-surface-variant": "#5c5b5b",
+              "error": "#b02500",
+              "surface-container": "#F0EDED",
+              "surface-container-low": "#F6F3F2",
+              "surface": "#F6F3F2",
+              "on-tertiary-fixed-variant": "#5d4000",
+              "primary-fixed": "#F27121",
+              "surface-tint": "#F27121",
+              "error-dim": "#b92902",
+              "inverse-on-surface": "#9e9c9c",
+              "on-error-container": "#520c00",
+              "primary-fixed-dim": "#F27121"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex">
+<!-- SideNavBar (from COMPONENTS_10) -->
+<aside class="hidden lg:flex flex-col h-screen w-72 fixed left-0 top-0 bg-[#F6F3F2] dark:bg-stone-900 border-r border-[#1C1B1B]/5 z-50 shadow-[40px_0_40px_-20px_rgba(28,27,27,0.04)]">
+<div class="flex flex-col h-full p-6">
+<div class="mb-10">
+<h2 class="text-2xl font-black italic text-[#1C1B1B] dark:text-[#FCF9F8] tracking-tighter mb-8">BERLIN FOOD</h2>
+<div class="flex items-center gap-4 p-2 rounded-2xl bg-white/50 dark:bg-stone-800/50">
+<div class="w-12 h-12 rounded-xl overflow-hidden shadow-sm">
+<img alt="User profile photo of a Berlin Chef" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtlotnlWHnvMXWEHInvBFwOnMA9E6K3ukoog4AeiNGI065ugBNPU6inPmmHJlbW8Kx1y6FZTOG9Ds9q-gdCC0nJ-1QyUWN_WLZMtTz2d234Qnv_IbI8zxWockpVFZg-S2tX9WGo2xVAp7sCEeSvZhIKx1RqckuYQ61LdJmkzucvIHnBdx0RCU4HLPxms_mgOvFToIcVZkkw8j_-cEd3KyhCvpyPnGMxAEnGl7mnE010lSjgWASGv4lalAmHaajBqpTk5VgryZhvaQ_"/>
+</div>
+<div>
+<h3 class="text-sm font-bold font-headline text-[#1C1B1B] dark:text-[#FCF9F8]">Lukas Schmidt</h3>
+<p class="text-[10px] uppercase tracking-widest text-[#5c5b5b]">Curator</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<ul class="space-y-2 font-['Plus_Jakarta_Sans'] tracking-tight text-sm font-medium">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#1C1B1B] dark:text-[#E5E2E1] hover:bg-[#E5E2E1] dark:hover:bg-stone-800 rounded-full transition-colors active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[#9F4200] dark:text-[#F27121]" data-icon="restaurant_menu">restaurant_menu</span>
+<span>Menu</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#1C1B1B] dark:text-[#E5E2E1] hover:bg-[#E5E2E1] dark:hover:bg-stone-800 rounded-full transition-colors active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[#9F4200] dark:text-[#F27121]" data-icon="shopping_bag">shopping_bag</span>
+<span>My Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#1C1B1B] dark:text-[#E5E2E1] hover:bg-[#E5E2E1] dark:hover:bg-stone-800 rounded-full transition-colors active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[#9F4200] dark:text-[#F27121]" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#1C1B1B] dark:text-[#E5E2E1] hover:bg-[#E5E2E1] dark:hover:bg-stone-800 rounded-full transition-colors active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[#9F4200] dark:text-[#F27121]" data-icon="edit_note">edit_note</span>
+<span>Menu Editor</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#F27121] text-white rounded-full transition-all duration-300 scale-[1.02] shadow-lg shadow-[#F27121]/20 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span>Order Manager</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-4 bg-white dark:bg-stone-800 text-[#1C1B1B] dark:text-[#FCF9F8] rounded-2xl font-bold text-sm shadow-sm hover:scale-[1.02] transition-transform duration-200">
+                Book a Table
+            </button>
+<button class="flex items-center gap-3 px-4 py-2 text-error text-sm font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-72 p-6 md:p-10 lg:p-14 bg-surface">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+<div>
+<span class="inline-block px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-4 tracking-[0.2em] uppercase">Berlin • Real-Time Dashboard</span>
+<h1 class="text-5xl md:text-6xl font-black font-headline text-on-surface tracking-tighter leading-none">Order Manager</h1>
+<p class="text-on-surface-variant mt-4 max-w-lg text-lg leading-relaxed font-medium">Orchestrate the rhythm of Berlin's finest kitchen. Real-time insights into every gourmet masterpiece.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-sm border border-surface-container">
+<span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-sm font-bold text-on-surface">12 Incoming Orders</span>
+</div>
+<button class="bg-white p-4 rounded-2xl shadow-sm hover:bg-surface-container transition-all active:scale-95 group">
+<span class="material-symbols-outlined block text-on-surface group-hover:rotate-180 transition-transform duration-500" data-icon="refresh">refresh</span>
+</button>
+</div>
+</header>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-14">
+<div class="col-span-1 md:col-span-2 bg-[#9F4200] text-white p-10 rounded-[2.5rem] relative overflow-hidden group shadow-xl shadow-orange-900/10">
+<div class="relative z-10">
+<p class="text-white/70 font-bold uppercase tracking-widest text-xs mb-2">Average Prep Time</p>
+<h3 class="text-5xl font-black font-headline tracking-tighter">18 Minutes</h3>
+<div class="mt-6 flex items-center gap-2 text-sm bg-white/20 w-fit px-4 py-2 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+<span class="font-bold">2m faster than yesterday</span>
+</div>
+</div>
+<div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+<span class="material-symbols-outlined text-[10rem]" data-icon="timer">timer</span>
+</div>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-surface-container group hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 rounded-3xl bg-[#F6F3F2] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#F27121] text-3xl" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<p class="text-on-surface-variant font-bold uppercase tracking-widest text-xs mb-1">In Progress</p>
+<h3 class="text-4xl font-black font-headline text-on-surface tracking-tight">08</h3>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-surface-container group hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 rounded-3xl bg-[#F6F3F2] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#F27121] text-3xl" data-icon="check_circle">check_circle</span>
+</div>
+<p class="text-on-surface-variant font-bold uppercase tracking-widest text-xs mb-1">Completed Today</p>
+<h3 class="text-4xl font-black font-headline text-on-surface tracking-tight">42</h3>
+</div>
+</section>
+<!-- Order List Section -->
+<section class="bg-white rounded-[3rem] shadow-sm overflow-hidden border border-surface-container">
+<!-- Table Controls -->
+<div class="px-10 py-8 border-b border-surface-container flex flex-col xl:flex-row justify-between items-center gap-6">
+<div class="relative w-full xl:w-[480px]">
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-14 pr-6 py-4 bg-[#F6F3F2] border-none rounded-2xl focus:ring-2 focus:ring-primary/20 text-sm font-medium placeholder:text-on-surface-variant" placeholder="Search orders, customers, items..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-4 rounded-2xl bg-[#F6F3F2] text-sm font-bold text-on-surface flex items-center gap-2 hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                    Filter By
+                </button>
+<button class="px-6 py-4 rounded-2xl bg-[#F6F3F2] text-sm font-bold text-on-surface flex items-center gap-2 hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Export Data
+                </button>
+</div>
+</div>
+<!-- Custom Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-on-surface-variant text-[11px] font-black uppercase tracking-[0.2em] border-b border-surface-container">
+<th class="px-10 py-6">Order ID &amp; Time</th>
+<th class="px-10 py-6">Customer</th>
+<th class="px-10 py-6">Selections</th>
+<th class="px-10 py-6">Kitchen Status</th>
+<th class="px-10 py-6 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container/30">
+<!-- Order Row 1 -->
+<tr class="group hover:bg-[#F6F3F2]/50 transition-colors">
+<td class="px-10 py-8">
+<div class="flex flex-col">
+<span class="text-on-surface font-black font-headline text-lg tracking-tight">#ORD-2849</span>
+<span class="text-xs font-medium text-on-surface-variant mt-1 italic">Today, 12:42 PM</span>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex items-center gap-4">
+<div class="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center font-black text-[#9F4200] text-xs">
+                                    JD
+                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Julianne Devis</span>
+<span class="text-xs text-on-surface-variant font-medium">julianne@berlin.me</span>
+</div>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-xl border-2 border-white overflow-hidden shadow-sm">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtRkWA67va6iAJbZY4X7QyN_x25SYJP8skDuqVtjykuI--FxHSKGMdBwl_mk-QNAgGENUrRq16Zlehn2jjv5EfkagbPK3KW6lJQaradgDLb8NHrp3_BEcjq7Vp_pwudiSQHiGC1s19G0_pT5MqftoxPdXxLk2ClNtv8Emw5fP3iR0iqohb89z-MUIA1tUQZb0Ndje4a1ju-gTG07R1RU9nYQTPWR0wC8woZdcf7PcCiBKQxF6P4lnhNNoOzdCUNhknxBsW8nkIBJDJ"/>
+</div>
+<div class="w-10 h-10 rounded-xl border-2 border-white overflow-hidden shadow-sm">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEo_8l_LqDDcNHf3QmlqYh5fN6eTln7ieGDo-tbzyAHPWc3-c6VOc2jialKymbafw0S4ExE_i5FOfqRNSoBALtM809n3jVQhnYwIjYn8twFlPqdgWlFEC1eGuwtgI9SQ8uop6R2BFs1emPEtNf58h6KRiNXLh9XIWg2dHnTWBag0XKgvNACOT9LHI-jThcnZvEF_jNFDUpr9697p5Plfpxuo4Jdl_0oFPI60jAHaMZHIjnEDe1AfH1Ysh0t7d0ge8NZsOTbdERSEUN"/>
+</div>
+<div class="w-10 h-10 rounded-xl border-2 border-white bg-surface-container flex items-center justify-center text-xs font-black">
+                                    +1
+                                </div>
+</div>
+</td>
+<td class="px-10 py-8">
+<span class="px-4 py-1.5 rounded-full bg-orange-100 text-[#9F4200] text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F27121] animate-pulse"></span>
+                                PREPARING
+                            </span>
+</td>
+<td class="px-10 py-8 text-right">
+<div class="flex justify-end gap-3">
+<button class="bg-[#F27121] text-white px-6 py-2.5 rounded-2xl text-xs font-black hover:bg-[#9F4200] hover:shadow-lg hover:shadow-orange-200 transition-all active:scale-95">
+                                    Mark Ready
+                                </button>
+<button class="p-2.5 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Order Row 2 -->
+<tr class="group hover:bg-[#F6F3F2]/50 transition-colors">
+<td class="px-10 py-8">
+<div class="flex flex-col">
+<span class="text-on-surface font-black font-headline text-lg tracking-tight">#ORD-2850</span>
+<span class="text-xs font-medium text-on-surface-variant mt-1 italic">Today, 12:45 PM</span>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex items-center gap-4">
+<div class="w-11 h-11 rounded-full bg-stone-100 flex items-center justify-center font-black text-stone-600 text-xs">
+                                    MK
+                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Marcus Knight</span>
+<span class="text-xs text-on-surface-variant font-medium">marcus@berlin.me</span>
+</div>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-xl border-2 border-white overflow-hidden shadow-sm">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP1a6HTXIzeWvEhWk5FW0iv3QHPZssyq-1GNeauhyESUChpHd975WeA8EKJ3zkH3uegcmF1YKey6TDClkLl0TetB2tV1kfuw5JR1ikJ_805aV5zahVOH82TbSANedWp0BKBEjPS524x_lDRlm3tCg6RUtxNHkB_GKcP0Tx4-rWWubZGnM9uuq9pj_Pq2grpZ294Y33PqchwdZ33h_XRgea4Q1TstIBXZ-X3ELBwfCDzSBe7ieD__w-DvM2yg2w2fXOV6RFoe-28zYZ"/>
+</div>
+</div>
+</td>
+<td class="px-10 py-8">
+<span class="px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                INCOMING
+                            </span>
+</td>
+<td class="px-10 py-8 text-right">
+<div class="flex justify-end gap-3">
+<button class="bg-white border border-surface-container text-on-surface px-6 py-2.5 rounded-2xl text-xs font-black hover:bg-[#F6F3F2] transition-all active:scale-95">
+                                    Accept
+                                </button>
+<button class="p-2.5 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Order Row 3 -->
+<tr class="group hover:bg-[#F6F3F2]/50 transition-colors">
+<td class="px-10 py-8">
+<div class="flex flex-col">
+<span class="text-on-surface font-black font-headline text-lg tracking-tight">#ORD-2851</span>
+<span class="text-xs font-medium text-on-surface-variant mt-1 italic">Today, 12:50 PM</span>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex items-center gap-4">
+<div class="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center font-black text-green-700 text-xs">
+                                    SL
+                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Sarah Lopez</span>
+<span class="text-xs text-on-surface-variant font-medium">sarah.l@berlin.me</span>
+</div>
+</div>
+</td>
+<td class="px-10 py-8">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-xl border-2 border-white overflow-hidden shadow-sm">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpLzyq7tFMEQix_72_UqTE2UNVnSdCcQ7o6p979vueB3uFSJ8xFZ6ABI269QcyPawOi776NWmrlEQiRC7vQX4Y_ogpLe-ewL_asSj5TpuishQw0gplB33DOiNI0wpgtEP8E3Qh7M5EUyYx_upxETtI5PVYBIPIp85e6XeJ6pBkv_x27Ar50qbeC8bEK-NpHjcmcytZ12EJqzQR2d7Icyu0Plfycw8C4yyRfotaxf64ldE0NfFbrlVi1pMsr1KYUYkBBIyNpYzJvteA"/>
+</div>
+<div class="w-10 h-10 rounded-xl border-2 border-white overflow-hidden shadow-sm">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUMdhSsSDkwhZKJg7exPVBGeK1eL1hE_HJgamqnuLT4ZNwoSPU6xRjiKYZ3EV1y2JuZ9_TiltlcwjrtdZdYmxXFcL6MhQ0AC1EqKh6GX7dqdKHPHDrfySaKSvPAW4sJgOrMr-b3VQNjb6JFD2gNJEBxvxw_-DKxH4Sv9bAgb12_KqqRlxcs_f5fN4hxHuxggTgIZit9_dJ-U6mnEJDpbnOLj6UKAYgBO9Bt8IXzdfeepYutKl9QTFU_JClQa1TdPlnnZz-mMCyk1cV"/>
+</div>
+</div>
+</td>
+<td class="px-10 py-8">
+<span class="px-4 py-1.5 rounded-full bg-green-100 text-green-800 text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                READY
+                            </span>
+</td>
+<td class="px-10 py-8 text-right">
+<div class="flex justify-end gap-3">
+<button class="bg-[#1C1B1B] text-white px-6 py-2.5 rounded-2xl text-xs font-black hover:bg-stone-800 transition-all active:scale-95 shadow-lg shadow-black/5">
+                                    Hand Over
+                                </button>
+<button class="p-2.5 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="px-10 py-8 bg-[#F6F3F2]/30 border-t border-surface-container flex items-center justify-between">
+<p class="text-xs text-on-surface-variant font-bold tracking-tight">Showing 1-10 of 42 active orders</p>
+<div class="flex items-center gap-2">
+<button class="p-2.5 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant disabled:opacity-20 transition-colors" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-[#F27121] text-white text-xs font-black shadow-md shadow-orange-200">1</button>
+<button class="w-10 h-10 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant text-xs font-black transition-colors">2</button>
+<button class="w-10 h-10 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant text-xs font-black transition-colors">3</button>
+<button class="p-2.5 rounded-xl hover:bg-[#F6F3F2] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Quick Actions -->
+<div class="fixed bottom-10 right-10 flex flex-col items-end gap-6 z-[60]">
+<div class="group relative">
+<div class="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-[#1C1B1B] text-white text-[10px] font-black px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 whitespace-nowrap uppercase tracking-widest pointer-events-none">
+            Kitchen Alert
+        </div>
+<button class="w-14 h-14 rounded-full bg-error text-white shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+</div>
+<button class="w-20 h-20 rounded-[2rem] bg-gradient-to-br from-[#F27121] to-[#9F4200] text-white shadow-2xl shadow-orange-900/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-all group">
+<span class="material-symbols-outlined text-4xl group-hover:rotate-90 transition-transform duration-300" data-icon="add" style="font-variation-settings: 'wght' 700;">add</span>
+</button>
+</div>
+</body></html>

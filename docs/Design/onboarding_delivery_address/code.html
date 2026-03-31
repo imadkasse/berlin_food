@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berlin Food - Onboarding Step 3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#dfc0b2",
+              "primary-container": "#f27121",
+              "on-error-container": "#93000a",
+              "tertiary": "#006493",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-surface": "#313030",
+              "surface-container-highest": "#e5e2e1",
+              "background": "#fcf9f8",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#ffb692",
+              "on-tertiary-fixed-variant": "#004b70",
+              "inverse-primary": "#ffb692",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-container": "#00334d",
+              "on-primary-container": "#541f00",
+              "secondary": "#5f5e5e",
+              "outline": "#8c7265",
+              "surface-dim": "#dcd9d9",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00a0e8",
+              "surface-bright": "#fcf9f8",
+              "on-secondary-fixed-variant": "#474747",
+              "primary": "#9f4200",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#9f4200",
+              "inverse-on-surface": "#f3f0ef",
+              "primary-fixed": "#ffdbcb",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#584237",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#793100",
+              "secondary-container": "#e4e2e1",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface": "#fcf9f8",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed": "#cae6ff",
+              "tertiary-fixed-dim": "#8dcdff",
+              "on-tertiary-fixed": "#001e30",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#341100",
+              "surface-variant": "#e5e2e1",
+              "on-background": "#1c1b1b",
+              "on-secondary-container": "#656464",
+              "surface-container-low": "#f6f3f2"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-map-overlay {
+    background-image: linear-gradient(to bottom, rgba(252, 249, 248, 0.8), rgba(252, 249, 248, 1)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuCDqRdcG6M_WqAxrIJLyBBcukKin_XJh3zRzFvBLj5VQ-xqMKKneo1_g9vIbnsj2M8q0RIoexMOj5AUwCM-IM5wT4NkRi8xYKaWq0cVvoElC4QUEQL4Dh2PC0-fPnPfvX1lYNV1Y0cxmkmRywZa6a4I6Ie-yNb9oP2e09ZU87ymmK-YNvNpqk4qmRvhLT2Yu8JPEdKwmN41_WnpRP6b94xmLb3BXm3GNx2MVNM_kSZgiqW9RqL5vgyAzO-p56VcH6Ee1HV1bE2_4K1m);
+    background-size: cover;
+    background-position: center
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex items-center justify-center p-6 md:p-12">
+<!-- Main Onboarding Container -->
+<main class="relative w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Visual/Content -->
+<div class="lg:col-span-5 flex flex-col gap-8 order-2 lg:order-1">
+<header class="flex flex-col gap-4">
+<span class="label-md tracking-[0.1em] text-primary font-bold uppercase">Step 3 of 3</span>
+<h1 class="text-5xl md:text-6xl font-headline font-black italic tracking-tighter leading-tight text-on-surface">
+                    Where should we <br/> deliver?
+                </h1>
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-md">
+                    To ensure your culinary selections arrive with chef-level precision, we need your exact location in the city.
+                </p>
+</header>
+<!-- Progress Indicator -->
+<div class="flex gap-2 w-full max-w-xs">
+<div class="h-1.5 flex-1 bg-primary rounded-full"></div>
+<div class="h-1.5 flex-1 bg-primary rounded-full"></div>
+<div class="h-1.5 flex-1 bg-primary rounded-full shadow-[0_0_12px_rgba(242,113,33,0.4)]"></div>
+</div>
+<!-- Subtle Decorative Element: Map Pin Concept -->
+<div class="hidden lg:flex items-center gap-6 p-8 rounded-lg bg-surface-container-low border border-outline-variant/10">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="location_on">location_on</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Berlin Delivery Zone</p>
+<p class="text-sm text-on-surface-variant">Active coverage within all central districts.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Form -->
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="relative overflow-hidden bg-surface-container-lowest p-8 md:p-12 rounded-lg shadow-[40px_0_80px_-40px_rgba(28,27,27,0.08)]">
+<!-- Background Map Texture (Faded) -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" data-location="Berlin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcbbCSUVy0EZ2yGgowJO0S12uxAxiy_t8M1jay3GMpVRkzTw-xk2HIM8fLSfgct2vCXFFeRaxD3_VlPNd0QA1XC0ij2dSG4LYhcYDkRVbsvyjTUh4sEBjjgBPPSP1aFM7UPno8JvsBJ3S1u3rnoz_hf4zh0pRLd1XLWhKicOVDk5Fl-855ozwAlIKTYzEva-SI2ivGAZ2p04Dq444EgQFFUDgKDXLE7M7sOPTijSwebfr0GXqlSBKEYbLIzbF6Slue3OCvq771Cf6v'); background-size: cover;">
+</div>
+<form class="relative z-10 space-y-8">
+<!-- Street Address -->
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Street and Number</label>
+<div class="relative group">
+<span class="absolute left-5 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="home">home</span>
+<input class="w-full pl-14 pr-6 py-5 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface placeholder:text-outline/50" placeholder="e.g. Torstraße 120" type="text"/>
+</div>
+</div>
+<!-- City & Zip Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Postal Code</label>
+<div class="relative group">
+<span class="absolute left-5 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="explore">explore</span>
+<input class="w-full pl-14 pr-6 py-5 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface placeholder:text-outline/50" placeholder="10119" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">City</label>
+<div class="relative group">
+<span class="absolute left-5 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="apartment">apartment</span>
+<input class="w-full pl-14 pr-6 py-5 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface" type="text" value="Berlin"/>
+</div>
+</div>
+</div>
+<!-- Additional Details -->
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Delivery Notes (Optional)</label>
+<div class="relative group">
+<span class="absolute left-5 top-6 material-symbols-outlined text-outline" data-icon="comment">comment</span>
+<textarea class="w-full pl-14 pr-6 py-5 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface placeholder:text-outline/50 resize-none" placeholder="Door code, floor number, or specific instructions..." rows="3"></textarea>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+<button class="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-95 duration-200" type="button">
+                            Back
+                        </button>
+<button class="w-full flex-1 py-5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2" type="submit">
+                            Finish Registration
+                            <span class="material-symbols-outlined" data-icon="done_all">done_all</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Trust Badge -->
+<div class="mt-8 flex justify-center lg:justify-end">
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="verified_user">verified_user</span>
+<span class="text-xs font-bold text-on-surface-variant tracking-wider uppercase">Secure Data Processing</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decorative Circle -->
+<div class="fixed -bottom-48 -left-48 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed -top-48 -right-48 w-96 h-96 bg-tertiary/5 rounded-full blur-3xl pointer-events-none"></div>
+</body></html>

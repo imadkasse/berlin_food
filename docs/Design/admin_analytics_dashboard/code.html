@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berlin Food | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb692",
+              "on-surface-variant": "#584237",
+              "surface-tint": "#9f4200",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#dfc0b2",
+              "on-secondary-fixed-variant": "#474747",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#793100",
+              "inverse-surface": "#313030",
+              "background": "#fcf9f8",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#ffb692",
+              "secondary": "#5f5e5e",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#004b70",
+              "tertiary": "#006493",
+              "secondary-fixed": "#e4e2e1",
+              "surface": "#fcf9f8",
+              "on-primary-fixed": "#341100",
+              "surface-variant": "#e5e2e1",
+              "tertiary-fixed-dim": "#8dcdff",
+              "primary-fixed": "#ffdbcb",
+              "primary": "#9f4200",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e5e2e1",
+              "on-primary-container": "#541f00",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "tertiary-container": "#00a0e8",
+              "inverse-on-surface": "#f3f0ef",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-bright": "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "surface-container": "#f0eded",
+              "on-primary": "#ffffff",
+              "outline": "#8c7265",
+              "on-tertiary-fixed": "#001e30",
+              "on-secondary-container": "#656464",
+              "surface-container-high": "#eae7e7",
+              "tertiary-fixed": "#cae6ff",
+              "on-background": "#1c1b1b",
+              "primary-container": "#f27121",
+              "surface-container-low": "#f6f3f2",
+              "on-tertiary-container": "#00334d",
+              "surface-dim": "#dcd9d9"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tonal-shift-only { border: none !important; }
+        .no-border { border: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-72 fixed left-0 top-0 rounded-r-[2rem] overflow-hidden bg-orange-50 dark:bg-stone-950 shadow-[40px_0_40px_-20px_rgba(28,27,27,0.04)] z-50">
+<div class="flex flex-col h-full py-8 font-['Plus_Jakarta_Sans'] antialiased tracking-tight">
+<!-- Header Section -->
+<div class="px-8 mb-10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-2xl overflow-hidden bg-primary-container flex items-center justify-center text-white shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tighter text-stone-900 dark:text-stone-50 uppercase">BERLIN FOOD</h1>
+<p class="text-xs font-semibold text-orange-600 dark:text-orange-500 tracking-widest uppercase">Admin Mode</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/40 dark:bg-stone-900/40 rounded-2xl">
+<img alt="User profile photo" class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a professional male chef in a clean white uniform smiling confidently in a modern kitchen setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBPlYChtb45cCEj4nSf37eg4BB2a4OGLjJsN14D_yFLItHdlys_3S-3OBcovAlicd2gvlagtNiVMWCyapDs9i97XGBc3N2S-zsLPIfykLzoIdQFtQbnNqvjxDC5Lz6uAFw6THozHx01PqxdnXn8K01KwDymWpJ3EBSSJjBsG7JNaLoN6n3T2ClAOPJQAUOO_mqP3lVu5sXbPPkznNTWlUfoL9WV5h-QQkHDOlDA0kfJzULA8dxp2mWdkAGYiU9R2CcZ_Lnw0_YCyYO"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Chef Klaus</p>
+<p class="text-[10px] text-stone-500 uppercase tracking-tighter">Executive Kitchen Manager</p>
+</div>
+</div>
+</div>
+<!-- Main Navigation Tabs -->
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-6 py-4 bg-orange-500 text-white rounded-full mx-4 mb-2 shadow-lg shadow-orange-500/20 active:scale-95 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 hover:scale-[1.02] hover:bg-white/50 dark:hover:bg-stone-900/50" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-medium">Menu</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 hover:scale-[1.02] hover:bg-white/50 dark:hover:bg-stone-900/50" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 hover:scale-[1.02] hover:bg-white/50 dark:hover:bg-stone-900/50" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-medium">Profile</span>
+</a>
+</nav>
+<!-- Footer Navigation -->
+<div class="pt-6 mt-6 border-t border-orange-100/50 dark:border-stone-800/50">
+<a class="flex items-center gap-3 px-6 py-4 text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 hover:scale-[1.02] hover:bg-white/50 dark:hover:bg-stone-900/50" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 hover:scale-[1.02] hover:bg-white/50 dark:hover:bg-stone-900/50" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-medium">Support</span>
+</a>
+<div class="px-8 mt-6">
+<button class="w-full py-4 rounded-full bg-stone-900 text-white font-bold text-sm tracking-widest uppercase hover:bg-orange-600 transition-colors duration-300">
+                        Sign Out
+                    </button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen p-10 bg-background">
+<!-- Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<span class="text-sm font-bold text-primary-container tracking-[0.2em] uppercase mb-2 block">Berlin Food Ecosystem</span>
+<h2 class="text-5xl font-extrabold tracking-tighter text-on-surface leading-none">Kitchen Performance</h2>
+</div>
+<div class="flex gap-4 items-center">
+<div class="px-6 py-3 bg-surface-container-low rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-bold text-sm">Oct 24 - Oct 30, 2023</span>
+</div>
+<button class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+</div>
+</header>
+<!-- Analytics Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Revenue -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between group hover:bg-surface-container-highest transition-colors duration-500">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded-md">+12.5%</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Revenue</p>
+<p class="text-3xl font-extrabold tracking-tighter">€42,850.00</p>
+</div>
+</div>
+<!-- Orders -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between group hover:bg-surface-container-highest transition-colors duration-500">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded-md">+8.2%</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Orders</p>
+<p class="text-3xl font-extrabold tracking-tighter">1,284</p>
+</div>
+</div>
+<!-- AOV -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between group hover:bg-surface-container-highest transition-colors duration-500">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<span class="text-xs font-black text-red-600 bg-red-50 px-2 py-1 rounded-md">-2.1%</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Average Order Value</p>
+<p class="text-3xl font-extrabold tracking-tighter">€33.40</p>
+</div>
+</div>
+<!-- New Customers -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between group hover:bg-surface-container-highest transition-colors duration-500">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">group_add</span>
+</div>
+<span class="text-xs font-black text-green-600 bg-green-50 px-2 py-1 rounded-md">+24.0%</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">New Customers</p>
+<p class="text-3xl font-extrabold tracking-tighter">412</p>
+</div>
+</div>
+</div>
+<!-- Charts and Widgets Section -->
+<div class="grid grid-cols-12 gap-8 mb-12">
+<!-- Revenue Trend Chart (Placeholder Layout) -->
+<div class="col-span-8 bg-surface-container-low p-10 rounded-lg relative overflow-hidden">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-2xl font-bold tracking-tight">Weekly Revenue Trends</h3>
+<div class="flex gap-2">
+<span class="inline-block w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Last 7 Days</span>
+</div>
+</div>
+<!-- Stylized Line Chart Visualizer -->
+<div class="h-64 flex items-end justify-between gap-4">
+<div class="relative w-full h-full flex items-end justify-between px-4">
+<div class="h-[40%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Mon</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 60%"></div>
+</div>
+<div class="h-[60%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Tue</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 80%"></div>
+</div>
+<div class="h-[50%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Wed</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 55%"></div>
+</div>
+<div class="h-[80%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Thu</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 90%"></div>
+</div>
+<div class="h-[45%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Fri</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 40%"></div>
+</div>
+<div class="h-[95%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Sat</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 100%"></div>
+</div>
+<div class="h-[75%] w-2 bg-primary-container/20 rounded-full relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold">Sun</div>
+<div class="absolute bottom-0 w-full h-full bg-primary-container rounded-full" style="height: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Orders Summary -->
+<div class="col-span-4 bg-surface-container-highest p-10 rounded-lg flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-bold tracking-tight mb-8">Live Orders</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+<span class="font-semibold">In Preparation</span>
+</div>
+<span class="text-2xl font-extrabold">12</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-orange-400"></div>
+<span class="font-semibold">Ready for Pickup</span>
+</div>
+<span class="text-2xl font-extrabold">08</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-stone-300"></div>
+<span class="font-semibold">Completed (Today)</span>
+</div>
+<span class="text-2xl font-extrabold">142</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-4 bg-white rounded-full text-primary font-bold uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform shadow-sm">
+                    View Kitchen Screen
+                </button>
+</div>
+</div>
+<!-- Efficiency and Best Sellers -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Kitchen Efficiency Gauge -->
+<div class="col-span-5 bg-surface-container-low p-10 rounded-lg text-center flex flex-col items-center justify-center relative">
+<h3 class="text-xl font-bold tracking-tight mb-8 absolute top-10 left-10">Kitchen Efficiency</h3>
+<div class="relative w-48 h-48 mb-6">
+<!-- Gauge Mockup -->
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#E5E2E1" stroke-dasharray="251.2" stroke-dashoffset="0" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#F27121" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black tracking-tighter">18.4</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Min Avg Prep</span>
+</div>
+</div>
+<p class="text-sm font-medium text-on-surface-variant max-w-[240px]">You are performing <span class="text-green-600 font-bold">12% faster</span> than last week’s average.</p>
+</div>
+<!-- Top Selling Dishes -->
+<div class="col-span-7 bg-surface-container-low p-10 rounded-lg">
+<h3 class="text-2xl font-bold tracking-tight mb-10">Top Selling Dishes</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-6">
+<img class="w-16 h-16 rounded-2xl object-cover shadow-md" data-alt="Gourmet Currywurst with artisanal sauce and gold-flecked fries on a dark slate plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYVmR-LFwdIEzpynsMRvCx8ost3NGYNNwRuYcRlobOZO_W8O0FtwuzJ3Yvzwht_tEQXwO_3tIIaUPmIfPryFYqybocKLvIErVIMRzavoeE1ouyx3B_cUNqgJPixDJYoPXiLIfhFIVBIeU08OXhdHhseVmxfOY6HXUd_Hmm83BuHilngHB1bzu8f3HCnME4cWnSZsJwdnr07kCIKfdu5eUpzQuerpin73rrOQa-16dxW3GB-4PrRUHhzoidKnJwAQgp0I1aj_7R5hQt"/>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-2">
+<h4 class="font-bold">Berlin Signature Currywurst</h4>
+<span class="text-xs font-bold text-on-surface-variant">342 sold</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<img class="w-16 h-16 rounded-2xl object-cover shadow-md" data-alt="high-end wagyu beef burger with caramelized onions and blue cheese on a brioche bun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUyHShj6bBvTEspzdh9lIqHA-ioAobEM55DGmytGF3wuMR9mgxQvMwljz1-oA2NU10NAJVXvfhjdKyTPFFDdTnN326DiVOAWX0kObXVgyvIKvykd3I_JZ6A_z2nz0TMreD6ypQ3u2ZNVMzZUA6Knx0Q6n92wmUC2ozmmE067QU94RJDtOGYTwK3SfKDPHxRcPmqaSFV8Rek-oXUHtqPz9mTOaDhlJaUx0GvyigzpZ-WE7HGVBJ4-I-ZOvt7yjeW0b-yeXYnLQ8i-eH"/>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-2">
+<h4 class="font-bold">The Mitte Wagyu Burger</h4>
+<span class="text-xs font-bold text-on-surface-variant">284 sold</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<img class="w-16 h-16 rounded-2xl object-cover shadow-md" data-alt="vibrant vegan poke bowl with fresh avocado, mango, and radish slices artistically arranged" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDINSzbDYNtsKAilR2pFx8DbadOYqn7UHa3H8lw8QFihw30GJWGYX0UNOtDBQsryrgWjlmOpaqa3Hpl01XzmrCU48WjcYkJUKUkdX42l93xEcUlgUrF4fvfFN6ee5attAws4oFoIP5CPJGi6HJSrQJD0G1VRwqNvsxrIOpaBBJdZrwSic860auLCHbGXhD7ZFpW3vhIw3d3E-6vt399WrinLUauLHE6jm_cPB3ZKKp9lQHQ1lpKhCCP4pu3jeCebjzPfAfAhV3cNC1v"/>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-2">
+<h4 class="font-bold">Spree-Side Vegan Bowl</h4>
+<span class="text-xs font-bold text-on-surface-variant">198 sold</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 55%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
