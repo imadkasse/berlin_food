@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#9f4200",
+                    "surface-dim": "#dcd9d9",
+                    "inverse-primary": "#ffb692",
+                    "surface-variant": "#e5e2e1",
+                    "surface": "#fcf9f8",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#cae6ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#341100",
+                    "inverse-surface": "#313030",
+                    "surface-container-high": "#eae7e7",
+                    "outline": "#8c7265",
+                    "tertiary-fixed-dim": "#8dcdff",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed": "#001e30",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary": "#006493",
+                    "surface-container-highest": "#e5e2e1",
+                    "outline-variant": "#dfc0b2",
+                    "tertiary-container": "#00a0e8",
+                    "secondary": "#5f5e5e",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#00334d",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-bright": "#fcf9f8",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#ffb692",
+                    "surface-container": "#f0eded",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c6",
+                    "background": "#fcf9f8",
+                    "primary-fixed": "#ffdbcb",
+                    "primary": "#9f4200",
+                    "on-background": "#1c1b1b",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#f27121",
+                    "on-primary-container": "#541f00",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#584237",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#656464",
+                    "on-primary-fixed-variant": "#793100",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-tertiary-fixed-variant": "#004b70",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e4e2e1",
+                    "secondary-container": "#e4e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+
+
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-32 px-6 lg:ml-80 lg:mr-8 max-w-7xl">
+<!-- Page Header (Asymmetric Editorial Style) -->
+<section class="mb-16">
+<span class="label-md uppercase tracking-[0.2em] text-primary font-semibold mb-4 block">Your Selection</span>
+<h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-none">
+                Shopping <br/>
+<span class="text-primary-container">Cart.</span>
+</h1>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Cart Items List (The "No Divider" Rule Application) -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Cart Item 1 -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-full md:w-48 h-48 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low transition-all duration-500 group-hover:scale-[1.02]">
+<img class="w-full h-full object-cover" data-alt="Close-up of a rustic sourdough pizza with fresh buffalo mozzarella, basil leaves, and artisanal olive oil drizzle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj74K5sERrGcuEOtTv2WimKKUB_fRfvpix1JDjOsi0fZbOoH0aKf3f1GTfCvMG8_4Z5iSEnr-6gnRvUOEth49gAyWq87YUd3P4ulvHjQfU_3iJ1typRsaFH2sww_pp_60j5Zh8tsMQ62S6cNW5mGwdNPRNJhUWlBulWHFYOHewJP5KVS0QlP70Ni6TAqrcos-9xT0hTMrYwslhGXsf-Pr5k4PMSr8ZnWMdUAgkJfaqSKAFGIo_FpwJ17aFRIFtlNdv1OzPaEmC4GAQ"/>
+</div>
+<div class="flex-grow flex flex-col justify-between h-auto md:h-48 py-2">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold tracking-tight">Artisanal Truffle Pizza</h3>
+<span class="text-xl font-medium text-primary">€24.00</span>
+</div>
+<p class="text-secondary text-sm leading-relaxed max-w-xs">Double-fermented sourdough, black truffle cream, wild mushrooms, and aged parmesan.</p>
+<p class="text-[10px] text-outline mt-2 tracking-widest uppercase">ID: ITEM-9482 • ORD-7721</p>
+</div>
+<div class="flex items-center justify-between mt-6 md:mt-0">
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="px-6 font-bold text-lg">1</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="text-error/60 hover:text-error transition-colors flex items-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-lg">delete</span>
+                                Remove
+                            </button>
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-full md:w-48 h-48 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low transition-all duration-500 group-hover:scale-[1.02]">
+<img class="w-full h-full object-cover" data-alt="Gourmet salad bowl with vibrant roasted vegetables, quinoa, and avocado served in a minimalist ceramic bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7I5zBoj8PY7KKRsM34RiYbG9eXHd1tSHyQa6eJrcrFR1EEBUCyltDuy-aSPb07mHOQev0Y0LiSac3ceJZdstEVkz-q4jsqWDxHpq6JjLCrkdS4Aj1G0laeS99N-DV6BLnbGhYNvWRpAZ9T2BPBs_TBo32pDeU9jkO1TNtToKcOTuKXkGdTxWoC4kNDAiDNSgtwxeKhCQ0cX4Yc-7Zznu9kz6lovR_9M-a6OQDj1WbNlvm1b1JcdBUit4CCy46ipiuChRor-P4Up11"/>
+</div>
+<div class="flex-grow flex flex-col justify-between h-auto md:h-48 py-2">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold tracking-tight">Berlin Garden Bowl</h3>
+<span class="text-xl font-medium text-primary">€18.50</span>
+</div>
+<p class="text-secondary text-sm leading-relaxed max-w-xs">Seasonal urban farm greens, roasted roots, tahini lemon dressing, and toasted hemp seeds.</p>
+<p class="text-[10px] text-outline mt-2 tracking-widest uppercase">ID: ITEM-3312 • ORD-7721</p>
+</div>
+<div class="flex items-center justify-between mt-6 md:mt-0">
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="px-6 font-bold text-lg">2</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="text-error/60 hover:text-error transition-colors flex items-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-lg">delete</span>
+                                Remove
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Panel (The "Soft Lift" Tonal Layering) -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-lowest rounded-xl p-10 shadow-[0_40px_80px_-20px_rgba(28,27,27,0.06)] sticky top-32">
+<h2 class="text-3xl font-extrabold tracking-tight mb-10">Order Summary</h2>
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-center text-secondary">
+<span class="text-lg">Subtotal</span>
+<span class="font-semibold text-on-surface">€61.00</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span class="text-lg">Delivery Fee</span>
+<span class="font-semibold text-on-surface">€4.50</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span class="text-lg">Taxes (VAT 19%)</span>
+<span class="font-semibold text-on-surface">€11.59</span>
+</div>
+</div>
+<div class="pt-8 border-t border-surface-container-high mb-10">
+<div class="flex justify-between items-end">
+<span class="text-xl font-bold tracking-tight">Total Price</span>
+<span class="text-4xl font-black text-primary-container">€77.09</span>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-gradient-to-br from-[#9F4200] to-[#F27121] text-white py-6 rounded-full font-bold text-xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+                            Proceed to Checkout
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full py-6 rounded-full font-bold text-on-surface/60 hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+                            Add more items
+                        </button>
+</div>
+<!-- Payment Methods (Micro-Interactions Focus) -->
+<div class="mt-12 flex justify-center gap-6 grayscale opacity-40">
+<span class="material-symbols-outlined text-3xl">credit_card</span>
+<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+<span class="material-symbols-outlined text-3xl">contactless</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Carousel (Asymmetrical Plating Logic) -->
+<section class="mt-32">
+<h2 class="text-4xl font-extrabold tracking-tighter mb-12">Pair with your meal</h2>
+<div class="flex gap-8 overflow-x-auto pb-8 no-scrollbar mask-fade-right">
+<div class="flex-shrink-0 w-72">
+<div class="h-[400px] rounded-lg overflow-hidden mb-4 bg-surface-container-low group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A minimalist cocktail in a high-end glass with a single large clear ice cube and an orange twist garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkfdx6MOwpF1QY_pajJ72t1oGw3zg8FtJPylxV5qVyASyfkdu7jC-_Gzlzk32qOcJfTYSt4dM88w9qZG_t8R2hdT156unjY6q7st3F6V42dyTN6tq6Tl8CmtIMIHlmmUzmm0xcppNq0crZMRcJpSCIRh8yXAX-FkEaUZmprJbD-wY6NoipCR5_c9wye6PE-0F3UJQpwgOkVYvAFtOgqHgIQmsqnrnsXHFoF6gnU9wEMX_BPqA5bGAOF7UKp0RLnDgss51XKE6IlEmF"/>
+</div>
+<h4 class="font-bold text-lg">Smoked Old Fashioned</h4>
+<p class="text-primary font-medium">€14.00</p>
+</div>
+<div class="flex-shrink-0 w-72 pt-12">
+<div class="h-[350px] rounded-lg overflow-hidden mb-4 bg-surface-container-low group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Delicate artisanal dessert with layered textures and micro-herbs on a dark slate plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzgChU1TUkm1rr-pYKOGw9bQ3Wq6XpIQxZAmNs9qbKDncnT_o6JONd67AG29Snd_uUb_2kk1WyImy55jqYz--qMiPNs2RAzhjD6l3Mwsrtlq6lnSt27NPml_8hzfJ8zM-qNg1JyCFtiSlh4bQFTZ68ZxWC4lllJ5YPqISHuUi1ACCiRiKRI5m-BrDA2_0hqp7ZeKDMX94dqfRPlaUU2SbdLKx6xBldpiecZjPLzEJji3eqltPUnPIMu3x76wnwZ9T8eblid7p_8rTt"/>
+</div>
+<h4 class="font-bold text-lg">Pistachio Mousse</h4>
+<p class="text-primary font-medium">€12.00</p>
+</div>
+<div class="flex-shrink-0 w-72">
+<div class="h-[450px] rounded-lg overflow-hidden mb-4 bg-surface-container-low group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Locally roasted coffee being poured into a ceramic mug in a sunlit industrial loft kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY-D_EApmLpw-QVyy5SBR5SpiVOx7DvdjEqbfZGspVO7lvkNgFLlwfPvdtAXK2PlnDT_QmtgE7cJz0anxrYMFPokkxl63cWpY5WJ6URWZMvLdsHQJUq35yGFu3Yl96W6Cm1VXVJbMe0iALfeqwcwlCdu7o-SVwrOmLx4_FHuyHZ8pNvcHuRAgvVjRKo39Fg_8T701q37PxLc_6ttg7FvthInaRdUYABZHvgU4YVjXjYwTcALtxP2uAfToCrE3AQEl7MoQn5S-bXZYE"/>
+</div>
+<h4 class="font-bold text-lg">Urban Roast Coffee</h4>
+<p class="text-primary font-medium">€4.50</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-24 bg-[#FCF9F8]/90 dark:bg-[#1C1B1B]/90 backdrop-blur-2xl flex justify-around items-center px-4 pb-safe z-50 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(28,27,27,0.06)] no-border">
+<a class="flex flex-col items-center justify-center text-[#1C1B1B]/50 dark:text-[#FCF9F8]/50 px-6 font-['Plus_Jakarta_Sans'] text-[11px] uppercase tracking-[0.05em] font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant_menu">restaurant_menu</span>
+            Menu
+        </a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#9F4200] to-[#F27121] text-white rounded-full w-14 h-14 -translate-y-4 shadow-lg scale-110 active:scale-90 transition-all cubic-bezier(0.34,1.56,0.64,1)" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1C1B1B]/50 dark:text-[#FCF9F8]/50 px-6 font-['Plus_Jakarta_Sans'] text-[11px] uppercase tracking-[0.05em] font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+            Orders
+        </a>
+<a class="flex flex-col items-center justify-center text-[#1C1B1B]/50 dark:text-[#FCF9F8]/50 px-6 font-['Plus_Jakarta_Sans'] text-[11px] uppercase tracking-[0.05em] font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+            Profile
+        </a>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .mask-fade-right {
+            mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        }
+    </style>
+</body></html>
