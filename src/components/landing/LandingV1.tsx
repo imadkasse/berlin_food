@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   APIProvider,
   Map,
@@ -250,10 +252,19 @@ const steps = [
 ];
 
 export default function LandingV1() {
+  const router = useRouter();
   const mapCenter = {
     lat: 34.66473579859306,
     lng: 3.2504286095392754,
   };
+
+  useEffect(() => {
+    // Client-side mobile redirect as a fallback for production
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      router.push("/menu");
+    }
+  }, [router]);
 
   return (
     <div className="min-h-screen bg-[#FCF9F8] selection:bg-[#F27121]/20">

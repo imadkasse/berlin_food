@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
   //         {
   //           type: "header",
   //           key: "user-agent",
-  //           value: "(.*Mobile.*|.*Android.*|.*iPhone.*|.*iPad.*|.*Mobi.*)",
+  //           value: "(.*Mobile.*|.*Android.*|.*iPhone.*|.*iPad.*|.*iPod.*|.*webOS.*|.*BlackBerry.*|.*IEMobile.*|.*Opera Mini.*)",
   //         },
   //       ],
   //       destination: "/menu",
