@@ -167,6 +167,9 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                 <Image
                   src={`https://ui-avatars.com/api/?name=${user?.full_name}&background=random&size=512`}
                   alt={user?.full_name!}
+                  width={40}
+                  height={40}
+                  unoptimized
                   className="w-full h-full object-cover"
                 />
               </div>

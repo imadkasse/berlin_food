@@ -389,6 +389,9 @@ function OrderRow({
                   (order.customer as { full_name: string })?.full_name ||
                   "Profile"
                 }
+                unoptimized
+                width={40}
+                height={40}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -420,6 +423,7 @@ function OrderRow({
                     alt={item.menu_item?.name}
                     width={48}
                     height={48}
+                    unoptimized
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -597,6 +601,9 @@ function OrderDetailsModal({
                         (order.customer as { full_name: string })?.full_name ||
                         "Profile"
                       }
+                      unoptimized
+                      width={40}
+                      height={40}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -644,6 +651,7 @@ function OrderDetailsModal({
                       <Image
                         src={item.menu_item?.image_url || ""}
                         alt={item.menu_item?.name}
+                        unoptimized
                         width={100}
                         height={100}
                         className="w-full h-full object-cover"

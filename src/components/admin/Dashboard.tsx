@@ -363,6 +363,9 @@ function DishRow({ image, name, sold, pct }: DishProps) {
       <Image
         src={image}
         alt={name}
+        unoptimized
+        width={40}
+        height={40}
         className="w-14 h-14 rounded-2xl object-cover shadow-md flex-shrink-0"
       />
       <div className="flex-1 min-w-0">

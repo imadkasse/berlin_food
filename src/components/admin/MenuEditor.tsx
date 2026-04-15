@@ -358,6 +358,9 @@ export default function MenuEditor({
                             <Image
                               src={row.image}
                               alt={row.name}
+                              unoptimized
+                              width={40}
+                              height={40}
                               className="w-full h-full object-cover"
                             />
                           </div>
@@ -427,6 +430,9 @@ function MenuCard({
         <Image
           src={item.image_url || "https://placehold.co/600x400"}
           alt={item.name}
+          unoptimized
+          width={40}
+          height={40}
           className="w-full h-full object-cover rounded-[2rem] shadow-md transition-transform duration-700 group-hover:scale-105"
         />
         {item.badge && (

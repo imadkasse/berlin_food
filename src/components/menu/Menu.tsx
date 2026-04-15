@@ -28,6 +28,9 @@ const FoodCard = ({ item }: { item: MenuType }) => {
         <Image
           src={item.image_url ?? "/placeholder.png"}
           alt={item.name}
+          unoptimized
+          width={40}
+          height={40}
           className="w-full h-64 object-cover rounded-tl-xl rounded-br-xl rounded-tr-md rounded-bl-md group-hover:scale-[1.02] transition-transform duration-500"
         />
         {item.is_available === false && (
@@ -140,6 +143,9 @@ export default function Menu({ categories, menuItems }: MenuProps) {
           <Image
             src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800"
             alt="Signature Dish"
+            unoptimized
+            width={40}
+            height={40}
             className="w-full h-80 object-cover rounded-tl-xl rounded-br-xl rounded-tr-md rounded-bl-md shadow-2xl relative z-10"
           />
           <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>

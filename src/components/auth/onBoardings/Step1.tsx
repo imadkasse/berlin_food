@@ -122,9 +122,10 @@ function EditorialAvatarRow() {
             <Image
               src={img.src}
               alt={img.alt}
-              fill
-              className="object-cover"
               unoptimized
+              width={40}
+              height={40}
+              className="object-cover"
             />
           </div>
         ))}

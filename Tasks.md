@@ -7,7 +7,7 @@
 - [x] add layout for all role pages to see loading with sideBar
 - [x] ready to deploy
 - [x] finish the auth functions (only forget-password , reset-password)
-- [] add lazy loading to all pages
+- [x] add lazy loading to all pages
 - [] add PWA to my app
 - [] work on landing page (not important for now) 
 - [] fix the types errors like any error

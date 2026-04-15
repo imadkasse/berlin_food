@@ -9,10 +9,12 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "picsum.photos" },
     ],
+    imageSizes: [32, 48, 64, 96, 128, 256, 384],
   },
-  typescript: { // remove after fix the build errors 
+  typescript: {
+    // remove after fix the build errors
     ignoreBuildErrors: true,
-  }, 
+  },
 };
 
 export default nextConfig;

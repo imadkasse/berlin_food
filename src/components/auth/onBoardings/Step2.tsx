@@ -133,9 +133,10 @@ export default function OnboardingStep2Page() {
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk7YU17Z6YpmObRBGCf6432nwq66b6rO_-JNheS14ZeqhHcbGFzCMHAfVqOnJxl9a26SA5OocBZ2QnmaA38x9s3RwORRpzIlvPk86rr0t5h7cz0BvYQb_E7T1uCCdym37lUFHs-Q6Pl6OvX0odRUnvJTFjc9-uBH2e5y5jh0B86RPN2rnuMu4O5wQF0lXBdFLFSJsyvIwR6DCwtwOqDKL8NFIGwnDdoY1ZmGkrba8-IoJj16JeKffNzvbRTO4EjSq9cKtYoTlqsre4"
             alt="Moody Berlin industrial loft restaurant interior"
-            fill
-            className="object-cover grayscale-[20%] contrast-[1.1]"
             unoptimized
+            width={40}
+            height={40}
+            className="object-cover grayscale-[20%] contrast-[1.1]"
           />
 
           {/* Text overlay */}

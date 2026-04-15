@@ -249,6 +249,9 @@ export default function EditMenuItemModal({
                 <Image
                   src={URL.createObjectURL(imageFile)}
                   alt="Preview"
+                  unoptimized
+                  width={40}
+                  height={40}
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"
                 />
                 <div className="flex-1 min-w-0">
@@ -281,6 +284,9 @@ export default function EditMenuItemModal({
                 <Image
                   src={formData.image_url}
                   alt="Preview"
+                  unoptimized
+                  width={40}
+                  height={40}
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"
                   onError={(e) => {
                     e.currentTarget.style.display = "none";

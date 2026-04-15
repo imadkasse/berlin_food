@@ -223,6 +223,9 @@ export default function CreateMenuItemModal({
                 <Image
                   src={URL.createObjectURL(imageFile)}
                   alt="Preview"
+                  unoptimized
+                  width={40}
+                  height={40}
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"
                 />
                 <div className="flex-1 min-w-0">
@@ -252,10 +255,12 @@ export default function CreateMenuItemModal({
             </div>
             {formData.image_url && !imageFile && (
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">
-       
                 <Image
                   src={formData.image_url}
                   alt="Preview"
+                  unoptimized
+                  width={40}
+                  height={40}
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"
                   onError={(e) => {
                     e.currentTarget.style.display = "none";

@@ -326,6 +326,9 @@ const ActiveOrderCard = ({
           <Image
             src={image}
             alt={title}
+            unoptimized
+            width={40}
+            height={40}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
@@ -511,6 +514,9 @@ const HistoryItem = ({
         <Image
           src={image}
           alt={title}
+          unoptimized
+          width={40}
+          height={40}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
       )}

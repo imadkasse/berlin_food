@@ -255,6 +255,9 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
               <Image
                 src={`https://ui-avatars.com/api/?name=${userState?.full_name}&background=random&size=512`}
                 alt={userState?.full_name || "Profile"}
+                unoptimized
+                width={40}
+                height={40}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>

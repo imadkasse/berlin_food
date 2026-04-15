@@ -152,7 +152,7 @@ export default function LandingV1() {
                 <div className="flex -space-x-3">
                   {[1,2,3,4,5].map(i => (
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-[#F6F3F2] overflow-hidden">
-                      <Image src={`https://ui-avatars.com/api/?background=F27121&color=fff&name=${i}`} alt="user" />
+                      <Image src={`https://ui-avatars.com/api/?background=F27121&color=fff&name=${i}`} fill alt="user" />
                     </div>
                   ))}
                 </div>

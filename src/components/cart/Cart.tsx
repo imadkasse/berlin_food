@@ -52,6 +52,9 @@ const CartItemCard = ({
       <Image
         src={item.image_url}
         alt={item.name}
+        unoptimized
+        width={40}
+        height={40}
         className="w-full h-full object-cover"
       />
     </div>
