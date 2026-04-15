@@ -28,6 +28,22 @@ const nextConfig: NextConfig = {
     // remove after fix the build errors
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        has: [
+          {
+            type: "header",
+            key: "user-agent",
+            value: "(.*Mobile.*|.*Android.*|.*iPhone.*|.*iPad.*|.*Mobi.*)",
+          },
+        ],
+        destination: "/menu",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default withPWA(nextConfig);
