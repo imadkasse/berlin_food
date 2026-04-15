@@ -8,6 +8,7 @@ import { updateProfile } from "@/api/profiles";
 import { createClient } from "@/utils/supabase/client";
 import { useUserStore } from "@/stores/user.store";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export function ProfileSettings({ user }: { user: UserType | null }) {
   // loadings
@@ -251,7 +252,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
 
             {/* Profile Picture Placeholder */}
             <div className="rounded-3xl overflow-hidden aspect-square shadow-2xl group relative border-4 border-white">
-              <img
+              <Image
                 src={`https://ui-avatars.com/api/?name=${userState?.full_name}&background=random&size=512`}
                 alt={userState?.full_name || "Profile"}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

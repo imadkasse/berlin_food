@@ -22,6 +22,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { createOrder } from "@/api/orders";
 import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
 // read about this
 // import { createPortal } from "react-dom";
 
@@ -48,7 +49,7 @@ const CartItemCard = ({
 }) => (
   <div className="flex flex-col sm:flex-row gap-5 items-start group">
     <div className="w-full sm:w-36 md:w-44 h-52 sm:h-36 md:h-44 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low transition-all duration-500 group-hover:scale-[1.02]">
-      <img
+      <Image
         src={item.image_url}
         alt={item.name}
         className="w-full h-full object-cover"

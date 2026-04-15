@@ -21,6 +21,7 @@ import {
   Bell,
   TrendingUp,
 } from "lucide-react";
+import Image from "next/image";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -359,8 +360,7 @@ function LiveOrderRow({
 function DishRow({ image, name, sold, pct }: DishProps) {
   return (
     <div className="flex items-center gap-5">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={image}
         alt={name}
         className="w-14 h-14 rounded-2xl object-cover shadow-md flex-shrink-0"

@@ -383,7 +383,7 @@ function OrderRow({
           <div
             className={`w-12 h-12 rounded-full flex items-center justify-center font-bold `}>
             <div className="rounded-3xl overflow-hidden aspect-square shadow-2xl group relative border-4 border-white">
-              <img
+              <Image
                 src={`https://ui-avatars.com/api/?name=${(order.customer as { full_name: string })?.full_name}&background=random&size=48`}
                 alt={
                   (order.customer as { full_name: string })?.full_name ||
@@ -591,7 +591,7 @@ function OrderDetailsModal({
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center font-bold `}>
                   <div className="rounded-3xl overflow-hidden aspect-square shadow-2xl group relative border-4 border-white">
-                    <img
+                    <Image
                       src={`https://ui-avatars.com/api/?name=${(order.customer as { full_name: string })?.full_name}&background=random&size=48`}
                       alt={
                         (order.customer as { full_name: string })?.full_name ||

@@ -7,6 +7,7 @@ import { createCategory } from "@/api/categories";
 import { uploadFile } from "@/api/storage";
 import { Database } from "@/types/database.types";
 import { toast } from "sonner";
+import Image from "next/image";
 
 type CategoryInsert = Database["public"]["Tables"]["categories"]["Insert"];
 
@@ -106,8 +107,7 @@ export default function CreateCategoryModal({
             />
             {imageFile && (
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={URL.createObjectURL(imageFile)}
                   alt="Preview"
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"
@@ -140,7 +140,7 @@ export default function CreateCategoryModal({
             {formData.image_url && !imageFile && (
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={formData.image_url}
                   alt="Preview"
                   className="w-14 h-14 object-cover rounded-lg border border-[#e5e2e1]"

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -425,7 +424,7 @@ export default function LandingV3() {
             {testimonials.map((test, i) => (
               <div key={i} className="bg-white rounded-[2rem] p-8 shadow-lg hover:-translate-y-2 transition-all">
                 <div className="flex items-center gap-4 mb-6">
-                  <img src={test.avatar} alt={test.name} className="w-14 h-14 rounded-full" />
+                  <Image src={test.avatar} alt={test.name} className="w-14 h-14 rounded-full" />
                   <div>
                     <p className="font-black text-[#1C1B1B]">{test.name}</p>
                     <p className="text-xs text-[#584237]">{test.role}</p>

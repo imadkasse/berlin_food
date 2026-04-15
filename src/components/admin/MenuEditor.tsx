@@ -21,6 +21,7 @@ import EditMenuItemModal from "./EditMenuItemModal";
 import DeleteMenuItemModal from "./DeleteMenuItemModal";
 import CreateCategoryModal from "./CreateCategoryModal";
 import { Menu } from "@/types/Menu";
+import Image from "next/image";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -353,8 +354,8 @@ export default function MenuEditor({
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <div className="w-11 h-11 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            {/* eslint-disable-next-line @next/next/no-Image-element */}
+                            <Image
                               src={row.image}
                               alt={row.name}
                               className="w-full h-full object-cover"
@@ -422,8 +423,8 @@ function MenuCard({
       {/* Image */}
       <div
         className={`relative h-52 p-4 ${item.is_available === false ? "grayscale-[20%]" : ""}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* eslint-disable-next-line @next/next/no-Image-element */}
+        <Image
           src={item.image_url || "https://placehold.co/600x400"}
           alt={item.name}
           className="w-full h-full object-cover rounded-[2rem] shadow-md transition-transform duration-700 group-hover:scale-105"

@@ -13,6 +13,7 @@ import {
 import { useCartStore } from "@/stores/cart.store";
 import { toast } from "sonner";
 import { useUserStore } from "@/stores/user.store";
+import Image from "next/image";
 
 // --- Food Card Sub-component ---
 const FoodCard = ({ item }: { item: MenuType }) => {
@@ -24,7 +25,7 @@ const FoodCard = ({ item }: { item: MenuType }) => {
   return (
     <div className="group relative bg-surface-container-lowest rounded-lg p-5 transition-all duration-300 hover:shadow-ambient border border-outline-variant/10">
       <div className="relative overflow-visible mb-6">
-        <img
+        <Image
           src={item.image_url ?? "/placeholder.png"}
           alt={item.name}
           className="w-full h-64 object-cover rounded-tl-xl rounded-br-xl rounded-tr-md rounded-bl-md group-hover:scale-[1.02] transition-transform duration-500"
@@ -136,7 +137,7 @@ export default function Menu({ categories, menuItems }: MenuProps) {
           </p>
         </div>
         <div className="flex-1 relative">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800"
             alt="Signature Dish"
             className="w-full h-80 object-cover rounded-tl-xl rounded-br-xl rounded-tr-md rounded-bl-md shadow-2xl relative z-10"

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -360,7 +359,7 @@ export default function LandingV2() {
                 </div>
                 <p className="text-[#584237] font-medium leading-relaxed mb-6">"{test.text}"</p>
                 <div className="flex items-center gap-4">
-                  <img src={test.image} alt={test.name} className="w-12 h-12 rounded-full" />
+                  <Image src={test.image} alt={test.name} className="w-12 h-12 rounded-full" />
                   <div>
                     <p className="font-bold text-[#1C1B1B]">{test.name}</p>
                     <p className="text-xs text-[#584237]">Verified User</p>

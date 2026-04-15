@@ -17,6 +17,7 @@ import { logout } from "@/api/auth";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useUserStore } from "@/stores/user.store";
+import Image from "next/image";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -162,8 +163,8 @@ export function Sidebar({ onClose, role }: SidebarProps) {
           {user && (
             <div className="flex items-center gap-3 px-4 mb-8">
               <div className="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20 shadow-sm flex-shrink-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                {/* eslint-disable-next-line @next/next/no-Image-element */}
+                <Image
                   src={`https://ui-avatars.com/api/?name=${user?.full_name}&background=random&size=512`}
                   alt={user?.full_name!}
                   className="w-full h-full object-cover"

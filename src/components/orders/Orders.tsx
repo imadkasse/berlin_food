@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import { rateDelivery } from "@/api/profiles";
+import Image from "next/image";
 // import { Json } from "@/types/supabase"; // adjust path if needed
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -321,8 +322,8 @@ const ActiveOrderCard = ({
     <div className="bg-white rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(28,27,27,0.07)] flex flex-col md:flex-row group hover:shadow-[0_16px_48px_rgba(28,27,27,0.12)] transition-shadow duration-300">
       <div className="relative w-full md:w-64 h-52 md:h-auto flex-shrink-0 overflow-hidden">
         {image && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          // eslint-disable-next-line @next/next/no-Image-element
+          <Image
             src={image}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -506,8 +507,8 @@ const HistoryItem = ({
   <div className="flex items-center gap-5 p-4 rounded-2xl border border-[#EDE9E8] bg-white/60 hover:bg-white hover:shadow-md hover:border-[#E0DAD8] transition-all duration-200 group">
     <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden border border-[#EDE9E8]">
       {image && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        // eslint-disable-next-line @next/next/no-Image-element
+        <Image
           src={image}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"

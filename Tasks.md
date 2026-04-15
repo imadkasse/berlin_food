@@ -6,7 +6,7 @@
 - [x] add only one sideBar and show the nav link with role e.g customer => nav['menu',...] ,admin =>['dashboard',...]
 - [x] add layout for all role pages to see loading with sideBar
 - [x] ready to deploy
-- [] finish the auth functions (only forget-password , reset-password)
+- [x] finish the auth functions (only forget-password , reset-password)
 - [] add lazy loading to all pages
 - [] add PWA to my app
 - [] work on landing page (not important for now) 
