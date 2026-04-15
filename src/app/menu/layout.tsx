@@ -20,7 +20,7 @@ export default function Layout({ children }: LayoutProps) {
         - <lg  → renders the fixed bottom <nav>   (lg:hidden fixed bottom-0)
         No extra wrapper needed — Sidebar manages its own visibility.
       */}
-      <Sidebar />
+      <Sidebar role="customer" />
 
       {/* ── Scrollable main content ── */}
       {/* pb-20 clears the mobile bottom nav bar; resets to pb-10 on desktop */}
