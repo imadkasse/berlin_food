@@ -10,9 +10,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "picsum.photos" },
     ],
   },
-  typescript: {
+  typescript: { // remove after fix the build errors 
     ignoreBuildErrors: true,
-  },
+  }, 
 };
 
 export default nextConfig;

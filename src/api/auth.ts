@@ -96,3 +96,23 @@ export async function createUser(
     profile: profileData,
   };
 }
+
+export async function forgotPassword(
+  supabaseAuth: SupabaseClient<Database>, // just for pass supabase clinet bettewn server and client
+  email: string,
+) {
+  const { error } = await supabaseAuth.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/auth/reset-password`,
+  });
+  if (error) throw error;
+}
+
+export async function resetPassword(
+  supabaseAuth: SupabaseClient<Database>, // just for pass supabase clinet bettewn server and client
+  password: string,
+) {
+  const { error } = await supabaseAuth.auth.updateUser({
+    password,
+  });
+  if (error) throw error;
+}
