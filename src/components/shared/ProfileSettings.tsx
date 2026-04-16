@@ -1,19 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Home, Plus, User, X, Loader2 } from "lucide-react";
+import {
+  MapPin,
+  Home,
+  Plus,
+  User,
+  X,
+  Loader2,
+  Lock,
+  Eye,
+  EyeOff,
+  Monitor,
+  Smartphone,
+  Globe,
+} from "lucide-react";
 import { User as UserType } from "@/types/User";
 import { MapPicker } from "@/components/shared/Map";
 import { updateProfile } from "@/api/profiles";
 import { createClient } from "@/utils/supabase/client";
 import { useUserStore } from "@/stores/user.store";
 import { toast } from "sonner";
+import { updatePassword, logout } from "@/api/auth";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export function ProfileSettings({ user }: { user: UserType | null }) {
   // loadings
   const [isLoadingInfo, setIsLoadingInfo] = useState<boolean>(false);
   const [isLoadingAddress, setIsLoadingAddress] = useState<boolean>(false);
+  const [isLoadingPassword, setIsLoadingPassword] = useState<boolean>(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwords, setPasswords] = useState({
+    new: "",
+    confirm: "",
+  });
 
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [userInfo, setUserInfo] = useState<{
@@ -23,7 +45,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
     full_name: user?.full_name!,
     phone_number: user?.phone_number!,
   });
-  const { setUser, user: userState } = useUserStore();
+  const { setUser, user: userState, clearUser } = useUserStore();
 
   // Parse the Address JSON safely
   // Assuming address JSON structure: { type: 'home' | 'work', text: string }
@@ -79,6 +101,79 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
     } finally {
       setIsLoadingAddress(false);
       setIsMapModalOpen(false);
+    }
+  };
+
+  const handleUpdatePassword = async () => {
+    if (!passwords.new || !passwords.confirm) {
+      toast.error("Please fill in both password fields");
+      return;
+    }
+
+    if (passwords.new !== passwords.confirm) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    if (passwords.new.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+
+    setIsLoadingPassword(true);
+    try {
+      await updatePassword(passwords.new);
+      toast.success("Password updated successfully");
+      setPasswords({ new: "", confirm: "" });
+    } catch (error: any) {
+      console.error(error);
+      toast.error("Error updating password", {
+        description: error.message,
+      });
+    } finally {
+      setIsLoadingPassword(false);
+    }
+  };
+
+  const [deviceInfo, setDeviceInfo] = useState({
+    browser: "",
+    os: "",
+    isMobile: false,
+  });
+
+  useState(() => {
+    if (typeof window !== "undefined") {
+      const ua = navigator.userAgent;
+      const browser = ua.includes("Chrome")
+        ? "Chrome"
+        : ua.includes("Firefox")
+          ? "Firefox"
+          : "Safari";
+      const os = ua.includes("Windows")
+        ? "Windows"
+        : ua.includes("Mac")
+          ? "macOS"
+          : "Linux";
+      setDeviceInfo({
+        browser,
+        os,
+        isMobile: /iPhone|iPad|iPod|Android/i.test(ua),
+      });
+    }
+  });
+
+  const router = useRouter();
+  const handleLogout = async () => {
+    try {
+      await logout();
+      clearUser();
+      toast.success("Logged out successfully");
+      router.push("/auth/login");
+    } catch (error: any) {
+      console.error(error);
+      toast.error("Error logging out", {
+        description: error.message,
+      });
     }
   };
 
@@ -224,6 +319,77 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                 </div>
               </div>
             </section>
+
+            {/* Security Section (Password Update) */}
+            <section className="bg-surface-container-lowest rounded-3xl p-6 lg:p-10 shadow-sm border border-outline-variant/10">
+              <div className="flex items-center gap-3 mb-6 lg:mb-8">
+                <div className="p-3 bg-error/10 rounded-2xl">
+                  <Lock className="w-6 h-6 text-error" />
+                </div>
+                <h2 className="text-xl font-bold text-on-surface">Security</h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                  {/* New Password */}
+                  <div className="space-y-2 relative">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
+                      New Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        value={passwords.new}
+                        onChange={(e) =>
+                          setPasswords({ ...passwords, new: e.target.value })
+                        }
+                        className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface focus:ring-2 focus:ring-primary/20 transition-all pr-12"
+                        placeholder="••••••••"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
+                        {showPassword ? (
+                          <EyeOff size={20} />
+                        ) : (
+                          <Eye size={20} />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Confirm Password */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
+                      Confirm Password
+                    </label>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      value={passwords.confirm}
+                      onChange={(e) =>
+                        setPasswords({ ...passwords, confirm: e.target.value })
+                      }
+                      className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface focus:ring-2 focus:ring-primary/20 transition-all"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4 flex justify-end">
+                  <button
+                    onClick={handleUpdatePassword}
+                    disabled={isLoadingPassword}
+                    className="bg-on-surface text-surface px-10 py-4 rounded-full font-black uppercase italic tracking-tighter shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+                    {isLoadingPassword ? (
+                      <Loader2 className="animate-spin" size={20} />
+                    ) : (
+                      <>Update Password</>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </section>
           </div>
 
           {/* Sidebar */}
@@ -261,6 +427,51 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
+
+            {/* Active Sessions Section */}
+            <section className="bg-surface-container-lowest rounded-3xl p-6 lg:p-8 shadow-sm border border-outline-variant/10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-xl">
+                  <Globe className="w-5 h-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-bold text-on-surface">
+                  Active Sessions
+                </h2>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/5">
+                  <div className="p-3 rounded-xl bg-surface-container-highest">
+                    {deviceInfo.isMobile ? (
+                      <Smartphone
+                        className="text-on-surface-variant"
+                        size={24}
+                      />
+                    ) : (
+                      <Monitor className="text-on-surface-variant" size={24} />
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-on-surface truncate">
+                        {deviceInfo.browser} on {deviceInfo.os}
+                      </h3>
+                      <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-tighter">
+                        Current
+                      </span>
+                    </div>
+                    <p className="text-xs text-on-surface-variant mt-0.5">
+                      Berlin, Germany • Active now
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-[11px] text-on-surface-variant/60 text-center italic px-2">
+                  To protect your account, you can log out of all sessions from
+                  the main dashboard.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
 
@@ -276,7 +487,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
               </p>
             </div>
             <button
-              // onClick={clearUser}
+              onClick={handleLogout}
               className="px-10 py-4 rounded-full bg-on-surface text-surface font-black uppercase italic tracking-tighter hover:bg-on-surface/90 transition-all">
               Log Out
             </button>
