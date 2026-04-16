@@ -40,11 +40,14 @@ export async function register(
 }
 
 export async function signupWithGoogle() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+  console.log('site url:',siteUrl);
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
-    options: {
-      redirectTo: `${window.location.origin}/auth/callback`,
-    },
+    // options: {
+    //   redirectTo: `${siteUrl}/auth/callback`,
+    // },
   });
 
   if (error) throw error;

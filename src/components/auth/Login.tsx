@@ -127,7 +127,8 @@ export default function Login() {
     setIsLoadingGoogle(true);
     try {
       await signupWithGoogle();
-
+      console.log('google');
+      
       // Try to get the user session
       const {
         data: { user },
