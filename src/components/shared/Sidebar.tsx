@@ -12,6 +12,8 @@ import {
   LayoutDashboard,
   Motorbike,
   Users2,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 import { logout } from "@/api/auth";
 import { toast } from "sonner";
@@ -37,18 +39,22 @@ export function Sidebar({ onClose, role }: SidebarProps) {
     role === `customer`
       ? [
           { id: "menu", label: "Menu", icon: UtensilsCrossed, href: "/menu" },
-          {
-            id: "orders",
-            label: "My Orders",
-            icon: ShoppingBag,
-            href: "/customer/orders",
-          },
-          {
-            id: "profile",
-            label: "Profile",
-            icon: User,
-            href: "/customer/profile",
-          },
+          ...(user
+            ? [
+                {
+                  id: "orders",
+                  label: "My Orders",
+                  icon: ShoppingBag,
+                  href: "/customer/orders",
+                },
+                {
+                  id: "profile",
+                  label: "Profile",
+                  icon: User,
+                  href: "/customer/profile",
+                },
+              ]
+            : []),
           {
             id: "cart",
             label: "Cart",
@@ -239,28 +245,45 @@ export function Sidebar({ onClose, role }: SidebarProps) {
               Book a Table
             </button>
 
-            <button
-              onClick={handleLogout}
-              disabled={loading}
-              className={`
-                flex items-center justify-center gap-2
-                text-xs font-bold text-on-surface-variant
-                hover:text-error transition-colors duration-200 py-2
-                cursor-pointer
-              `}>
-              {loading ? (
-                <Loader2
-                  size={14}
-                  className="animate-spin"
-                  aria-hidden="true"
-                />
-              ) : (
-                <>
-                  <LogOut size={14} aria-hidden="true" />
-                  Sign Out
-                </>
-              )}
-            </button>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                disabled={loading}
+                className={`
+                  flex items-center justify-center gap-2
+                  text-xs font-bold text-on-surface-variant
+                  hover:text-error transition-colors duration-200 py-2
+                  cursor-pointer
+                `}>
+                {loading ? (
+                  <Loader2
+                    size={14}
+                    className="animate-spin"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <>
+                    <LogOut size={14} aria-hidden="true" />
+                    Sign Out
+                  </>
+                )}
+              </button>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/auth/login"
+                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-surface-container-high text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-all duration-200 active:scale-95">
+                  <LogIn size={18} />
+                  Login
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-primary/20 text-on-surface font-bold text-sm hover:bg-surface-container-high transition-all duration-200 active:scale-95">
+                  <UserPlus size={18} />
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </aside>
@@ -306,6 +329,29 @@ export function Sidebar({ onClose, role }: SidebarProps) {
             </Link>
           );
         })}
+
+        {!user && (
+          <Link
+            href="/auth/login"
+            className={`
+              flex-1 flex flex-col items-center justify-center gap-1
+              py-3 px-2
+              text-[10px] font-semibold tracking-wide
+              transition-all duration-200 active:scale-95
+              ${pathname === "/auth/login" ? "text-primary" : "text-on-surface-variant"}
+            `}
+            aria-label="Login">
+            <span
+              className={`
+                h-1 w-8 rounded-full mb-0.5 transition-all duration-300
+                ${pathname === "/auth/login" ? "bg-primary opacity-100 scale-x-100" : "opacity-0 scale-x-0"}
+              `}
+              aria-hidden="true"
+            />
+            <LogIn size={22} strokeWidth={pathname === "/auth/login" ? 2.5 : 1.8} />
+            Login
+          </Link>
+        )}
 
         {/* Book a Table CTA as a highlighted center-ish item */}
         <Link

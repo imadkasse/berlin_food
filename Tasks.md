@@ -8,7 +8,11 @@
 - [x] ready to deploy
 - [x] finish the auth functions (only forget-password , reset-password)
 - [x] add lazy loading to all pages
-- [] add PWA to my app
+- [x] add PWA to my app
+- [x] fix the google login error
+- [x] add button login and sign up in in place sign out (in SideBar.tsx) when user is not login in 
+- [] add update password to /${role}/profile
+- [] see all the sessions of user () in /${role}/profile
 - [] work on landing page (not important for now) 
 - [] fix the types errors like any error
 - [] review all the code and make sure it is clean and well-organized  
