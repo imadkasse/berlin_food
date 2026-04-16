@@ -130,23 +130,23 @@ export default function Login() {
       console.log('google');
       
       // Try to get the user session
-      const {
-        data: { user },
-      } = await supbase.auth.getUser();
-      const currentUser = user;
+      // const {
+      //   data: { user },
+      // } = await supbase.auth.getUser();
+      // const currentUser = user;
 
-      if (currentUser) {
-        // save user on state
-        const profile = await getProfile(supbase, currentUser.id);
+      // if (currentUser) {
+      //   // save user on state
+      //   const profile = await getProfile(supbase, currentUser.id);
 
-        setUser(profile);
+      //   setUser(profile);
 
-        // redirect the user
-        router.push(`/${profile?.role}/profile`);
-      } else {
-        // For OAuth flows that redirect the page, this serves as a fallback.
-        toast.info("Redirecting to Google...");
-      }
+      //   // redirect the user
+      //   router.push(`/${profile?.role}/profile`);
+      // } else {
+      //   // For OAuth flows that redirect the page, this serves as a fallback.
+      //   toast.info("Redirecting to Google...");
+      // }
     } catch (err: unknown) {
       toast.error("Access denied", {
         description:
