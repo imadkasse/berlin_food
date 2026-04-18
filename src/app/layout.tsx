@@ -1,27 +1,22 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Cairo } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
-const geistSans = Plus_Jakarta_Sans({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Plus_Jakarta_Sans({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Berlin Food",
-  description: "Premium Berlin Food Delivery",
+  title: "برلين فود",
+  description: "خدمة توصيل طعام برلين المميزة",
   manifest: "/manifest.json",
   themeColor: "#9f4200",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Berlin Food",
+    title: "برلين فود",
   },
 };
 
@@ -34,12 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      lang="ar"
+      dir="rtl"
+      className={`${cairo.variable} h-full antialiased`}>
+      <body className="font-cairo min-h-full flex flex-col">
         {children}
           <PWAInstallPrompt />
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors dir="rtl" />
       </body>
     </html>
   );

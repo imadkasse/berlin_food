@@ -123,11 +123,11 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
     setIsLoadingPassword(true);
     try {
       await updatePassword(passwords.new);
-      toast.success("Password updated successfully");
+      toast.success("تم تحديث كلمة المرور بنجاح");
       setPasswords({ new: "", confirm: "" });
     } catch (error: any) {
       console.error(error);
-      toast.error("Error updating password", {
+      toast.error("خطأ أثناء تحديث كلمة المرور", {
         description: error.message,
       });
     } finally {
@@ -167,11 +167,11 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
     try {
       await logout();
       clearUser();
-      toast.success("Logged out successfully");
+      toast.success("تم تسجيل الخروج بنجاح");
       router.push("/auth/login");
     } catch (error: any) {
       console.error(error);
-      toast.error("Error logging out", {
+      toast.error("خطأ أثناء تسجيل الخروج", {
         description: error.message,
       });
     }
@@ -183,10 +183,10 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
         {/* Header */}
         <header className="mb-8 lg:mb-12">
           <h1 className="text-3xl lg:text-4xl font-black text-on-surface tracking-tight uppercase italic">
-            Profile Settings
+            إعدادات الملف الشخصي
           </h1>
           <p className="text-on-surface-variant font-medium text-lg mt-1">
-            Manage your {user?.role} account and delivery preferences.
+            إدارة حسابك وتفضيلات التوصيل.
           </p>
         </header>
 
@@ -200,7 +200,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   <User className="w-6 h-6 text-primary" />
                 </div>
                 <h2 className="text-xl font-bold text-on-surface">
-                  Personal Details
+                  البيانات الشخصية
                 </h2>
               </div>
 
@@ -208,8 +208,8 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                   {/* Full Name */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
-                      Full Name
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
+                      الاسم الكامل
                     </label>
                     <input
                       type="text"
@@ -221,14 +221,14 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                         })
                       }
                       className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface focus:ring-2 focus:ring-primary/20 transition-all"
-                      placeholder="Enter your name"
+                      placeholder="أدخل اسمك"
                     />
                   </div>
 
                   {/* Phone Number */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
-                      Phone Number
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
+                      رقم الهاتف
                     </label>
                     <input
                       type="tel"
@@ -246,8 +246,8 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   {/* Vehicle Type (Conditional for Delivery Role) */}
                   {user?.role === "delivery" && (
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
-                        Vehicle Type
+                      <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
+                        نوع المركبة
                       </label>
                       <select
                         value={user?.vehicle_type || ""}
@@ -255,9 +255,9 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                         //   handleInputChange("vehicle_type", e.target.value)
                         // }
                         className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface appearance-none focus:ring-2 focus:ring-primary/20 transition-all">
-                        <option value="bike">Bicycle</option>
-                        <option value="moto">Motorcycle</option>
-                        <option value="car">Car</option>
+                        <option value="bike">دراجة هوائية</option>
+                        <option value="moto">دراجة نارية</option>
+                        <option value="car">سيارة</option>
                       </select>
                     </div>
                   )}
@@ -271,7 +271,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     {isLoadingInfo ? (
                       <Loader2 className="animate-spin " size={20} />
                     ) : (
-                      <>Save Changes</>
+                      <>حفظ التغييرات</>
                     )}
                   </button>
                 </div>
@@ -286,13 +286,13 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h2 className="text-xl font-bold text-on-surface">
-                    Saved Location
+                    المواقع المحفوظة
                   </h2>
                 </div>
                 <button
                   onClick={() => setIsMapModalOpen(true)}
                   className="text-primary font-bold text-sm flex items-center gap-1 hover:bg-primary/5 px-4 py-2 rounded-full transition-all">
-                  <Plus size={18} /> Edit Map
+                  <Plus size={18} /> تعديل الخريطة
                 </button>
               </div>
 
@@ -304,11 +304,11 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-on-surface">
-                      Primary Address
+                      العنوان الأساسي
                     </h3>
                     <p className="text-sm text-on-surface-variant mt-1 leading-relaxed">
                       {/* Edit in next feature */}
-                      {"No address set. Use the map to select your location."}
+                      {"لم يتم تعيين عنوان. استخدم الخريطة لتحديد موقعك."}
                     </p>
                     {userAddress?.lat && (
                       <p className="text-[10px] font-mono mt-2 text-primary/60">
@@ -326,14 +326,14 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                 <div className="p-3 bg-error/10 rounded-2xl">
                   <Lock className="w-6 h-6 text-error" />
                 </div>
-                <h2 className="text-xl font-bold text-on-surface">Security</h2>
+                <h2 className="text-xl font-bold text-on-surface">الأمان</h2>
               </div>
 
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                   {/* New Password */}
                   <div className="space-y-2 relative">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
                       New Password
                     </label>
                     <div className="relative">
@@ -343,13 +343,13 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                         onChange={(e) =>
                           setPasswords({ ...passwords, new: e.target.value })
                         }
-                        className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface focus:ring-2 focus:ring-primary/20 transition-all pr-12"
+                        className="w-full bg-surface-container-low border-none rounded-2xl p-4 font-bold text-on-surface focus:ring-2 focus:ring-primary/20 transition-all pe-12"
                         placeholder="••••••••"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
+                        className="absolute end-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
                         {showPassword ? (
                           <EyeOff size={20} />
                         ) : (
@@ -361,7 +361,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
 
                   {/* Confirm Password */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ml-1">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
                       Confirm Password
                     </label>
                     <input
@@ -384,7 +384,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     {isLoadingPassword ? (
                       <Loader2 className="animate-spin" size={20} />
                     ) : (
-                      <>Update Password</>
+                      <>تحديث كلمة المرور</>
                     )}
                   </button>
                 </div>
@@ -410,7 +410,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   }
                   className={`w-12 h-6 rounded-full transition-colors relative ${user?.availability_status ? "bg-white" : "bg-white/30"}`}>
                   <div
-                    className={`absolute top-1 w-4 h-4 rounded-full transition-all ${user?.availability_status ? "right-1 bg-primary" : "left-1 bg-white"}`}
+                    className={`absolute top-1 w-4 h-4 rounded-full transition-all ${user?.availability_status ? "end-1 bg-primary" : "start-1 bg-white"}`}
                   />
                 </button>
               </div>
@@ -435,7 +435,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   <Globe className="w-5 h-5 text-primary" />
                 </div>
                 <h2 className="text-lg font-bold text-on-surface">
-                  Active Sessions
+                  الجلسات النشطة
                 </h2>
               </div>
 
@@ -457,18 +457,17 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                         {deviceInfo.browser} on {deviceInfo.os}
                       </h3>
                       <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-tighter">
-                        Current
+                        الحالي
                       </span>
                     </div>
                     <p className="text-xs text-on-surface-variant mt-0.5">
-                      Berlin, Germany • Active now
+                      Berlin, Germany • نشط الآن
                     </p>
                   </div>
                 </div>
 
                 <p className="text-[11px] text-on-surface-variant/60 text-center italic px-2">
-                  To protect your account, you can log out of all sessions from
-                  the main dashboard.
+                  لحماية حسابك، يمكنك تسجيل الخروج من جميع الجلسات من لوحة التحكم الرئيسية.
                 </p>
               </div>
             </section>
@@ -479,17 +478,17 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
         <footer className="mt-12 lg:mt-16 pt-8 border-t border-outline-variant/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 bg-surface-container-low rounded-3xl border border-outline-variant/10">
             <div>
-              <h3 className="text-on-surface font-bold text-lg text-center md:text-left">
-                Sign Out
+              <h3 className="text-on-surface font-bold text-lg text-center md:text-start">
+                تسجيل الخروج
               </h3>
-              <p className="text-sm text-on-surface-variant mt-1 text-center md:text-left">
-                Your session data will be cleared from this device.
+              <p className="text-sm text-on-surface-variant mt-1 text-center md:text-start">
+                سيتم مسح بيانات الجلسة من هذا الجهاز.
               </p>
             </div>
             <button
               onClick={handleLogout}
               className="px-10 py-4 rounded-full bg-on-surface text-surface font-black uppercase italic tracking-tighter hover:bg-on-surface/90 transition-all">
-              Log Out
+              تسجيل الخروج
             </button>
           </div>
         </footer>
@@ -501,7 +500,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
           <div className="bg-surface-container-lowest rounded-3xl w-full max-w-3xl h-[600px] shadow-2xl flex flex-col relative overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between p-6 border-b border-outline-variant/10 bg-surface-container-lowest z-10">
               <h3 className="text-xl font-black text-on-surface uppercase tracking-tight">
-                Select Location
+                اختر الموقع
               </h3>
               <button
                 onClick={() => setIsMapModalOpen(false)}
@@ -528,7 +527,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                 {isLoadingAddress ? (
                   <Loader2 className="animate-spin " size={20} />
                 ) : (
-                  <>Done</>
+                  <>تم</>
                 )}
               </button>
             </div>

@@ -185,11 +185,11 @@ export default function MenuEditor({
                 placeholder="Search dish…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 pr-4 py-3 bg-white border-none rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 w-56 shadow-sm transition-all"
+                className="ps-10 pe-4 py-3 bg-white border-none rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 w-56 shadow-sm transition-all"
               />
               <Search
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#afacac] group-focus-within:text-[#F27121] transition-colors"
+                className="absolute start-3 top-1/2 -translate-y-1/2 text-[#afacac] group-focus-within:text-[#F27121] transition-colors"
               />
             </div>
 
@@ -264,7 +264,7 @@ export default function MenuEditor({
           </button>
 
           {/* View toggle */}
-          <div className="ml-auto flex items-center gap-1 flex-shrink-0">
+          <div className="ms-auto flex items-center gap-1 flex-shrink-0">
             <button
               onClick={() => setViewMode("grid")}
               className={`p-2 rounded-lg shadow-sm transition-colors ${viewMode === "grid" ? "text-[#F27121] bg-white" : "text-[#afacac] bg-white hover:text-[#1C1B1B]"}`}>
@@ -327,7 +327,7 @@ export default function MenuEditor({
 
           <div className="bg-white rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#1C1B1B]/5">
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full text-start border-collapse">
                 <thead>
                   <tr className="bg-stone-50/50 border-b border-[#1C1B1B]/5">
                     {[
@@ -340,7 +340,7 @@ export default function MenuEditor({
                     ].map((col, i) => (
                       <th
                         key={i}
-                        className={`px-6 py-5 text-[10px] font-bold text-[#5c5b5b] uppercase tracking-[0.2em] ${i === 5 ? "text-right" : ""}`}>
+                        className={`px-6 py-5 text-[10px] font-bold text-[#5c5b5b] uppercase tracking-[0.2em] ${i === 5 ? "text-end" : ""}`}>
                         {col}
                       </th>
                     ))}
@@ -383,7 +383,7 @@ export default function MenuEditor({
                           Active
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-6 py-4 text-end">
                         <button className="text-[#afacac] hover:text-[#F27121] transition-colors p-1">
                           <MoreHorizontal size={18} />
                         </button>
@@ -400,7 +400,7 @@ export default function MenuEditor({
       {/* ── Mobile FAB ── */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-24 right-6 w-14 h-14 bg-[#F27121] text-white rounded-full shadow-2xl shadow-[#F27121]/30 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:hidden">
+        className="fixed bottom-24 end-6 w-14 h-14 bg-[#F27121] text-white rounded-full shadow-2xl shadow-[#F27121]/30 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:hidden">
         <Plus size={24} strokeWidth={2.5} />
       </button>
     </div>
@@ -437,7 +437,7 @@ function MenuCard({
         />
         {item.badge && (
           <span
-            className={`absolute top-6 right-6 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm ${
+            className={`absolute top-6 end-6 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm ${
               item.badge.dark
                 ? "bg-[#1C1B1B]/95 text-white"
                 : "bg-white/95 backdrop-blur text-[#F27121]"

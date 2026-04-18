@@ -64,7 +64,7 @@ const CartItemCard = ({
           {item.name}
         </h3>
         <span className="text-base sm:text-lg md:text-xl font-medium text-primary whitespace-nowrap">
-          DZD {item.price.toFixed(2)}
+          {item.price.toFixed(2)} د.ج
         </span>
       </div>
       <p className="text-secondary text-sm leading-relaxed line-clamp-2 mb-1">
@@ -138,15 +138,15 @@ const AddressModal = ({
           <div className="flex justify-between items-start mb-6">
             <div>
               <h2 className="text-2xl font-extrabold tracking-tight text-on-surface">
-                Confirm your address
+                تأكيد عنوانك
               </h2>
               <p className="text-sm text-on-surface-variant mt-1">
-                Where should we deliver your order?
+                إلى أين تريد توصيل طلبك؟
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant ml-4 flex-shrink-0">
+              className="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant ms-4 flex-shrink-0">
               <X size={20} />
             </button>
           </div>
@@ -156,7 +156,7 @@ const AddressModal = ({
             {addresses.length === 0 ? (
               <div className="text-center py-8 text-on-surface-variant">
                 <MapPin size={32} className="mx-auto mb-2 opacity-40" />
-                <p className="text-sm">No saved addresses found.</p>
+                <p className="text-sm">لم يتم العثور على عناوين محفوظة.</p>
               </div>
             ) : (
               addresses.map((addr) => {
@@ -165,7 +165,7 @@ const AddressModal = ({
                   <button
                     key={addr.id}
                     onClick={() => onSelectAddress(addr.id)}
-                    className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-start ${
                       isSelected
                         ? "border-primary bg-primary/5"
                         : "border-outline/20 bg-surface-container-lowest hover:border-outline/40"
@@ -216,10 +216,9 @@ const AddressModal = ({
             />
             <p className="text-sm text-on-surface-variant leading-relaxed">
               <span className="font-semibold text-on-surface">
-                Multiple addresses
+                عناوين متعددة
               </span>{" "}
-              — the ability to save and select from several delivery addresses
-              is currently in development.
+              — ميزة حفظ واختيار عدة عناوين توصيل قيد التطوير حاليًا.
             </p>
           </div>
 
@@ -227,15 +226,15 @@ const AddressModal = ({
           <div className="mb-7">
             <label className="flex items-center gap-2 text-sm font-semibold text-on-surface mb-2">
               <StickyNote size={15} />
-              Add a note{" "}
+              أضف ملاحظة{" "}
               <span className="font-normal text-on-surface-variant">
-                (optional)
+                (اختياري)
               </span>
             </label>
             <textarea
               value={note}
               onChange={(e) => onNoteChange(e.target.value)}
-              placeholder="E.g. Ring the bell, leave at door, no onions…"
+              placeholder="مثال: رن الجرس، اترك الطلب عند الباب، بدون بصل..."
               rows={3}
               className="w-full bg-surface-container-low border border-outline/20 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
@@ -250,8 +249,8 @@ const AddressModal = ({
               <Loader2 className="animate-spin" size={20} />
             ) : (
               <>
-                Confirm & Place Order
-                <ArrowRight size={20} />
+                تأكيد وإتمام الطلب
+                <ArrowRight size={20} className="rotate-180" />
               </>
             )}
           </button>
@@ -358,13 +357,13 @@ export default function Cart() {
       );
       // cleard cart
       clearCart();
-      toast.success("order place successfully ", {
-        description: `order with ID :${data.id.slice(0, 6)}... , place successfully`,
+      toast.success("تم إتمام الطلب بنجاح", {
+        description: `تم إنشاء الطلب بنجاح، رقمه: ${data.id.slice(0, 6)}...`,
       });
     } catch (error: unknown) {
       console.log(error);
-      toast.error("errro when creating order", {
-        description: `error : ${error instanceof Error ? error.message : "Unknown error"}`,
+      toast.error("خطأ أثناء إنشاء الطلب", {
+        description: `الخطأ: ${error instanceof Error ? error.message : "خطأ غير معروف"}`,
       });
     } finally {
       setIsLoading(false);
@@ -385,11 +384,11 @@ export default function Cart() {
         {/* Page Header */}
         <section className="mb-12 sm:mb-16">
           <span className="uppercase tracking-[0.2em] text-primary font-semibold mb-3 block text-xs sm:text-sm">
-            Your Selection
+            اختيارك
           </span>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-none">
-            Shopping <br />
-            <span className="text-primary-container">Cart.</span>
+            سلة <br />
+            <span className="text-primary-container">التسوق.</span>
           </h1>
         </section>
 
@@ -399,10 +398,10 @@ export default function Cart() {
             {items.length === 0 ? (
               <div className="text-center py-20 text-on-surface-variant">
                 <p className="text-xl font-semibold mb-2">
-                  Your cart is empty.
+                  سلتك فارغة.
                 </p>
                 <p className="text-sm opacity-60">
-                  Go back and add some delicious items!
+                  عد وأضف بعض العناصر اللذيذة!
                 </p>
               </div>
             ) : (
@@ -422,29 +421,29 @@ export default function Cart() {
           <div className="lg:col-span-5">
             <div className="bg-surface-container-lowest rounded-xl p-6 sm:p-8 lg:p-10 shadow-[0_40px_80px_-20px_rgba(28,27,27,0.06)] lg:sticky lg:top-32">
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-8">
-                Order Summary
+                ملخص الطلب
               </h2>
 
               <div className="space-y-5 mb-8">
                 <div className="flex justify-between items-center text-secondary">
-                  <span className="text-base sm:text-lg">Subtotal</span>
+                  <span className="text-base sm:text-lg">المجموع الفرعي</span>
                   <span className="font-semibold text-on-surface">
-                    DZD {subtotal.toFixed(2)}
+                    {subtotal.toFixed(2)} د.ج
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-secondary">
-                  <span className="text-base sm:text-lg">Delivery Fee</span>
+                  <span className="text-base sm:text-lg">رسوم التوصيل</span>
                   <span className="font-semibold text-on-surface">
-                    DZD {DELIVERY_FEE.toFixed(2)}
+                    {DELIVERY_FEE.toFixed(2)} د.ج
                   </span>
                 </div>
                 {VAT_RATE > 0 && (
                   <div className="flex justify-between items-center text-secondary">
                     <span className="text-base sm:text-lg">
-                      Taxes (VAT 19%)
+                      الضرائب (قيمة مضافة 19%)
                     </span>
                     <span className="font-semibold text-on-surface">
-                      DZD {taxes.toFixed(2)}
+                      {taxes.toFixed(2)} د.ج
                     </span>
                   </div>
                 )}
@@ -453,10 +452,10 @@ export default function Cart() {
               <div className="pt-6 border-t border-surface-container-high mb-8">
                 <div className="flex justify-between items-end">
                   <span className="text-lg sm:text-xl font-bold tracking-tight">
-                    Total Price
+                    السعر الإجمالي
                   </span>
                   <span className="text-3xl sm:text-4xl font-black text-primary-container">
-                    DZD {total.toFixed(2)}
+                    {total.toFixed(2)} د.ج
                   </span>
                 </div>
               </div>
@@ -466,13 +465,13 @@ export default function Cart() {
                   onClick={handleOpenModal}
                   disabled={items.length === 0}
                   className="w-full bg-gradient-to-br from-[#9F4200] to-[#F27121] text-white py-5 rounded-full font-bold text-lg sm:text-xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
-                  Place Order
-                  <ArrowRight size={20} />
+                  إتمام الطلب
+                  <ArrowRight size={20} className="rotate-180" />
                 </button>
                 <Link
                   href="/menu"
                   className="w-full py-5 rounded-full font-bold text-on-surface/60 hover:text-on-surface transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
-                  Add more items
+                  أضف المزيد من العناصر
                 </Link>
               </div>
 

@@ -147,7 +147,7 @@ export default function AddressStep() {
             </div>
 
             {/* Bottom Trust Badge */}
-            <div className="absolute -bottom-12 right-0 flex items-center gap-2 px-4 py-2 bg-surface-container-high/50 backdrop-blur-md rounded-full border border-outline-variant/10">
+            <div className="absolute -bottom-12 end-0 flex items-center gap-2 px-4 py-2 bg-surface-container-high/50 backdrop-blur-md rounded-full border border-outline-variant/10">
               <ShieldCheck className="w-4 h-4 text-primary" />
               <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">
                 Secure Data Processing

@@ -48,7 +48,7 @@ export default function ForgotPassword() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-surface p-6 antialiased relative overflow-hidden">
       {/* Decorative background blobs */}
-      <div className="fixed top-0 right-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
+      <div className="fixed top-0 end-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
       <div className="fixed bottom-0 left-[50vw] w-[30vw] h-[307px] bg-primary/5 blur-[100px] -z-10 rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[440px] space-y-10 z-10">
@@ -74,7 +74,7 @@ export default function ForgotPassword() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold tracking-wide text-on-surface-variant ml-1"
+                className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
               >
                 Email Address
               </label>
@@ -88,7 +88,7 @@ export default function ForgotPassword() {
                   autoComplete="email"
                   required
                   className="
-                    w-full h-14 px-5 pl-12 rounded-lg
+                    w-full h-14 px-5 ps-12 rounded-lg
                     bg-surface-container-low border-none outline-none
                     ring-1 ring-outline-variant/30
                     focus:ring-2 focus:ring-primary-container
@@ -96,7 +96,7 @@ export default function ForgotPassword() {
                     transition-all duration-200
                   "
                 />
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
+                <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
               </div>
             </div>
 

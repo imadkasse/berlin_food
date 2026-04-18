@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* ── Scrollable main content ── */}
       {/* pb-20 clears the mobile bottom nav bar; resets to pb-10 on desktop */}
-      <main className="flex-1 lg:ml-72 overflow-y-auto min-h-0">
+      <main className="flex-1 lg:ms-72 overflow-y-auto min-h-0">
         <div className="">{children}</div>
       </main>
     </div>

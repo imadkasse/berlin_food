@@ -103,7 +103,7 @@ export default function CreateCategoryModal({
                   setFormData({ ...formData, image_url: "" });
                 }
               }}
-              className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-medium text-[#1C1B1B] transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#F27121]/10 file:text-[#F27121] hover:file:bg-[#F27121]/20 cursor-pointer"
+              className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-medium text-[#1C1B1B] transition-all file:me-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#F27121]/10 file:text-[#F27121] hover:file:bg-[#F27121]/20 cursor-pointer"
             />
             {imageFile && (
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">

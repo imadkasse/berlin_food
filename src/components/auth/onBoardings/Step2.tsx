@@ -30,7 +30,7 @@ function StepProgressBar({
           }}
         />
       ))}
-      <span className="ml-4 text-xs font-bold tracking-widest uppercase text-on-surface-variant">
+      <span className="ms-4 text-xs font-bold tracking-widest uppercase text-on-surface-variant">
         Step {String(currentStep).padStart(2, "0")} /{" "}
         {String(totalSteps).padStart(2, "0")}
       </span>
@@ -58,7 +58,7 @@ function IconInput({
     <div className="space-y-2">
       <label
         htmlFor={id}
-        className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1 block">
+        className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ms-1 block">
         {label}
       </label>
 
@@ -71,7 +71,7 @@ function IconInput({
         <input
           id={id}
           className="
-            w-full pl-14 pr-6 py-5
+            w-full ps-14 pe-6 py-5
             bg-surface-container-low border-none rounded-lg
             text-on-surface placeholder:text-outline/50
             outline-none focus:ring-2 focus:ring-primary-container

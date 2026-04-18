@@ -62,7 +62,7 @@ export function PWAInstallPrompt() {
   // so we show a custom message if they haven't installed it yet.
   if (isIOS && !isStandalone) {
     return (
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-sm animate-in slide-in-from-bottom-5 duration-500">
+      <div className="fixed bottom-6 start-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-sm animate-in slide-in-from-bottom-5 duration-500">
 
         <div className="bg-surface-container-high border border-outline-variant/20 rounded-3xl p-5 shadow-2xl backdrop-blur-xl relative overflow-hidden group">
 
@@ -78,7 +78,7 @@ export function PWAInstallPrompt() {
             </div>
             <button 
               onClick={() => setIsVisible(false)}
-              className="p-1 hover:bg-surface-container-highest rounded-full transition-colors ml-auto"
+              className="p-1 hover:bg-surface-container-highest rounded-full transition-colors ms-auto"
             >
               <X size={16} />
             </button>
@@ -93,7 +93,7 @@ export function PWAInstallPrompt() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-sm animate-in slide-in-from-bottom-5 duration-500">
+    <div className="fixed bottom-6 start-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-sm animate-in slide-in-from-bottom-5 duration-500">
 
       <div className="bg-surface-container-high border border-outline-variant/20 rounded-3xl p-5 shadow-2xl backdrop-blur-xl relative overflow-hidden group">
 

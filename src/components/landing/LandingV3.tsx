@@ -80,7 +80,7 @@ export default function LandingV3() {
   return (
     <div className="min-h-screen bg-[#FCF9F8] selection:bg-[#F27121]/20">
       {/* ── Fixed Navigation ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#F0EDED] px-6 py-4">
+      <nav className="fixed top-0 start-0 end-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#F0EDED] px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F27121] to-[#9F4200] flex items-center justify-center">
@@ -116,7 +116,7 @@ export default function LandingV3() {
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         {/* Background Accent */}
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-[#F6F3F2] -skew-x-12 translate-x-1/4 pointer-events-none" />
+        <div className="absolute top-0 end-0 w-[60%] h-full bg-[#F6F3F2] -skew-x-12 translate-x-1/4 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10 items-center">
           <div className="lg:col-span-7 pt-8">
@@ -135,7 +135,7 @@ export default function LandingV3() {
 
             {/* Premium Search Bar */}
             <div className="p-4 bg-white rounded-[2.5rem] shadow-xl shadow-orange-900/5 max-w-2xl border border-[#F0EDED] flex items-center gap-2 mb-10">
-               <div className="flex-1 px-4 flex items-center gap-4 border-r border-[#F0EDED]">
+               <div className="flex-1 px-4 flex items-center gap-4 border-e border-[#F0EDED]">
                  <MapPin className="text-[#F27121]" size={20} />
                  <input 
                    type="text" 
@@ -177,7 +177,7 @@ export default function LandingV3() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
+              <div className="absolute bottom-8 start-8 end-8">
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full mb-4 w-fit">
                   <Award size={14} className="text-[#F27121]" fill="#F27121" />
                   <span className="text-[10px] font-semibold uppercase tracking-widest">Editor's Pick</span>
@@ -191,7 +191,7 @@ export default function LandingV3() {
             </div>
             
             {/* Floating Elements */}
-            <div className="absolute -top-8 -right-8 w-40 h-40 bg-white rounded-3xl p-6 shadow-xl pointer-events-none hidden lg:flex flex-col items-center justify-center text-center">
+            <div className="absolute -top-8 -end-8 w-40 h-40 bg-white rounded-3xl p-6 shadow-xl pointer-events-none hidden lg:flex flex-col items-center justify-center text-center">
                <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-[#F27121] mb-3">
                   <Sparkles size={24} fill="#F27121" />
                </div>
@@ -199,7 +199,7 @@ export default function LandingV3() {
                <p className="text-xs font-bold text-[#1C1B1B] mt-1 tracking-tighter">Kitchens 2024</p>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 p-5 bg-white rounded-2xl shadow-xl hidden lg:block">
+            <div className="absolute -bottom-6 -start-6 p-5 bg-white rounded-2xl shadow-xl hidden lg:block">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600">
                   <Zap size={24} />
@@ -287,20 +287,20 @@ export default function LandingV3() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 flex gap-2">
+                  <div className="absolute top-4 start-4 flex gap-2">
                     {rest.tags.map((tag, j) => (
                       <span key={j} className="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold text-[#1C1B1B]">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full">
+                  <div className="absolute top-4 end-4 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full">
                     <div className="flex items-center gap-1">
                       <Star size={12} fill="#F27121" className="text-[#F27121]" />
                       <span className="text-xs font-bold text-[#1C1B1B]">{rest.rating}</span>
                     </div>
                   </div>
-                  <button className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#F27121] hover:bg-[#F27121] hover:text-white transition-colors">
+                  <button className="absolute bottom-4 end-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#F27121] hover:bg-[#F27121] hover:text-white transition-colors">
                     <Heart size={18} />
                   </button>
                 </div>
@@ -331,7 +331,7 @@ export default function LandingV3() {
 
       {/* ── How It Works ── */}
       <section className="py-24 px-6 bg-gradient-to-br from-[#F27121] to-[#9F4200] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute top-0 start-0 w-full h-full opacity-10 pointer-events-none">
           <div className="absolute top-20 left-20 w-60 h-60 border-2 border-white rounded-full" />
           <div className="absolute bottom-20 right-20 w-40 h-40 border-2 border-white rounded-full" />
         </div>
@@ -385,7 +385,7 @@ export default function LandingV3() {
                </div>
             </div>
             {/* Background Blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#F27121]/5 blur-[80px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#F27121]/5 blur-[80px] rounded-full pointer-events-none" />
           </div>
 
           <div className="flex-1 order-1 lg:order-2">
@@ -455,14 +455,14 @@ export default function LandingV3() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="flex items-center gap-4 px-8 py-4 bg-white text-[#1C1B1B] rounded-2xl hover:scale-105 transition-transform">
                 <span className="text-3xl">🍎</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-semibold opacity-50 uppercase">Download on the</p>
                   <p className="text-lg font-bold">App Store</p>
                 </div>
               </button>
               <button className="flex items-center gap-4 px-8 py-4 bg-white/10 text-white border border-white/20 rounded-2xl hover:bg-white/20 transition-colors">
                 <span className="text-3xl">▶</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-semibold opacity-50 uppercase">Get it on</p>
                   <p className="text-lg font-bold">Google Play</p>
                 </div>

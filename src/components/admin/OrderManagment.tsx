@@ -200,14 +200,14 @@ export default function OrderManager({
               <div className="relative flex-1 max-w-md">
                 <Search
                   size={18}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c5b5b]"
+                  className="absolute start-4 top-1/2 -translate-y-1/2 text-[#5c5b5b]"
                 />
                 <input
                   type="text"
                   placeholder="Search orders or customers..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-11 pr-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
+                  className="w-full ps-11 pe-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
                 />
               </div>
 
@@ -233,12 +233,12 @@ export default function OrderManager({
             <table className="w-full min-w-[1000px]">
               <thead>
                 <tr className="bg-[#F6F3F2]/50 text-[#5c5b5b] text-xs font-bold uppercase tracking-wide">
-                  <th className="px-6 py-4 text-left">Order</th>
-                  <th className="px-6 py-4 text-left">Customer</th>
-                  <th className="px-6 py-4 text-left">Items</th>
-                  <th className="px-6 py-4 text-left">Status</th>
-                  <th className="px-6 py-4 text-left">Total</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                  <th className="px-6 py-4 text-start">Order</th>
+                  <th className="px-6 py-4 text-start">Customer</th>
+                  <th className="px-6 py-4 text-start">Items</th>
+                  <th className="px-6 py-4 text-start">Status</th>
+                  <th className="px-6 py-4 text-start">Total</th>
+                  <th className="px-6 py-4 text-end">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F0EDED]">
@@ -454,7 +454,7 @@ function OrderRow({
                 className="fixed inset-0 z-10"
                 onClick={() => setIsDropdownOpen(false)}
               />
-              <div className="absolute left-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-[#F0EDED] py-2 min-w-[180px] z-20">
+              <div className="absolute start-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-[#F0EDED] py-2 min-w-[180px] z-20">
                 {loading === order.id ? (
                   <Loader2 className="animate-spin" size={14} />
                 ) : (
@@ -470,7 +470,7 @@ function OrderRow({
                         onStatusChange(order.id as string, status);
                         setIsDropdownOpen(false);
                       }}
-                      className={`w-full px-4 py-2 text-left text-xs font-bold hover:bg-[#F6F3F2] transition-colors flex items-center gap-2 ${
+                      className={`w-full px-4 py-2 text-start text-xs font-bold hover:bg-[#F6F3F2] transition-colors flex items-center gap-2 ${
                         order.status === status ? "bg-[#F6F3F2]" : ""
                       }`}>
                       <span
@@ -494,7 +494,7 @@ function OrderRow({
       </td>
 
       {/* Actions */}
-      <td className="px-6 py-4 text-right">
+      <td className="px-6 py-4 text-end">
         <button
           onClick={onViewDetails}
           className="px-4 py-2 bg-[#1C1B1B] text-white text-xs font-bold rounded-lg hover:bg-stone-800 transition-colors">
@@ -665,7 +665,7 @@ function OrderDetailsModal({
                         Quantity: {item.quantity}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-end">
                       <p className="font-bold text-[#1C1B1B]">
                         €{(item.price * item.quantity).toFixed(2)}
                       </p>

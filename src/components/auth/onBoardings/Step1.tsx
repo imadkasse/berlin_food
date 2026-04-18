@@ -16,7 +16,7 @@ function OnboardingHeader({
   totalSteps: number;
 }) {
   return (
-    <header className="fixed top-12 left-0 w-full flex justify-center pointer-events-none z-50">
+    <header className="fixed top-12 start-0 w-full flex justify-center pointer-events-none z-50">
       <div className="flex flex-col items-center gap-1">
         <span className="text-2xl font-black italic text-on-surface tracking-tighter">
           Berlin Food
@@ -58,7 +58,7 @@ function FieldLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">
+      className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ms-1">
       {children}
     </label>
   );
@@ -227,7 +227,7 @@ export default function OnboardingStep1Page() {
                 <FieldLabel htmlFor="phone">Phone Number</FieldLabel>
                 <div className="relative">
                   {/* Country code divider */}
-                  <div className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-2 pr-4 border-r border-outline-variant/30 pointer-events-none">
+                  <div className="absolute start-6 top-1/2 -translate-y-1/2 flex items-center gap-2 pe-4 border-e border-outline-variant/30 pointer-events-none">
                     <span className="text-on-surface-variant font-medium text-sm">
                       +49
                     </span>
@@ -237,13 +237,13 @@ export default function OnboardingStep1Page() {
                     name="phone"
                     type="tel"
                     placeholder="176 1234 5678"
-                    className="pl-24"
+                    className="ps-24"
                     value={form.phone}
                     onChange={handleChange}
                     required
                   />
                 </div>
-                <p className="text-[11px] text-outline mt-1 ml-1 leading-tight">
+                <p className="text-[11px] text-outline mt-1 ms-1 leading-tight">
                   We&apos;ll send a secure verification code to this number.
                 </p>
               </div>

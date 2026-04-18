@@ -217,7 +217,7 @@ export default function Login() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold tracking-wide text-on-surface-variant ml-1">
+                className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1">
                 Email Address
               </label>
               <input
@@ -241,7 +241,7 @@ export default function Login() {
 
             {/* Password */}
             <div className="space-y-2">
-              <div className="flex justify-between items-center ml-1">
+              <div className="flex justify-between items-center ms-1">
                 <label
                   htmlFor="password"
                   className="block text-sm font-semibold tracking-wide text-on-surface-variant">
@@ -264,7 +264,7 @@ export default function Login() {
                   autoComplete="current-password"
                   required
                   className="
-                    w-full h-14 px-5 pr-14 rounded-lg
+                    w-full h-14 px-5 pe-14 rounded-lg
                     bg-surface-container-low border-none outline-none
                     ring-1 ring-outline-variant/30
                     focus:ring-2 focus:ring-primary-container
@@ -277,7 +277,7 @@ export default function Login() {
                   onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                   className="
-                    absolute right-4 top-1/2 -translate-y-1/2
+                    absolute end-4 top-1/2 -translate-y-1/2
                     text-outline hover:text-on-surface
                     transition-colors duration-200
                   ">
@@ -336,7 +336,7 @@ export default function Login() {
             New to the craft?{" "}
             <Link
               href="/auth/register"
-              className="text-primary-container font-extrabold hover:underline ml-1">
+              className="text-primary-container font-extrabold hover:underline ms-1">
               Create an Account
             </Link>
           </p>
@@ -344,7 +344,7 @@ export default function Login() {
       </section>
 
       {/* ── Decorative background blobs ── */}
-      <div className="fixed top-0 right-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
+      <div className="fixed top-0 end-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
       <div className="fixed bottom-0 left-[50vw] w-[30vw] h-[307px] bg-primary/5 blur-[100px] -z-10 rounded-full pointer-events-none" />
     </main>
   );

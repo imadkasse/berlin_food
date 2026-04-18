@@ -38,7 +38,7 @@ const LocateButton = ({
     <button
       type="button"
       onClick={handleLocate}
-      className="absolute bottom-4 right-4 z-20 bg-primary text-on-primary p-3 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all"
+      className="absolute bottom-4 end-4 z-20 bg-primary text-on-primary p-3 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all"
       title="Use my current location">
       <MapPin className="w-5 h-5" />
     </button>

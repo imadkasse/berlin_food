@@ -38,18 +38,18 @@ export function Sidebar({ onClose, role }: SidebarProps) {
   const navItems =
     role === `customer`
       ? [
-          { id: "menu", label: "Menu", icon: UtensilsCrossed, href: "/menu" },
+          { id: "menu", label: "القائمة", icon: UtensilsCrossed, href: "/menu" },
           ...(user
             ? [
                 {
                   id: "orders",
-                  label: "My Orders",
+                  label: "طلباتي",
                   icon: ShoppingBag,
                   href: "/customer/orders",
                 },
                 {
                   id: "profile",
-                  label: "Profile",
+                  label: "الملف الشخصي",
                   icon: User,
                   href: "/customer/profile",
                 },
@@ -57,7 +57,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
             : []),
           {
             id: "cart",
-            label: "Cart",
+            label: "السلة",
             icon: ShoppingBag,
             href: "/customer/cart",
           },
@@ -66,25 +66,25 @@ export function Sidebar({ onClose, role }: SidebarProps) {
         ? [
             {
               id: "dashboard",
-              label: "dashboard",
+              label: "لوحة التحكم",
               icon: LayoutDashboard,
               href: "/delivery/dashboard",
             },
             {
               id: "orders",
-              label: "Orders",
+              label: "الطلبات",
               icon: ShoppingBag,
               href: "/delivery/orders",
             },
             {
               id: "delivery",
-              label: "Delivery",
+              label: "التوصيل",
               icon: Motorbike,
               href: "/delivery/for-delivery",
             },
             {
               id: "profile",
-              label: "Profile",
+              label: "الملف الشخصي",
               icon: User,
               href: "/delivery/profile",
             },
@@ -93,32 +93,32 @@ export function Sidebar({ onClose, role }: SidebarProps) {
           ? [
               {
                 id: "dashboard",
-                label: "dashboard",
+                label: "لوحة التحكم",
                 icon: LayoutDashboard,
                 href: "/admin/dashboard",
               },
 
               {
                 id: "menu",
-                label: "Menu editor",
+                label: "محرر القائمة",
                 icon: UtensilsCrossed,
                 href: "/admin/menu",
               },
               {
                 id: "orders",
-                label: "Orders",
+                label: "الطلبات",
                 icon: ShoppingBag,
                 href: "/admin/orders",
               },
               {
                 id: "users",
-                label: "Users",
+                label: "المستخدمين",
                 icon: Users2,
                 href: "/admin/users",
               },
               {
                 id: "profile",
-                label: "Profile",
+                label: "الملف الشخصي",
                 icon: User,
                 href: "/admin/profile",
               },
@@ -134,8 +134,8 @@ export function Sidebar({ onClose, role }: SidebarProps) {
       // redirect
       router.push("/menu");
     } catch (error: any) {
-      toast.error(`error when logout `, {
-        description: `Error when logout ,${error.message}`,
+      toast.error(`خطأ أثناء تسجيل الخروج`, {
+        description: `خطأ أثناء تسجيل الخروج: ${error.message}`,
       });
       console.log(error);
     } finally {
@@ -146,19 +146,19 @@ export function Sidebar({ onClose, role }: SidebarProps) {
     <>
       {/* ── Desktop Sidebar (lg+) ── */}
       <aside
-        className="hidden lg:flex flex-col h-screen w-72 fixed inset-y-0 left-0 z-50 bg-surface-container-low border-r border-outline-variant/10"
+        className="hidden lg:flex flex-col h-screen w-72 fixed inset-y-0 start-0 z-50 bg-surface-container-low border-e border-outline-variant/10"
         style={{ boxShadow: "40px 0 80px -40px rgba(28,27,27,0.08)" }}>
         <div className="flex flex-col h-full p-6">
           {/* ── Brand Header ── */}
           <div className="mb-10 px-4 flex justify-between items-center">
             <span className="text-2xl font-black italic text-on-surface tracking-tighter">
-              Berlin Food
+              برلين فود
             </span>
 
             {onClose && (
               <button
                 onClick={onClose}
-                aria-label="Close sidebar"
+                aria-label="إغلاق القائمة"
                 className="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors">
                 <X size={20} />
               </button>
@@ -242,7 +242,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                 hover:scale-[1.02] hover:shadow-[0_10px_25px_-5px_rgba(242,113,33,0.4)]
                 active:scale-95
               ">
-              Book a Table
+              احجز طاولة
             </button>
 
             {user ? (
@@ -263,8 +263,8 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                   />
                 ) : (
                   <>
-                    <LogOut size={14} aria-hidden="true" />
-                    Sign Out
+                    <LogOut size={14} aria-hidden="true" className="rotate-180" />
+                    تسجيل الخروج
                   </>
                 )}
               </button>
@@ -274,13 +274,13 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                   href="/auth/login"
                   className="flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-surface-container-high text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-all duration-200 active:scale-95">
                   <LogIn size={18} />
-                  Login
+                  تسجيل الدخول
                 </Link>
                 <Link
                   href="/auth/register"
                   className="flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-primary/20 text-on-surface font-bold text-sm hover:bg-surface-container-high transition-all duration-200 active:scale-95">
                   <UserPlus size={18} />
-                  Sign Up
+                  إنشاء حساب
                 </Link>
               </div>
             )}
@@ -290,7 +290,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
 
       {/* ── Mobile Bottom Navigation Bar (below lg) ── */}
       <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50
+        className="lg:hidden fixed bottom-0 start-0 end-0 z-50
           bg-surface-container-low border-t border-outline-variant/10
           flex items-stretch
           safe-area-pb"
@@ -340,7 +340,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
               transition-all duration-200 active:scale-95
               ${pathname === "/auth/login" ? "text-primary" : "text-on-surface-variant"}
             `}
-            aria-label="Login">
+            aria-label="تسجيل الدخول">
             <span
               className={`
                 h-1 w-8 rounded-full mb-0.5 transition-all duration-300
@@ -349,7 +349,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
               aria-hidden="true"
             />
             <LogIn size={22} strokeWidth={pathname === "/auth/login" ? 2.5 : 1.8} />
-            Login
+            دخول
           </Link>
         )}
 
@@ -363,7 +363,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
             text-primary
             transition-all duration-200 active:scale-95
           "
-          aria-label="Book a Table">
+          aria-label="احجز طاولة">
           <span
             className="
               w-10 h-10 -mt-6 mb-0.5
@@ -381,7 +381,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
               className="text-on-primary"
             />
           </span>
-          Book
+          حجز
         </Link>
       </nav>
     </>

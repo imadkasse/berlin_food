@@ -136,7 +136,7 @@ export default function Profile({
           <div className="bg-[#9F4200] rounded-2xl p-8 text-white flex flex-col items-center text-center shadow-xl shadow-orange-900/10 relative overflow-hidden">
             {/* Decorative circle */}
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5 pointer-events-none" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
+            <div className="absolute -bottom-8 -start-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
 
             {/* Avatar initials */}
             <div className="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center text-3xl font-black mb-4 relative z-10">
@@ -271,11 +271,11 @@ export default function Profile({
                   <span className="font-bold text-lg">
                     {profile.delivery_rating ?? 3.5}
                   </span>
-                  <span className="text-sm font-bold text-[#584237] ml-1">
+                  <span className="text-sm font-bold text-[#584237] ms-1">
                     / 5.0
                   </span>
                 </div>
-                <div className="ml-auto flex items-center gap-1.5 px-3 py-1 bg-gray-100 rounded-full">
+                <div className="ms-auto flex items-center gap-1.5 px-3 py-1 bg-gray-100 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
                   <span className="text-[10px] font-black text-gray-500 uppercase tracking-tighter">
                     Read Only
@@ -371,7 +371,7 @@ export default function Profile({
 
             {/* Last updated */}
             {profile.updated_at && (
-              <p className="text-[10px] text-[#584237] font-medium text-right">
+              <p className="text-[10px] text-[#584237] font-medium text-end">
                 Last updated:{" "}
                 {new Date(profile.updated_at).toLocaleString("de-DE")}
               </p>

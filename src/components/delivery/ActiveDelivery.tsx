@@ -130,7 +130,7 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
                     lng: customerAddress.lng as number,
                   }}
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-bold shadow-lg border border-[#e5e2e1] flex items-center gap-2 z-[400] pointer-events-none">
+                <div className="absolute top-4 start-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-bold shadow-lg border border-[#e5e2e1] flex items-center gap-2 z-[400] pointer-events-none">
                   <Navigation className="w-4 h-4 text-[#F27121]" />
                   Active Navigation
                 </div>

@@ -271,7 +271,7 @@ export default function Dashboard({
                       </p> */}
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-end">
                     <p className="text-sm font-black text-[#F27121]">
                       €{order.total_price.toFixed(2)}
                     </p>

@@ -148,14 +148,14 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
         <div className="relative w-full md:w-72">
           <Search
             size={15}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#584237]"
+            className="absolute start-4 top-1/2 -translate-y-1/2 text-[#584237]"
           />
           <input
             type="text"
             placeholder="Search orders or address…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-11 pr-4 py-3.5 bg-[#f6f3f2] border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 text-sm font-medium placeholder:text-[#584237]"
+            className="w-full ps-11 pe-4 py-3.5 bg-[#f6f3f2] border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 text-sm font-medium placeholder:text-[#584237]"
           />
         </div>
       </header>
@@ -265,7 +265,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                   </div>
 
                   {/* Price + action */}
-                  <div className="flex items-center gap-3 sm:ml-auto">
+                  <div className="flex items-center gap-3 sm:ms-auto">
                     <p className="text-lg font-black text-[#F27121]">
                       €{order.total_price.toFixed(2)}
                     </p>

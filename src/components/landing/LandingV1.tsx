@@ -269,19 +269,19 @@ export default function LandingV1() {
   return (
     <div className="min-h-screen bg-[#FCF9F8] selection:bg-[#F27121]/20">
       {/* ── Fixed Navigation ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FCF9F8]/95 backdrop-blur-xl border-b border-[#F0EDED] px-6 py-4">
+      <nav className="fixed top-0 start-0 end-0 z-50 bg-[#FCF9F8]/95 backdrop-blur-xl border-b border-[#F0EDED] px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F27121] to-[#9F4200] flex items-center justify-center">
               <UtensilsCrossed size={20} className="text-white" />
             </div>
             <span className="text-xl font-black text-[#1C1B1B] tracking-tight">
-              Berlin<span className="text-[#F27121]">Food</span>
+              برلين<span className="text-[#F27121]">فود</span>
             </span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
-            {["Restaurants", "Cuisines", "Deals", "How it Works"].map(
+            {["المطاعم", "المطابخ", "العروض", "كيف نعمل"].map(
               (item) => (
                 <Link
                   key={item}
@@ -301,12 +301,12 @@ export default function LandingV1() {
             <Link
               href="/auth/login"
               className="text-sm font-semibold text-[#1C1B1B] hover:text-[#F27121] transition-colors">
-              Sign In
+              تسجيل الدخول
             </Link>
             <Link
               href="/auth/signup"
               className="px-5 py-2.5 bg-gradient-to-br from-[#F27121] to-[#9F4200] text-white rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-orange-900/20">
-              Order Now
+              اطلب الآن
             </Link>
           </div>
         </div>
@@ -314,27 +314,26 @@ export default function LandingV1() {
 
       {/* ── Hero Section ── */}
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 px-6 overflow-hidden">
-        <div className="absolute top-20 right-0 w-[45%] h-[600px] bg-[#F6F3F2] -skew-x-12 translate-x-1/3 pointer-events-none" />
+        <div className="absolute top-20 end-0 w-[45%] h-[600px] bg-[#F6F3F2] -skew-x-12 translate-x-1/3 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
           <div className="lg:col-span-7 pt-8">
             <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F6F3F2] mb-8">
               <span className="w-2 h-2 rounded-full bg-[#F27121] animate-pulse" />
               <span className="text-xs font-bold text-[#F27121] uppercase tracking-[0.15em]">
-                Now serving all Berlin districts
+                نخدم الآن جميع مناطق برلين
               </span>
             </div>
 
             <h1 className="text-6xl md:text-8xl lg:text-[100px] font-black text-[#1C1B1B] leading-[0.85] tracking-tighter mb-8">
-              Flavor delivered
+              المذاق يصلك
               <br />
-              <span className="text-[#F27121]">to your doorstep.</span>
+              <span className="text-[#F27121]">إلى باب منزلك.</span>
             </h1>
 
             <p className="text-xl text-[#584237] font-medium leading-relaxed max-w-xl mb-10">
-              Discover the best culinary treasures of Berlin. From local hidden
-              gems to curated high-end dining experiences, delivered with
-              precision.
+              اكتشف أفضل كنوز برلين في الطهي. من الجواهر المخفية المحلية إلى
+              تجارب تناول الطعام الراقية، نصلك بها بكل دقة.
             </p>
 
             {/* Search Bar */}
@@ -342,17 +341,17 @@ export default function LandingV1() {
               <div className="relative flex-1 max-w-md">
                 <MapPin
                   size={22}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 text-[#F27121]"
+                  className="absolute start-6 top-1/2 -translate-y-1/2 text-[#F27121]"
                 />
                 <input
                   type="text"
-                  placeholder="Enter your delivery address..."
-                  className="w-full pl-16 pr-8 py-6 bg-white shadow-xl shadow-orange-900/5 rounded-2xl text-base font-semibold focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 transition-all border border-[#F0EDED]"
+                  placeholder="أدخل عنوان التوصيل..."
+                  className="w-full ps-16 pe-8 py-6 bg-white shadow-xl shadow-orange-900/5 rounded-2xl text-base font-semibold focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 transition-all border border-[#F0EDED]"
                 />
               </div>
               <button className="px-10 py-6 bg-gradient-to-br from-[#F27121] to-[#9F4200] text-white rounded-2xl text-base font-bold shadow-lg shadow-orange-900/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
-                Find Food
-                <ArrowRight size={20} />
+                ابحث عن الطعام
+                <ArrowRight size={20} className="rotate-180" />
               </button>
             </div>
 
@@ -398,7 +397,7 @@ export default function LandingV1() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-2xl p-6 rounded-[2.5rem] border border-white/50 shadow-xl">
+              <div className="absolute bottom-8 start-8 end-8 bg-white/90 backdrop-blur-2xl p-6 rounded-[2.5rem] border border-white/50 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-lg font-black text-[#1C1B1B]">
@@ -433,7 +432,7 @@ export default function LandingV1() {
             </div>
 
             {/* Floating Badge 2 */}
-            <div className="absolute -bottom-8 -right-8 p-6 bg-white rounded-3xl shadow-2xl border border-[#F6F3F2] hidden lg:block">
+            <div className="absolute -bottom-8 -end-8 p-6 bg-white rounded-3xl shadow-2xl border border-[#F6F3F2] hidden lg:block">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-600">
                   <Users size={24} />
@@ -528,7 +527,7 @@ export default function LandingV1() {
               <div
                 key={i}
                 className={`${deal.bg} rounded-[2rem] p-8 flex items-center gap-6 text-white shadow-xl shadow-orange-900/10 hover:scale-[1.02] transition-transform cursor-pointer overflow-hidden relative group`}>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
+                <div className="absolute top-0 end-0 w-32 h-32 bg-white/10 rounded-full -me-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
                 <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-md relative z-10">
                   <deal.icon size={32} />
                 </div>
@@ -569,7 +568,7 @@ export default function LandingV1() {
                     </AdvancedMarker>
                   </Map>
                 </APIProvider>
-                <div className="absolute top-6 left-6 right-6 bg-white/95 backdrop-blur-xl p-6 rounded-2xl shadow-xl z-10 flex items-center gap-4">
+                <div className="absolute top-6 start-6 end-6 bg-white/95 backdrop-blur-xl p-6 rounded-2xl shadow-xl z-10 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-[#F27121]">
                     <MapPin size={24} />
                   </div>
@@ -661,7 +660,7 @@ export default function LandingV1() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-1000"
                   />
-                  <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                  <div className="absolute top-6 start-6 flex flex-wrap gap-2">
                     {rest.tags.map((tag, j) => (
                       <span
                         key={j}
@@ -670,7 +669,7 @@ export default function LandingV1() {
                       </span>
                     ))}
                   </div>
-                  <div className="absolute top-6 right-6 px-4 py-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-white/50">
+                  <div className="absolute top-6 end-6 px-4 py-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-white/50">
                     <div className="flex items-center gap-1.5">
                       <Star
                         size={14}
@@ -768,7 +767,7 @@ export default function LandingV1() {
                 <p className="text-lg text-[#584237] font-medium italic leading-relaxed">
                   &ldquo;{testi.content}&rdquo;
                 </p>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#F27121]/5 rounded-full blur-2xl group-hover:scale-150 transition-transform" />
+                <div className="absolute -bottom-4 -end-4 w-24 h-24 bg-[#F27121]/5 rounded-full blur-2xl group-hover:scale-150 transition-transform" />
               </div>
             ))}
           </div>
@@ -792,12 +791,12 @@ export default function LandingV1() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-dashed border-t-4 border-dashed border-[#F27121]/20 -translate-y-1/2 z-0" />
+            <div className="hidden lg:block absolute top-1/2 start-0 end-0 h-1 bg-dashed border-t-4 border-dashed border-[#F27121]/20 -translate-y-1/2 z-0" />
             {steps.map((step, i) => (
               <div
                 key={i}
                 className="relative bg-white rounded-[3rem] p-12 text-center group hover:-translate-y-3 transition-all duration-500 shadow-xl shadow-orange-900/5 z-10 border border-[#F0EDED]">
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-[#F27121] to-[#9F4200] rounded-[1.5rem] flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-orange-900/30 ring-8 ring-[#F6F3F2] group-hover:rotate-6 transition-transform">
+                <div className="absolute -top-10 start-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-[#F27121] to-[#9F4200] rounded-[1.5rem] flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-orange-900/30 ring-8 ring-[#F6F3F2] group-hover:rotate-6 transition-transform">
                   {step.num}
                 </div>
                 <h3 className="text-3xl font-black text-[#1C1B1B] mt-10 mb-5 tracking-tight">
@@ -815,7 +814,7 @@ export default function LandingV1() {
       {/* ── Become a Partner ── */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto rounded-[4rem] bg-[#1C1B1B] p-16 md:p-24 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F27121] opacity-10 rounded-full blur-[100px] -mr-48 -mt-48 transition-transform duration-1000 group-hover:scale-125" />
+          <div className="absolute top-0 end-0 w-[500px] h-[500px] bg-[#F27121] opacity-10 rounded-full blur-[100px] -me-48 -mt-48 transition-transform duration-1000 group-hover:scale-125" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -873,7 +872,7 @@ export default function LandingV1() {
             <div className="flex flex-col sm:flex-row gap-6">
               <button className="flex items-center gap-5 px-8 py-5 bg-[#1C1B1B] text-white rounded-3xl hover:scale-105 transition-all shadow-2xl shadow-black/20">
                 <span className="text-4xl">🍎</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-black opacity-40 uppercase tracking-widest">
                     Download on the
                   </p>
@@ -882,7 +881,7 @@ export default function LandingV1() {
               </button>
               <button className="flex items-center gap-5 px-8 py-5 bg-white border-2 border-[#F0EDED] text-[#1C1B1B] rounded-3xl hover:border-[#F27121] transition-all shadow-xl shadow-orange-900/5">
                 <span className="text-4xl">▶</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-black opacity-40 uppercase tracking-widest">
                     Get it on
                   </p>
@@ -914,7 +913,7 @@ export default function LandingV1() {
                 </div>
               </div>
               {/* Notch */}
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1C1B1B] rounded-full" />
+              <div className="absolute top-8 start-1/2 -translate-x-1/2 w-32 h-6 bg-[#1C1B1B] rounded-full" />
             </div>
           </div>
         </div>
@@ -923,7 +922,7 @@ export default function LandingV1() {
       {/* ── Newsletter ── */}
       <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto text-center bg-[#F27121] rounded-[4rem] p-16 md:p-24 relative overflow-hidden shadow-2xl shadow-orange-900/30">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent" />
+          <div className="absolute top-0 start-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent" />
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
               Join the Berlin Foodies

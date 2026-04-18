@@ -107,14 +107,14 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
             <div className="relative flex-1 max-w-sm">
               <Search
                 size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c5b5b]"
+                className="absolute start-4 top-1/2 -translate-y-1/2 text-[#5c5b5b]"
               />
               <input
                 type="text"
                 placeholder="Search by name, phone or ID..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
+                className="w-full ps-11 pe-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
               />
             </div>
             <select
@@ -148,14 +148,14 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
         {/* ── Table ── */}
         <section className="bg-white rounded-2xl shadow-sm border border-[#F0EDED] overflow-hidden">
           <div className="overflow-x-auto scrollbar-hide">
-            <table className="w-full text-left min-w-[1000px]">
+            <table className="w-full text-start min-w-[1000px]">
               <thead>
                 <tr className="bg-[#F6F3F2]/50 text-[#5c5b5b] text-[10px] font-bold uppercase tracking-wider border-b border-[#F0EDED]">
                   <th className="px-6 py-4">User Details</th>
                   <th className="px-6 py-4">Role & Status</th>
                   <th className="px-6 py-4">Contact</th>
                   <th className="px-6 py-4">Vehicle & Location</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                  <th className="px-6 py-4 text-end">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F0EDED]">
@@ -255,7 +255,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-6 py-4 text-end">
                         <div className="flex items-center justify-end gap-2">
                           <button
                             onClick={() => {

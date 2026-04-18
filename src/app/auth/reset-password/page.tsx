@@ -61,7 +61,7 @@ export default function ResetPassword() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-surface p-6 antialiased relative overflow-hidden">
       {/* Decorative background blobs */}
-      <div className="fixed top-0 right-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
+      <div className="fixed top-0 end-0 w-[50vw] h-[512px] bg-primary-container/5 blur-[120px] -z-10 rounded-full pointer-events-none" />
       <div className="fixed bottom-0 left-[50vw] w-[30vw] h-[307px] bg-primary/5 blur-[100px] -z-10 rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[440px] space-y-10 z-10">
@@ -85,7 +85,7 @@ export default function ResetPassword() {
           <div className="space-y-2">
             <label
               htmlFor="password"
-              className="block text-sm font-semibold tracking-wide text-on-surface-variant ml-1"
+              className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
             >
               New Password
             </label>
@@ -98,7 +98,7 @@ export default function ResetPassword() {
                 placeholder="••••••••"
                 required
                 className="
-                  w-full h-14 px-5 pl-12 pr-12 rounded-lg
+                  w-full h-14 px-5 ps-12 pe-12 rounded-lg
                   bg-surface-container-low border-none outline-none
                   ring-1 ring-outline-variant/30
                   focus:ring-2 focus:ring-primary-container
@@ -106,11 +106,11 @@ export default function ResetPassword() {
                   transition-all duration-200
                 "
               />
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
+              <Lock className="absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors"
+                className="absolute end-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors"
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
@@ -121,7 +121,7 @@ export default function ResetPassword() {
           <div className="space-y-2">
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-semibold tracking-wide text-on-surface-variant ml-1"
+              className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
             >
               Confirm Password
             </label>
@@ -134,7 +134,7 @@ export default function ResetPassword() {
                 placeholder="••••••••"
                 required
                 className="
-                  w-full h-14 px-5 pl-12 rounded-lg
+                  w-full h-14 px-5 ps-12 rounded-lg
                   bg-surface-container-low border-none outline-none
                   ring-1 ring-outline-variant/30
                   focus:ring-2 focus:ring-primary-container
@@ -142,7 +142,7 @@ export default function ResetPassword() {
                   transition-all duration-200
                 "
               />
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
+              <Lock className="absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-outline" />
             </div>
           </div>
 

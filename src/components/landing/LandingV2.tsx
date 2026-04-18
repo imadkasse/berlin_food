@@ -75,11 +75,11 @@ export default function LandingV2() {
   return (
     <div className="min-h-screen bg-[#1C1B1B] selection:bg-[#F27121]/30">
       {/* ── Background Effects ── */}
-      <div className="fixed top-0 left-1/4 w-[50vw] h-[50vh] bg-[#F27121]/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="fixed bottom-0 right-0 w-[40vw] h-[40vh] bg-[#9F4200]/10 blur-[80px] rounded-full pointer-events-none" />
+      <div className="fixed top-0 start-1/4 w-[50vw] h-[50vh] bg-[#F27121]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="fixed bottom-0 end-0 w-[40vw] h-[40vh] bg-[#9F4200]/10 blur-[80px] rounded-full pointer-events-none" />
 
       {/* ── Fixed Navigation ── */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#1C1B1B]/80 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full flex items-center gap-8">
+      <nav className="fixed top-4 start-1/2 -translate-x-1/2 z-50 bg-[#1C1B1B]/80 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full flex items-center gap-8">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#F27121] to-[#9F4200] flex items-center justify-center text-white">
             <UtensilsCrossed size={18} />
@@ -162,7 +162,7 @@ export default function LandingV2() {
             <input 
               type="text" 
               placeholder="Enter delivery address..."
-              className="w-full pl-14 pr-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white font-semibold placeholder:text-white/30 focus:outline-none focus:border-[#F27121] transition-colors"
+              className="w-full ps-14 pe-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white font-semibold placeholder:text-white/30 focus:outline-none focus:border-[#F27121] transition-colors"
             />
           </div>
           <button className="px-8 py-4 bg-[#F27121] text-white rounded-2xl font-bold hover:bg-[#9F4200] transition-colors flex items-center justify-center gap-2">
@@ -199,7 +199,7 @@ export default function LandingV2() {
                 className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute bottom-8 left-8">
+              <div className="absolute bottom-8 start-8">
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full mb-3 w-fit">
                   <Award size={12} className="text-[#F27121]" />
                   <span className="text-[10px] font-semibold text-white uppercase">Chef's Pick</span>
@@ -220,14 +220,14 @@ export default function LandingV2() {
                 className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-6 left-6">
+              <div className="absolute bottom-6 start-6">
                 <h3 className="text-xl font-black text-white">Pizza Artesana</h3>
                 <div className="flex items-center gap-1 mt-1">
                   <Star size={10} fill="#F27121" className="text-[#F27121]" />
                   <span className="text-xs font-semibold text-white/70">4.8 · 25-30 min</span>
                 </div>
               </div>
-              <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#F27121] transition-colors">
+              <button className="absolute top-4 end-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#F27121] transition-colors">
                 <Heart size={18} />
               </button>
             </div>
@@ -240,7 +240,7 @@ export default function LandingV2() {
                 className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-6 left-6">
+              <div className="absolute bottom-6 start-6">
                 <h3 className="text-xl font-black text-white">Sweet Lab</h3>
                 <div className="flex items-center gap-1 mt-1">
                   <Star size={10} fill="#F27121" className="text-[#F27121]" />
@@ -286,11 +286,11 @@ export default function LandingV2() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   {rest.featured && (
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-[#F27121] rounded-full">
+                    <div className="absolute top-4 start-4 px-3 py-1 bg-[#F27121] rounded-full">
                       <span className="text-xs font-semibold text-white">Featured</span>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full">
+                  <div className="absolute top-4 end-4 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full">
                     <div className="flex items-center gap-1">
                       <Star size={12} fill="#F27121" className="text-[#F27121]" />
                       <span className="text-xs font-bold text-[#1C1B1B]">{rest.rating}</span>
@@ -373,7 +373,7 @@ export default function LandingV2() {
 
       {/* ── App Promo ── */}
       <section className="py-32 px-6 bg-gradient-to-br from-[#F27121] to-[#9F4200] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute top-0 start-0 w-full h-full opacity-10 pointer-events-none">
           <div className="absolute top-20 right-20 w-80 h-80 border-[40px] border-white rounded-full" />
           <div className="absolute bottom-20 left-20 w-40 h-40 border-[20px] border-white rounded-full" />
         </div>
@@ -393,14 +393,14 @@ export default function LandingV2() {
             <div className="flex flex-wrap gap-4">
               <button className="flex items-center gap-4 px-8 py-4 bg-white text-[#1C1B1B] rounded-2xl transition-transform hover:scale-105 active:scale-95">
                 <span className="text-3xl">🍎</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-semibold opacity-50 uppercase">Get it on</p>
                   <p className="text-xl font-bold leading-none">App Store</p>
                 </div>
               </button>
               <button className="flex items-center gap-4 px-8 py-4 bg-white/10 text-white border border-white/20 rounded-2xl transition-transform hover:scale-105 active:scale-95">
                 <span className="text-3xl">▶</span>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] font-semibold opacity-50 uppercase">Available on</p>
                   <p className="text-xl font-bold leading-none">Google Play</p>
                 </div>
@@ -425,8 +425,8 @@ export default function LandingV2() {
                </div>
             </div>
             {/* Floating elements */}
-            <div className="absolute top-20 right-0 w-20 h-20 bg-[#F27121] rounded-2xl shadow-lg animate-bounce hidden lg:block" />
-            <div className="absolute bottom-32 left-0 w-16 h-16 bg-white rounded-full shadow-lg hidden lg:block" />
+            <div className="absolute top-20 end-0 w-20 h-20 bg-[#F27121] rounded-2xl shadow-lg animate-bounce hidden lg:block" />
+            <div className="absolute bottom-32 start-0 w-16 h-16 bg-white rounded-full shadow-lg hidden lg:block" />
           </div>
         </div>
       </section>
@@ -443,7 +443,7 @@ export default function LandingV2() {
                 height={500}
                 className="rounded-[3rem]"
               />
-              <div className="absolute -bottom-8 -right-8 p-6 bg-[#F27121] rounded-3xl text-white hidden lg:block">
+              <div className="absolute -bottom-8 -end-8 p-6 bg-[#F27121] rounded-3xl text-white hidden lg:block">
                 <p className="text-4xl font-black">500+</p>
                 <p className="text-sm font-semibold">Partner Restaurants</p>
               </div>

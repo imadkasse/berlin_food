@@ -126,9 +126,9 @@ const getPrimaryImage = (items: OrderItem[]): string =>
 
 /** Single item → its name; multiple → "Burger +2 more" */
 const getPrimaryTitle = (items: OrderItem[]): string => {
-  if (items.length === 0) return "Your Order";
-  const first = items[0]?.menu_item?.name ?? "Item";
-  return items.length === 1 ? first : `${first} +${items.length - 1} more`;
+  if (items.length === 0) return "طلبك";
+  const first = items[0]?.menu_item?.name ?? "عنصر";
+  return items.length === 1 ? first : `${first} و${items.length - 1} أكثر`;
 };
 
 /** Format each item as "2× Truffle Fries" */
@@ -142,22 +142,22 @@ const formatItems = (items: OrderItem[]): string[] =>
 const statusConfig = {
   pending: {
     icon: PersonStanding,
-    label: "Pending",
+    label: "قيد الانتظار",
     colors: "bg-purple-50 text-purple-700 border-purple-200 shadow-purple-100",
   },
   preparing: {
     icon: ChefHat,
-    label: "Preparing",
+    label: "قيد التحضير",
     colors: "bg-amber-50 text-amber-700 border-amber-200 shadow-amber-100",
   },
   delivery: {
     icon: Bike,
-    label: "Out For Delivery",
+    label: "في الطريق إليك",
     colors: "bg-sky-50 text-sky-700 border-sky-200 shadow-sky-100",
   },
   ready: {
     icon: PackageCheck,
-    label: "Ready",
+    label: "جاهز",
     colors:
       "bg-emerald-50 text-emerald-700 border-emerald-200 shadow-emerald-100",
   },
@@ -177,10 +177,10 @@ const MyOrders = ({ ordersData }: MyOrdersProps) => {
           prev &&
           prev.map((o) => (o.id === id ? { ...o, status: newStatus } : o)),
       );
-      toast.success(`Order status updated to ${newStatus.replace(/_/g, " ")}`);
+      toast.success(`تم تحديث حالة الطلب إلى ${newStatus.replace(/_/g, " ")}`);
     } catch (error) {
       console.error("Failed to update status:", error);
-      toast.error("Failed to update order status. Please try again.");
+      toast.error("فشل تحديث حالة الطلب. يرجى المحاولة مرة أخرى.");
     }
   };
 
@@ -194,20 +194,20 @@ const MyOrders = ({ ordersData }: MyOrdersProps) => {
       {/* ── Header ── */}
       <header className="mb-14">
         <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#9F4200] mb-3">
-          Berlin Food
+          برلين فود
         </p>
         <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tighter text-[#1C1B1B] leading-none mb-4">
-          My Orders
+          طلباتي
         </h1>
         <p className="text-[#6B6867] font-medium text-base max-w-md">
-          From our kitchen to your table — track every bite of the journey.
+          من مطبخنا إلى طاولتك — تتبع كل لحظة من الرحلة.
         </p>
       </header>
 
       {/* ── Active Orders ── */}
       {activeOrders && activeOrders.length > 0 && (
         <section className="mb-20">
-          <SectionDivider label="Current Orders" accent />
+          <SectionDivider label="الطلبات الحالية" accent />
           <div className="space-y-6 mt-8">
             {activeOrders?.map((order) => {
               const variant = toStatusVariant(order.status);
@@ -238,7 +238,7 @@ const MyOrders = ({ ordersData }: MyOrdersProps) => {
       {/* ── Order History ── */}
       {pastOrders && pastOrders.length > 0 && (
         <section>
-          <SectionDivider label="Order History" />
+          <SectionDivider label="سجل الطلبات" />
           <div className="mt-8 flex flex-col gap-3">
             {pastOrders.map((order) => (
               <HistoryItem
@@ -363,12 +363,12 @@ const ActiveOrderCard = ({
         </div>
 
         <div className="flex items-center justify-between gap-4 pt-2 border-t border-[#F0EDED]">
-          <p className="text-2xl font-black text-[#F27121]">${price}</p>
+          <p className="text-2xl font-black text-[#F27121]">{price} د.ج</p>
           {isDelivery ? (
             <div className="flex gap-3">
               <button className="inline-flex items-center gap-2 bg-[#F6F3F2] text-[#1C1B1B] text-sm font-bold px-5 py-3 rounded-full hover:bg-[#EDE9E8] active:scale-95 transition-all">
                 <MapPin size={14} aria-hidden="true" />
-                Track
+                تتبع
               </button>
               {status === "out_for_delivery" && (
                 <button
@@ -376,7 +376,7 @@ const ActiveOrderCard = ({
                   disabled={isUpdating}
                   className="inline-flex items-center gap-2 bg-[#1C1B1B] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#333] active:scale-95 transition-all shadow-md shadow-black/10 disabled:opacity-50">
                   <CheckCircle2 size={14} aria-hidden="true" />
-                  {isUpdating ? "Updating..." : "Mark as Done"}
+                  {isUpdating ? "جاري التحديث..." : "تأكيد الاستلام"}
                 </button>
               )}
             </div>
@@ -441,7 +441,7 @@ const RatingModal = ({
       <div className="relative bg-white w-full max-w-sm rounded-[32px] p-8 shadow-2xl animate-in zoom-in-95 fade-in duration-300">
         <button
           onClick={onClose}
-          className="absolute right-6 top-6 p-2 text-[#B5B0AE] hover:text-[#1C1B1B] transition-colors">
+          className="absolute end-6 top-6 p-2 text-[#B5B0AE] hover:text-[#1C1B1B] transition-colors">
           <X size={20} />
         </button>
 
@@ -451,10 +451,10 @@ const RatingModal = ({
           </div>
 
           <h2 className="text-2xl font-black text-[#1C1B1B] mb-2">
-            Rate your delivery
+            قيّم التوصيل
           </h2>
           <p className="text-[#6B6867] font-medium text-sm mb-8">
-            How was the delivery for your order? Your feedback helps us improve.
+            كيف كان التوصيل لطلبك؟ تقييمك يساعدنا على التحسن.
           </p>
 
           <div className="flex gap-2 mb-10">
@@ -483,13 +483,13 @@ const RatingModal = ({
               onClick={() => rating > 0 && onConfirm(rating)}
               disabled={rating === 0 || isSubmitting}
               className="w-full bg-[#1C1B1B] text-white font-black text-sm py-4 rounded-2xl hover:bg-[#333] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100">
-              {isSubmitting ? "Updating..." : "Submit Rating"}
+              {isSubmitting ? "جاري التحديث..." : "إرسال التقييم"}
             </button>
             <button
               onClick={onSkip}
               disabled={isSubmitting}
               className="w-full text-[#1C1B1B] font-bold text-sm py-4 rounded-2xl hover:bg-[#F6F3F2] active:scale-[0.98] transition-all">
-              Maybe later
+              ربما لاحقًا
             </button>
           </div>
         </div>
@@ -537,10 +537,10 @@ const HistoryItem = ({
       </div>
     </div>
     <div className="flex flex-col items-end gap-2 flex-shrink-0">
-      <p className="font-black text-[#1C1B1B] text-lg">${price}</p>
+      <p className="font-black text-[#1C1B1B] text-lg">{price} د.ج</p>
       <button className="inline-flex items-center gap-1.5 text-[#F27121] text-[11px] font-bold px-4 py-1.5 rounded-full border border-[#F27121]/25 hover:bg-[#FFF5EE] active:scale-95 transition-all">
         <RotateCcw size={11} aria-hidden="true" />
-        Re-order
+        إعادة الطلب
       </button>
     </div>
   </div>
