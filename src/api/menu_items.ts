@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { Database } from "@/types/database.types";
-import revalidatePath from "next/cache";
+import { revalidatePath } from "next/cache";
 type MenuItem = Database["public"]["Tables"]["menu_items"]["Row"];
 type MenuItemInsert = Database["public"]["Tables"]["menu_items"]["Insert"];
 type MenuItemUpdate = Database["public"]["Tables"]["menu_items"]["Update"];
