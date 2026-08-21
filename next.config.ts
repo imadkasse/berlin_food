@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
   //       ],
   //       destination: "/menu",
   //       permanent: false,
-  //     },
+  //     },    
   //   ];
   // },
 };

@@ -12,16 +12,14 @@ import {
 } from "lucide-react";
 import { useCartStore } from "@/stores/cart.store";
 import { toast } from "sonner";
-import { useUserStore } from "@/stores/user.store";
 import Image from "next/image";
 
 // --- Food Card Sub-component ---
 const FoodCard = ({ item }: { item: MenuType }) => {
   const { addItem, items } = useCartStore();
-  // user state
-  const { user } = useUserStore();
 
-  const isInCart = user ? items.some((i) => i.id === item.id) : false;
+
+  const isInCart =  items.some((i) => i.id === item.id) 
   return (
     <div className="group relative bg-surface-container-lowest rounded-lg p-5 transition-all duration-300 hover:shadow-ambient border border-outline-variant/10">
       <div className="relative overflow-visible mb-6">
