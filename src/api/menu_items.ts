@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { Database } from "@/types/database.types";
-
+import revalidatePath from "next/cache";
 type MenuItem = Database["public"]["Tables"]["menu_items"]["Row"];
 type MenuItemInsert = Database["public"]["Tables"]["menu_items"]["Insert"];
 type MenuItemUpdate = Database["public"]["Tables"]["menu_items"]["Update"];
@@ -69,6 +69,11 @@ export async function updateMenuItem(
     .select()
     .single();
   if (error) throw error;
+  if (!error) {
+    // 2. إخبار Next.js بإعادة تنشيط كاش صفحة المنتجات فوراً
+    revalidatePath("/products");
+    revalidatePath(`/products/${id}`);
+  }
   return data;
 }
 

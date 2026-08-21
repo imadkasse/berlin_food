@@ -18,7 +18,7 @@ import Image from "next/image";
 const FoodCard = ({ item }: { item: MenuType }) => {
   const { addItem, items } = useCartStore();
 
-
+  
   const isInCart =  items.some((i) => i.id === item.id) 
   return (
     <div className="group relative bg-surface-container-lowest rounded-lg p-5 transition-all duration-300 hover:shadow-ambient border border-outline-variant/10">
