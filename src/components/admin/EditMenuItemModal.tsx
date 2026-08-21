@@ -10,7 +10,6 @@ import { Database } from "@/types/database.types";
 import { toast } from "sonner";
 import { Category } from "@/types/Category";
 import Image from "next/image";
-import { revalidatePath } from "next/cache";
 
 type MenuItemUpdate = Database["public"]["Tables"]["menu_items"]["Update"];
 
@@ -104,7 +103,7 @@ export default function EditMenuItemModal({
         image_url: finalImageUrl,
       });
       toast.success("Menu item updated successfully");
-      revalidatePath("/admin/menu");
+      
       onSuccess();
       onClose();
     } catch (error: unknown) {

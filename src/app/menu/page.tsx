@@ -4,7 +4,8 @@ import Menu from "@/components/menu/Menu";
 import { Category } from "@/types/Category";
 import { Menu as MenuType } from "@/types/Menu";
 import { createClient } from "@/utils/supabase/client";
-
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 const page = async () => {
   const supabase = createClient();
   const menuItems: MenuType[] = await getMenuItems(supabase);
