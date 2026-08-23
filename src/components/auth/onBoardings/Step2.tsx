@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Eye, EyeOff, ArrowRight, ShieldCheck, Mail, Lock } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft, ShieldCheck, Mail, Lock } from "lucide-react";
 import { useRegisterStore } from "@/stores/register";
 import { useRouter } from "next/navigation";
 
@@ -38,20 +38,20 @@ function StepProgressBar({
   );
 }
 
-// ─── Labeled Input with left icon ────────────────────────────────────────────
+// ─── Labeled Input with start icon ───────────────────────────────────────────
 
 function IconInput({
   id,
   label,
   icon,
-  rightSlot,
+  endSlot,
   hint,
   ...inputProps
 }: {
   id: string;
   label: string;
   icon: React.ReactNode;
-  rightSlot?: React.ReactNode;
+  endSlot?: React.ReactNode;
   hint?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
@@ -62,29 +62,28 @@ function IconInput({
         {label}
       </label>
 
-      <div className="relative group">
-        {/* Left icon */}
-        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors duration-200">
+      <div className="relative group" dir={inputProps.dir}>
+        {/* Start icon */}
+        <span className="absolute start-5 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors duration-200">
           {icon}
         </span>
 
         <input
           id={id}
           className="
-            w-full ps-14 pe-6 py-5
+            w-full ps-14 pe-14 py-5
             bg-surface-container-low border-none rounded-lg
             text-on-surface placeholder:text-outline/50
             outline-none focus:ring-2 focus:ring-primary-container
             transition-all duration-300 shadow-sm
           "
-          style={{ paddingRight: rightSlot ? "3.5rem" : undefined }}
           {...inputProps}
         />
 
-        {/* Right slot (e.g. show/hide password) */}
-        {rightSlot && (
-          <div className="absolute right-5 top-1/2 -translate-y-1/2">
-            {rightSlot}
+        {/* End slot (e.g. show/hide password) */}
+        {endSlot && (
+          <div className="absolute end-5 top-1/2 -translate-y-1/2">
+            {endSlot}
           </div>
         )}
       </div>
@@ -180,6 +179,7 @@ export default function OnboardingStep2Page() {
               id="email"
               name="email"
               type="email"
+              dir="ltr"
                label="عنوان البريد الإلكتروني"
               placeholder="lukas.schmidt@berlin.de"
               autoComplete="email"
@@ -199,7 +199,7 @@ export default function OnboardingStep2Page() {
               autoComplete="new-password"
               icon={<Lock className="w-5 h-5" />}
                hint="يجب أن تتكون من 8 أحرف على الأقل، وتتضمن رقماً ورمزاً واحداً."
-              rightSlot={
+              endSlot={
                 <button
                   type="button"
                    aria-label={showPassword ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"}
@@ -244,7 +244,7 @@ export default function OnboardingStep2Page() {
                   active:scale-95
                 ">
                  متابعة
-                <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
+                <ArrowLeft className="w-5 h-5" strokeWidth={2.5} />
               </button>
             </div>
           </form>

@@ -9,7 +9,7 @@ import {
   CheckCircle,
   Loader2,
   Navigation,
-  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -93,14 +93,14 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
         <Link
           href="/delivery/for-delivery"
           className="inline-flex items-center gap-2 text-[#584237] hover:text-[#1c1b1b] font-bold text-sm mb-6 transition-colors">
-          <ArrowLeft size={16} />
+           <ArrowRight size={16} aria-hidden="true" />
           العودة إلى القائمة
         </Link>
         <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
           المسار النشط
         </span>
         <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tighter leading-none">
-          الطلب رقم {order.id.split("-")[0]}
+           الطلب رقم <span dir="ltr">{order.id.split("-")[0]}</span>
         </h1>
         <div className="flex items-center gap-2 mt-4 text-[#584237] font-medium text-sm">
           <span className="px-3 py-1 bg-orange-50 text-[#9F4200] border border-orange-100 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -160,7 +160,7 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
                    معرّف العميل
                 </p>
                 <p className="font-bold text-lg leading-tight break-all">
-                   {order.customer_id || "ضيف"}
+                    <span dir="ltr">{order.customer_id || "ضيف"}</span>
                 </p>
               </div>
 
@@ -181,10 +181,10 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
                 </p>
                 <div className="flex gap-2 font-medium text-[#1c1b1b] font-mono text-sm">
                   <span className="bg-[#f6f3f2] px-3 py-2 rounded-xl border border-[#e5e2e1]">
-                     خط العرض: {customerAddress?.lat?.toFixed(5) || "غير متاح"}
+                      خط العرض: <span dir="ltr">{customerAddress?.lat?.toFixed(5) || "غير متاح"}</span>
                   </span>
                   <span className="bg-[#f6f3f2] px-3 py-2 rounded-xl border border-[#e5e2e1]">
-                     خط الطول: {customerAddress?.lng?.toFixed(5) || "غير متاح"}
+                      خط الطول: <span dir="ltr">{customerAddress?.lng?.toFixed(5) || "غير متاح"}</span>
                   </span>
                 </div>
               </div>

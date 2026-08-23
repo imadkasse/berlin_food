@@ -182,8 +182,9 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <ResponsiveContainer width="100%" height={210}>
-            <BarChart
+          <div dir="ltr">
+            <ResponsiveContainer width="100%" height={210}>
+              <BarChart
               data={CHART_BARS}
               barCategoryGap="35%"
               margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
@@ -212,8 +213,9 @@ export default function Dashboard() {
                 cursor={{ fill: "#F27121", opacity: 0.06 }}
               />
               <Bar dataKey="revenue" fill="#F27121" radius={[8, 8, 4, 4]} />
-            </BarChart>
-          </ResponsiveContainer>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Live Orders */}
@@ -255,8 +257,9 @@ export default function Dashboard() {
           </h3>
 
           <div className="relative w-52 h-52">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadialBarChart
+            <div dir="ltr" className="w-full h-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadialBarChart
                 cx="50%"
                 cy="50%"
                 innerRadius="68%"
@@ -271,8 +274,9 @@ export default function Dashboard() {
                   cornerRadius={10}
                   fill="#F27121"
                 />
-              </RadialBarChart>
-            </ResponsiveContainer>
+                </RadialBarChart>
+              </ResponsiveContainer>
+            </div>
 
             {/* Centre label — sits on top of the chart */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
@@ -375,7 +379,9 @@ function DishRow({ image, name, sold, pct }: DishProps) {
             بيع {sold}
           </span>
         </div>
-        <div className="w-full h-2 bg-[#e5e2e1] rounded-full overflow-hidden">
+        <div
+          className="w-full h-2 bg-[#e5e2e1] rounded-full overflow-hidden"
+          dir="rtl">
           <div
             className="h-full bg-[#F27121] rounded-full transition-all duration-700"
             style={{ width: `${pct}%` }}

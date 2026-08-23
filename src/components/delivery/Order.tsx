@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, MapPin, ChevronRight, Package, Loader2 } from "lucide-react";
+import { Search, MapPin, ChevronLeft, Package, Loader2 } from "lucide-react";
 import { Order } from "@/types/Order";
 import { useUserStore } from "@/stores/user.store";
 import { createClient } from "@/utils/supabase/client";
@@ -235,13 +235,13 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                     </div>
                     <div>
                       <p className="font-black text-lg tracking-tight">
-                        #{order.id.split("-")[0]}
+                         #<span dir="ltr">{order.id.split("-")[0]}</span>
                       </p>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <MapPin size={11} className="text-[#584237]" />
                         <p className="text-xs text-[#584237] font-medium">
-                          {(order.delivery_address as AddressJson)?.lat} ·{" "}
-                          {(order.delivery_address as AddressJson)?.lng}
+                          <span dir="ltr">{(order.delivery_address as AddressJson)?.lat} ·{" "}
+                          {(order.delivery_address as AddressJson)?.lng}</span>
                         </p>
                       </div>
                     </div>
@@ -298,7 +298,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                       </button>
                     )}
                     <button className="p-2 rounded-xl hover:bg-[#f0eded] text-[#584237] transition-colors">
-                      <ChevronRight size={16} />
+                       <ChevronLeft size={16} aria-hidden="true" />
                     </button>
                   </div>
                 </div>

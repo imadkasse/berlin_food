@@ -16,16 +16,15 @@ export default function Layout({ children }: LayoutProps) {
     <div className="flex h-screen bg-surface overflow-hidden">
       {/*
         A single <Sidebar /> handles both breakpoints internally:
-        - lg+  → renders the fixed left <aside>   (hidden lg:flex)
+        - lg+  → renders the fixed start-side <aside> (hidden lg:flex)
         - <lg  → renders the fixed bottom <nav>   (lg:hidden fixed bottom-0)
         No extra wrapper needed — Sidebar manages its own visibility.
       */}
       <Sidebar role="customer" />
 
       {/* ── Scrollable main content ── */}
-      {/* pb-20 clears the mobile bottom nav bar; resets to pb-10 on desktop */}
       <main className="flex-1 lg:ms-72 overflow-y-auto min-h-0">
-        <div className="p-6 sm:p-10 pb-20 lg:pb-10">{children}</div>
+        <div className="p-6 sm:p-10 mobile-nav-clearance lg:pb-10">{children}</div>
       </main>
     </div>
   );

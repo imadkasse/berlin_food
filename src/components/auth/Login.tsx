@@ -223,6 +223,7 @@ export default function Login() {
               <input
                 id="email"
                 type="email"
+                dir="ltr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"

@@ -257,17 +257,18 @@ export default function Profile({
             />
 
             {/* Phone */}
-            <FieldRow
-              icon={<Phone size={16} />}
-              label="رقم الهاتف"
+             <FieldRow
+               icon={<Phone size={16} />}
+               label="رقم الهاتف"
+               dir="ltr"
               value={
                 editing
                   ? (draft.phone_number ?? "")
                   : (profile.phone_number ?? "—")
               }
-              editing={editing}
-              onChange={(v) => setDraft((d) => ({ ...d, phone_number: v }))}
-            />
+               editing={editing}
+               onChange={(v) => setDraft((d) => ({ ...d, phone_number: v }))}
+             />
 
             {/* Rating - Read Only */}
             <div className="bg-white rounded-2xl p-5 border border-[#e5e2e1]">
@@ -404,12 +405,14 @@ function FieldRow({
   value,
   editing,
   onChange,
+  dir,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
   editing: boolean;
   onChange: (v: string) => void;
+  dir?: "ltr";
 }) {
   return (
     <div className="bg-white rounded-2xl p-5 border border-[#e5e2e1]">
@@ -421,6 +424,7 @@ function FieldRow({
           <span className="text-[#F27121] flex-shrink-0">{icon}</span>
           <input
             type="text"
+            dir={dir}
             value={value}
             onChange={(e) => onChange(e.target.value)}
             className="flex-1 bg-[#f6f3f2] border-none rounded-xl px-4 py-2.5 text-sm font-bold text-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
@@ -429,7 +433,7 @@ function FieldRow({
       ) : (
         <div className="flex items-center gap-3">
           <span className="text-[#F27121] flex-shrink-0">{icon}</span>
-          <span className="font-bold text-sm">{value}</span>
+          <span className="font-bold text-sm" dir={dir}>{value}</span>
         </div>
       )}
     </div>

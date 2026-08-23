@@ -198,6 +198,7 @@ export default function Menu({ categories, menuItems }: MenuProps) {
               className="flex-1 px-8 py-4 rounded-full bg-transparent border-none focus:ring-0 text-on-surface"
               placeholder="عنوان بريدك الإلكتروني"
               type="email"
+              dir="ltr"
             />
             <button className="px-10 py-4 bg-primary text-on-primary font-bold rounded-full transition-all hover:bg-surface-tint shadow-md">
               اشتراك

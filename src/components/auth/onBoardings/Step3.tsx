@@ -2,7 +2,7 @@
 
 import { useRegisterStore } from "@/stores/register";
 import { MapPicker } from "@/components/shared/Map";
-import { MapPin, ArrowRight, ShieldCheck, Check, Loader2 } from "lucide-react";
+import { MapPin, ArrowLeft, ShieldCheck, Check, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { register } from "@/api/auth";
 import { toast } from "sonner";
@@ -97,7 +97,9 @@ export default function AddressStep() {
               <p className="font-bold text-on-surface text-lg">
                  {isLocked ? "تم تحديد الموقع" : "وسط برلين"}
               </p>
-              <p className="text-sm text-on-surface-variant">
+              <p
+                className="text-sm text-on-surface-variant"
+                dir={isLocked ? "ltr" : undefined}>
                 {isLocked
                   ? `${profileData.address.lat?.toFixed(4)}, ${profileData.address.lng?.toFixed(4)}`
                    : "حرّك الخريطة لتحسين موقع التوصيل."}
@@ -117,7 +119,7 @@ export default function AddressStep() {
               ) : isLocked ? (
                 <Check className="w-6 h-6" />
               ) : (
-                <ArrowRight className="w-6 h-6" />
+                <ArrowLeft className="w-6 h-6" />
               )}
             </button>
             <Link

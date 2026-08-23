@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useRegisterStore } from "@/stores/register";
 import { useRouter } from "next/navigation";
 
@@ -224,7 +224,7 @@ export default function OnboardingStep1Page() {
               {/* Phone */}
               <div className="flex flex-col gap-2">
                  <FieldLabel htmlFor="phone">رقم الهاتف</FieldLabel>
-                <div className="relative">
+                <div className="relative" dir="ltr">
                   {/* Country code divider */}
                   <div className="absolute start-6 top-1/2 -translate-y-1/2 flex items-center gap-2 pe-4 border-e border-outline-variant/30 pointer-events-none">
                     <span className="text-on-surface-variant font-medium text-sm">
@@ -235,6 +235,7 @@ export default function OnboardingStep1Page() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    dir="ltr"
                     placeholder="176 1234 5678"
                     className="ps-24"
                     value={form.phone}
@@ -272,7 +273,7 @@ export default function OnboardingStep1Page() {
                     active:scale-95
                   ">
                    متابعة
-                  <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
+                  <ArrowLeft className="w-5 h-5" strokeWidth={2.5} />
                 </button>
               </div>
             </form>

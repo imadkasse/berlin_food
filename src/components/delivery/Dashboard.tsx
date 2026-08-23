@@ -215,8 +215,9 @@ export default function Dashboard({
               </span>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={190}>
-            <BarChart
+          <div dir="ltr">
+            <ResponsiveContainer width="100%" height={190}>
+              <BarChart
               data={WEEK_BARS}
               barCategoryGap="38%"
               margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
@@ -242,8 +243,9 @@ export default function Dashboard({
                 cursor={{ fill: "#F27121", opacity: 0.06 }}
               />
               <Bar dataKey="deliveries" fill="#F27121" radius={[8, 8, 4, 4]} />
-            </BarChart>
-          </ResponsiveContainer>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Recent orders */}
@@ -264,7 +266,7 @@ export default function Dashboard({
                     />
                     <div>
                       <p className="text-sm font-black">
-                        #{order.id.split("-")[0].toUpperCase()}
+                         #<span dir="ltr">{order.id.split("-")[0].toUpperCase()}</span>
                       </p>
                       {/* <p className="text-[10px] text-[#584237] font-medium mt-0.5">
                         {order.delivery_address?.street as string}
@@ -345,7 +347,7 @@ function ActiveOrderBanner({ order }: { order: Order }) {
         </div>
         <div>
           <p className="text-white/70 text-[10px] font-black uppercase tracking-widest mb-1">
-             عملية توصيل نشطة · #{order.id.split("-")[0].toUpperCase()}
+              عملية توصيل نشطة · #<span dir="ltr">{order.id.split("-")[0].toUpperCase()}</span>
           </p>
           <h3 className="text-white font-black text-xl ">
             {/* {order.delivery_address?.street}, {order.delivery_address?.city}  */}

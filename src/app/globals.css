@@ -137,9 +137,9 @@
   /* Typography */
   --font-sans: var(--font-cairo);
   --font-mono: var(--font-cairo);
-  --font-headline: "Cairo", sans-serif;
-  --font-body: "Cairo", sans-serif;
-  --font-label: "Cairo", sans-serif;
+  --font-headline: var(--font-cairo);
+  --font-body: var(--font-cairo);
+  --font-label: var(--font-cairo);
 
   /* Border radius (Berlin Food "Round Eight" philosophy) */
   --radius-sm: 0.5rem; /* rounded-sm  → 8px  */
@@ -154,7 +154,7 @@
 body {
   background: var(--background);
   color: var(--on-surface);
-  font-family: "Cairo", Arial, Helvetica, sans-serif;
+  font-family: var(--font-cairo), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -169,6 +169,34 @@ body {
 }
 
 /* ─── Berlin Food Utility Classes ────────────────────────────────────────────── */
+
+/* Bidi helpers: isolate Latin identifiers and values inside Arabic copy. */
+.bidi-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Numeric values stay left-to-right while columns retain aligned tabular digits. */
+.bidi-numeric {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reserve the fixed mobile navigation height, including iOS bottom insets. */
+@media (width < 64rem) {
+  .mobile-nav-clearance {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
 
 /* Primary CTA gradient (135° per design spec) */
 .bg-gradient-primary {

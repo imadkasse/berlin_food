@@ -147,7 +147,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
       {/* ── Desktop Sidebar (lg+) ── */}
       <aside
         className="hidden lg:flex flex-col h-screen w-72 fixed inset-y-0 start-0 z-50 bg-surface-container-low border-e border-outline-variant/10"
-        style={{ boxShadow: "40px 0 80px -40px rgba(28,27,27,0.08)" }}>
+        style={{ boxShadow: "-40px 0 80px -40px rgba(28,27,27,0.08)" }}>
         <div className="flex flex-col h-full p-6">
           {/* ── Brand Header ── */}
           <div className="mb-10 px-4 flex justify-between items-center">

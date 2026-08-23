@@ -268,7 +268,7 @@ export default function OrderManager({
           <div className="px-6 py-4 flex items-center justify-between">
             <p className="text-xs text-[#5c5b5b] font-semibold">
               عرض {(currentPage - 1) * pageSize + 1}–
-              {Math.min(currentPage * pageSize, totalCount)} of {totalCount}{" "}
+              {Math.min(currentPage * pageSize, totalCount)} من {totalCount}{" "}
                طلبًا
             </p>
 
@@ -276,8 +276,9 @@ export default function OrderManager({
               <button
                 disabled={currentPage === 1}
                 onClick={() => handlePageChange(currentPage - 1)}
+                aria-label="الصفحة السابقة"
                 className="p-2 disabled:opacity-30 cursor-pointer">
-                <ChevronLeft size={16} />
+                <ChevronRight size={16} aria-hidden="true" />
               </button>
 
               {/* Generate page numbers dynamically */}
@@ -285,6 +286,7 @@ export default function OrderManager({
                 <button
                   key={n}
                   onClick={() => handlePageChange(n)}
+                  aria-label={`الصفحة ${n}`}
                   className={`w-8 h-8 rounded-lg text-xs font-bold cursor-pointer ${
                     currentPage === n
                       ? "bg-[#F27121] text-white"
@@ -297,8 +299,9 @@ export default function OrderManager({
               <button
                 disabled={currentPage >= totalPages}
                 onClick={() => handlePageChange(currentPage + 1)}
+                aria-label="الصفحة التالية"
                 className="p-2 disabled:opacity-30 cursor-pointer">
-                <ChevronRight size={16} />
+                <ChevronLeft size={16} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -366,7 +369,7 @@ function OrderRow({
       <td className="px-6 py-4">
         <div>
           <span className="text-sm font-bold text-[#1C1B1B] block">
-            {`ORD-` + order.id?.split("-")[0].toUpperCase()}
+            <span dir="ltr">{`ORD-` + order.id?.split("-")[0].toUpperCase()}</span>
           </span>
           <span className="text-xs text-[#5c5b5b] flex items-center gap-1 mt-0.5">
             <Clock size={12} />
@@ -401,7 +404,7 @@ function OrderRow({
               {(order.customer as { full_name: string })?.full_name}
             </span>
             <span className="text-xs text-[#5c5b5b]">
-              {(order.customer as { phone_number: string })?.phone_number}
+              <span dir="ltr">{(order.customer as { phone_number: string })?.phone_number}</span>
             </span>
           </div>
         </div>
@@ -536,7 +539,7 @@ function OrderDetailsModal({
               تفاصيل الطلب
             </h2>
             <p className="text-sm text-[#5c5b5b] mt-1">
-              {`ORD-` + order.id?.split("-")[0].toUpperCase()}
+              <span dir="ltr">{`ORD-` + order.id?.split("-")[0].toUpperCase()}</span>
             </p>
           </div>
           <button
@@ -616,12 +619,12 @@ function OrderDetailsModal({
               </div>
               <div className="flex items-center gap-2 text-sm text-[#5c5b5b]">
                 <Mail size={16} />
-                <span>{(order.customer as { email: string })?.email}</span>
+                <span dir="ltr">{(order.customer as { email: string })?.email}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-[#5c5b5b]">
                 <Phone size={16} />
                 <span>
-                  {(order.customer as { phone_number: string })?.phone_number}
+                  <span dir="ltr">{(order.customer as { phone_number: string })?.phone_number}</span>
                 </span>
               </div>
               {order.delivery_address && (

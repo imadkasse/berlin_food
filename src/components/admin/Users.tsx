@@ -213,7 +213,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                               {user.full_name || "مستخدم بلا اسم"}
                             </span>
                             <span className="text-[10px] font-mono text-[#9A9694]">
-                              {user.id.slice(0, 8)}...
+                               <span dir="ltr">{user.id.slice(0, 8)}...</span>
                             </span>
                           </div>
                         </div>
@@ -240,7 +240,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           <div className="flex items-center gap-2 text-[#5c5b5b]">
                             <Phone size={14} />
                             <span className="font-medium">
-                              {user.phone_number || "لا يوجد هاتف"}
+                              <span dir="ltr">{user.phone_number || "لا يوجد هاتف"}</span>
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-[#9A9694] text-xs">
@@ -461,6 +461,7 @@ function AddUserModal({
               <input
                 required
                 type="tel"
+                dir="ltr"
                 value={formData.phone_number}
                 onChange={(e) =>
                   setFormData({ ...formData, phone_number: e.target.value })
@@ -474,9 +475,10 @@ function AddUserModal({
             <label className="text-xs font-bold text-[#1C1B1B] uppercase">
               البريد الإلكتروني
             </label>
-            <input
-              required
-              type="email"
+              <input
+                required
+                type="email"
+                dir="ltr"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -653,6 +655,7 @@ function EditUserModal({
               <input
                 required
                 type="tel"
+                dir="ltr"
                 value={formData.phone_number}
                 onChange={(e) =>
                   setFormData({ ...formData, phone_number: e.target.value })

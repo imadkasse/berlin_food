@@ -232,6 +232,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     </label>
                     <input
                       type="tel"
+                      dir="ltr"
                       value={userInfo?.phone_number || ""}
                       onChange={(e) =>
                         setUserInfo({
@@ -312,7 +313,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     </p>
                     {userAddress?.lat && (
                       <p className="text-[10px] font-mono mt-2 text-primary/60">
-                         الإحداثيات: {userAddress.lat}, {userAddress.lng}
+                         الإحداثيات: <span dir="ltr">{userAddress.lat}, {userAddress.lng}</span>
                       </p>
                     )}
                   </div>

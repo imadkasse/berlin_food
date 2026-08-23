@@ -2,7 +2,7 @@
 
 import { Order } from "@/types/Order";
 import Link from "next/link";
-import { MapPin, Package, Navigation, ArrowRight } from "lucide-react";
+import { MapPin, Package, Navigation, ArrowLeft } from "lucide-react";
 
 export interface AddressJson {
   lat?: number;
@@ -57,7 +57,7 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
                   </div>
                   <div>
                     <p className="font-black text-xl tracking-tight">
-                      #{order.id.split("-")[0]}
+                       #<span dir="ltr">{order.id.split("-")[0]}</span>
                     </p>
                     <p className="text-xs font-bold text-[#584237] uppercase tracking-wider mt-0.5">
                       €{order.total_price.toFixed(2)}
@@ -81,7 +81,7 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
                     </p>
                     {!address?.street && address?.lat && (
                       <p className="text-xs font-mono text-[#584237] mt-1">
-                        {address.lat.toFixed(4)}, {address.lng?.toFixed(4)}
+                         <span dir="ltr">{address.lat.toFixed(4)}, {address.lng?.toFixed(4)}</span>
                       </p>
                     )}
                   </div>
@@ -93,9 +93,10 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
                 className="w-full py-4 rounded-2xl bg-[#1c1b1b] hover:bg-[#F27121] text-white font-extrabold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-transparent hover:shadow-[#F27121]/30 group/btn">
                 <Navigation size={16} />
                  عرض الخريطة وبدء التنقل
-                <ArrowRight
+                 <ArrowLeft
                   size={16}
-                  className="opacity-50 group-hover/btn:translate-x-1 transition-transform"
+                  aria-hidden="true"
+                  className="opacity-50 group-hover/btn:-translate-x-1 transition-transform"
                 />
               </Link>
             </div>

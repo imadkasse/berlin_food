@@ -351,7 +351,7 @@ const ActiveOrderCard = ({
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
             <p className="text-[10px] font-black uppercase tracking-widest text-[#B5B0AE]">
-              {orderId}
+              <span dir="ltr">{orderId}</span>
             </p>
             <h3 className="text-xl font-bold text-[#1C1B1B] leading-snug">
               {title}
@@ -394,7 +394,9 @@ const ActiveOrderCard = ({
             </div>
           ) : (
             <div className="flex-1 flex items-center gap-3">
-              <div className="flex-1 bg-[#F0EDED] h-2.5 rounded-full overflow-hidden">
+              <div
+                className="flex-1 bg-[#F0EDED] h-2.5 rounded-full overflow-hidden"
+                dir="rtl">
                 <div
                   className="bg-gradient-to-r from-[#F27121] to-[#F5A623] h-full rounded-full transition-all duration-1000"
                   style={{ width: `${progress ?? 0}%` }}

@@ -5,7 +5,7 @@ import {
   Minus,
   Plus,
   Trash2,
-  ArrowRight,
+  ArrowLeft,
   CreditCard,
   Wallet,
   Wifi,
@@ -71,7 +71,7 @@ const CartItemCard = ({
         {item.description}
       </p>
       <p className="text-[10px] text-outline tracking-widest uppercase mb-4">
-        معرّف: {item.id} • {item.order_id}
+         معرّف: <span dir="ltr">{item.id} • {item.order_id}</span>
       </p>
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center bg-surface-container-low rounded-full px-2 py-1">
@@ -202,7 +202,7 @@ const AddressModal = ({
                         </p>
                       )}
                       <p className="text-[10px] text-outline mt-0.5 tracking-wider">
-                        {addr.lat.toFixed(4)}, {addr.lng.toFixed(4)}
+                         <span dir="ltr">{addr.lat.toFixed(4)}, {addr.lng.toFixed(4)}</span>
                       </p>
                     </div>
                   </button>
@@ -253,7 +253,7 @@ const AddressModal = ({
             ) : (
               <>
                 تأكيد وإتمام الطلب
-                <ArrowRight size={20} className="rotate-180" />
+                 <ArrowLeft size={20} aria-hidden="true" />
               </>
             )}
           </button>
@@ -469,7 +469,7 @@ export default function Cart() {
                   disabled={items.length === 0}
                   className="w-full bg-gradient-to-br from-[#9F4200] to-[#F27121] text-white py-5 rounded-full font-bold text-lg sm:text-xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
                   إتمام الطلب
-                  <ArrowRight size={20} className="rotate-180" />
+                   <ArrowLeft size={20} aria-hidden="true" />
                 </button>
                 <Link
                   href="/menu"

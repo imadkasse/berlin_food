@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { UtensilsCrossed, Loader2, Mail, ArrowLeft } from "lucide-react";
+import { UtensilsCrossed, Loader2, Mail, ArrowRight } from "lucide-react";
 import { forgotPassword } from "@/api/auth";
 import { toast } from "sonner";
 import { createClient } from "@/utils/supabase/client";
@@ -78,17 +78,18 @@ export default function ForgotPassword() {
               >
                  عنوان البريد الإلكتروني
               </label>
-              <div className="relative">
+              <div className="relative" dir="ltr">
                 <input
                   id="email"
                   type="email"
+                  dir="ltr"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   autoComplete="email"
                   required
                   className="
-                    w-full h-14 px-5 ps-12 rounded-lg
+                    w-full h-14 ps-12 pe-5 rounded-lg
                     bg-surface-container-low border-none outline-none
                     ring-1 ring-outline-variant/30
                     focus:ring-2 focus:ring-primary-container
@@ -133,7 +134,7 @@ export default function ForgotPassword() {
             href="/auth/login"
             className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4" />
              العودة إلى تسجيل الدخول
           </Link>
         </div>

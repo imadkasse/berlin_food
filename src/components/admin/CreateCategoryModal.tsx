@@ -138,6 +138,7 @@ export default function CreateCategoryModal({
                 }}
                 className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-medium text-[#1C1B1B] transition-all"
                 placeholder="https://..."
+                dir="ltr"
               />
             </div>
             {formData.image_url && !imageFile && (

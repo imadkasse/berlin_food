@@ -194,7 +194,7 @@ export default function CreateMenuItemModal({
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F27121]"></div>
+                  <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F27121]"></div>
                   <span className="ms-3 text-sm font-bold text-[#1C1B1B]">
                      {formData.is_available ? "متوفر" : "غير متوفر"}
                   </span>
@@ -251,6 +251,7 @@ export default function CreateMenuItemModal({
                 }}
                 className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-medium text-[#1C1B1B] transition-all"
                 placeholder="https://..."
+                dir="ltr"
               />
             </div>
             {formData.image_url && !imageFile && (
