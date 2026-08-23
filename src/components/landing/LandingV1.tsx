@@ -64,39 +64,39 @@ const IMAGES = {
 
 const categories = [
   {
-    name: "Pizza",
+    name: "بيتزا",
     icon: Pizza,
-    count: "120+",
+    count: "أكثر من 120",
     color: "bg-orange-100 text-orange-600",
   },
   {
-    name: "Burgers",
+    name: "برغر",
     icon: Coffee,
-    count: "85+",
+    count: "أكثر من 85",
     color: "bg-amber-100 text-amber-600",
   },
   {
-    name: "Salads",
+    name: "سلطات",
     icon: Salad,
-    count: "65+",
+    count: "أكثر من 65",
     color: "bg-green-100 text-green-600",
   },
   {
-    name: "Sushi",
+    name: "سوشي",
     icon: Fish,
-    count: "90+",
+    count: "أكثر من 90",
     color: "bg-blue-100 text-blue-600",
   },
   {
-    name: "Desserts",
+    name: "حلويات",
     icon: IceCream,
-    count: "75+",
+    count: "أكثر من 75",
     color: "bg-pink-100 text-pink-600",
   },
   {
-    name: "Drinks",
+    name: "مشروبات",
     icon: Wine,
-    count: "100+",
+    count: "أكثر من 100",
     color: "bg-purple-100 text-purple-600",
   },
 ];
@@ -104,82 +104,82 @@ const categories = [
 const restaurants = [
   {
     name: "Garden Bowl Co.",
-    cuisine: "Healthy · Vegan",
-    time: "20-25 min",
+    cuisine: "صحي · نباتي",
+    time: "20-25 دقيقة",
     rating: 4.9,
     price: "€",
     image: IMAGES.food1,
-    tags: ["Popular", "New"],
+    tags: ["رائج", "جديد"],
   },
   {
     name: "Burger Atelier",
-    cuisine: "Artisan Burgers",
-    time: "30-35 min",
+    cuisine: "برغر حرفي",
+    time: "30-35 دقيقة",
     rating: 4.8,
     price: "€€",
     image: IMAGES.food2,
-    tags: ["Top Rated"],
+    tags: ["الأعلى تقييماً"],
   },
   {
     name: "Sakura Sushi",
-    cuisine: "Japanese · Fresh",
-    time: "25-30 min",
+    cuisine: "ياباني · طازج",
+    time: "25-30 دقيقة",
     rating: 4.9,
     price: "€€",
     image: IMAGES.food3,
-    tags: ["Favorite"],
+    tags: ["مفضل"],
   },
   {
     name: "Pizza Napoli",
-    cuisine: "Italian · Wood-fired",
-    time: "35-40 min",
+    cuisine: "إيطالي · مخبوز على الحطب",
+    time: "35-40 دقيقة",
     rating: 4.7,
     price: "€",
     image: IMAGES.food4,
-    tags: ["Popular"],
+    tags: ["رائج"],
   },
   {
     name: "Thai Garden",
-    cuisine: "Asian · Spicy",
-    time: "25-30 min",
+    cuisine: "آسيوي · حار",
+    time: "25-30 دقيقة",
     rating: 4.8,
     price: "€",
     image: IMAGES.food5,
-    tags: ["New"],
+    tags: ["جديد"],
   },
   {
     name: "Sweet Paradise",
-    cuisine: "Desserts · Cakes",
-    time: "15-20 min",
+    cuisine: "حلويات · كعك",
+    time: "15-20 دقيقة",
     rating: 4.9,
     price: "€",
     image: IMAGES.food6,
-    tags: ["Trending"],
+    tags: ["رائج الآن"],
   },
 ];
 
 const features = [
   {
-    title: "Eco-Friendly Delivery",
-    desc: "We use 100% electric bikes for all our urban deliveries.",
+    title: "توصيل صديق للبيئة",
+    desc: "نستخدم دراجات كهربائية بالكامل في جميع عمليات التوصيل داخل المدينة.",
     icon: Truck,
     color: "bg-green-50 text-green-600",
   },
   {
-    title: "Hygiene Guaranteed",
-    desc: "Strict safety protocols for all our kitchen and delivery partners.",
+    title: "نظافة مضمونة",
+    desc: "نطبق بروتوكولات سلامة صارمة على جميع شركائنا في المطابخ والتوصيل.",
     icon: ShieldCheck,
     color: "bg-blue-50 text-blue-600",
   },
   {
-    title: "Ultra Fast Service",
-    desc: "Average delivery time of 22 minutes across Berlin districts.",
+    title: "خدمة فائقة السرعة",
+    desc: "متوسط زمن التوصيل 22 دقيقة في مختلف أحياء برلين.",
     icon: Zap,
     color: "bg-amber-50 text-amber-600",
   },
   {
-    title: "Best in Class Cuisine",
-    desc: "Curated selection of Michelin-star and local favorites.",
+    title: "مأكولات من أرفع مستوى",
+    desc: "تشكيلة منتقاة من مطاعم حاصلة على نجوم ميشلان وأفضل المطاعم المحلية.",
     icon: Award,
     color: "bg-purple-50 text-purple-600",
   },
@@ -188,25 +188,25 @@ const features = [
 const testimonials = [
   {
     name: "Lukas Weber",
-    role: "Local Foodie",
+    role: "ذواقة محلي",
     content:
-      "The best food delivery experience in Berlin. The tracking is precise and the selection is unmatched.",
+      "أفضل تجربة لتوصيل الطعام في برلين. التتبع دقيق والتشكيلة لا مثيل لها.",
     image: IMAGES.testimonial,
     rating: 5,
   },
   {
     name: "Elena Schmidt",
-    role: "Culinary Blogger",
+    role: "مدونة طعام",
     content:
-      "Berlin Food brings the restaurant experience to my living room. Always hot, always fresh.",
+      "يجلب Berlin Food تجربة المطعم إلى غرفة معيشتي. الطعام ساخن وطازج دائماً.",
     image: IMAGES.testimonial2,
     rating: 5,
   },
   {
     name: "Markus Krause",
-    role: "Tech Professional",
+    role: "متخصص تقني",
     content:
-      "Efficient, fast, and the customer support is incredible. My go-to app for every meal.",
+      "خدمة فعالة وسريعة، ودعم العملاء مذهل. إنه تطبيقي المفضل لكل وجبة.",
     image: IMAGES.testimonial3,
     rating: 4,
   },
@@ -214,20 +214,20 @@ const testimonials = [
 
 const deals = [
   {
-    title: "50% OFF First Order",
-    desc: "Use code WELCOME50",
+    title: "خصم 50% على الطلب الأول",
+    desc: "استخدم الرمز WELCOME50",
     icon: Percent,
     bg: "bg-orange-500",
   },
   {
-    title: "Free Delivery",
-    desc: "Orders above €25",
+    title: "توصيل مجاني",
+    desc: "للطلبات التي تزيد على 25 يورو",
     icon: Truck,
     bg: "bg-green-500",
   },
   {
-    title: "Buy 1 Get 1 Free",
-    desc: "Selected items",
+    title: "اشترِ واحداً واحصل على آخر مجاناً",
+    desc: "على أصناف مختارة",
     icon: Gift,
     bg: "bg-purple-500",
   },
@@ -236,18 +236,18 @@ const deals = [
 const steps = [
   {
     num: "01",
-    title: "Choose Location",
-    desc: "Enter your Berlin address to find restaurants near you",
+    title: "اختر موقعك",
+    desc: "أدخل عنوانك في برلين للعثور على المطاعم القريبة منك",
   },
   {
     num: "02",
-    title: "Pick Your Favorites",
-    desc: "Browse menus from hundreds of local restaurants",
+    title: "اختر ما تفضله",
+    desc: "تصفح قوائم مئات المطاعم المحلية",
   },
   {
     num: "03",
-    title: "Place Order",
-    desc: "Pay securely and track your delivery in real-time",
+    title: "قدّم طلبك",
+    desc: "ادفع بأمان وتابع توصيل طلبك لحظة بلحظة",
   },
 ];
 
@@ -366,7 +366,7 @@ export default function LandingV1() {
                       <Image
                         src={`https://ui-avatars.com/api/?background=F27121&color=fff&name=${i}`}
                         fill
-                        alt="user"
+                        alt="مستخدم"
                         unoptimized
                         className="object-cover"
                       />
@@ -381,7 +381,7 @@ export default function LandingV1() {
                   ))}
                 </div>
                 <p className="text-sm font-bold text-[#1C1B1B]">
-                  50,000+ happy Berliners
+                  أكثر من 50,000 عميل سعيد في برلين
                 </p>
               </div>
             </div>
@@ -391,7 +391,7 @@ export default function LandingV1() {
             <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl shadow-orange-900/15 rotate-2 hover:rotate-0 transition-all duration-1000 group">
               <Image
                 src={IMAGES.hero}
-                alt="Gourmet Food"
+                alt="طعام فاخر"
                 fill
                 priority
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -404,7 +404,7 @@ export default function LandingV1() {
                       Pure Bowl Berlin
                     </h4>
                     <p className="text-sm font-bold text-[#F27121]">
-                      Clean & Healthy · 15-20 min
+                       نظيف وصحي · 15-20 دقيقة
                     </p>
                   </div>
                   <div className="w-12 h-12 rounded-full bg-[#F27121] flex items-center justify-center text-white shadow-lg shadow-orange-900/30">
@@ -422,10 +422,10 @@ export default function LandingV1() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-[#F27121] uppercase tracking-widest mb-0.5">
-                    Fastest
+                     الأسرع
                   </p>
                   <p className="text-base font-black text-[#1C1B1B]">
-                    12 Min Delivery
+                     توصيل خلال 12 دقيقة
                   </p>
                 </div>
               </div>
@@ -439,7 +439,7 @@ export default function LandingV1() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-green-600 uppercase tracking-widest mb-0.5">
-                    Active Users
+                     المستخدمون النشطون
                   </p>
                   <p className="text-base font-black text-[#1C1B1B]">10,000+</p>
                 </div>
@@ -454,10 +454,10 @@ export default function LandingV1() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-sm font-black text-[#F27121] uppercase tracking-[0.3em] mb-4">
-              Our Culinary Promise
+              وعدنا في الطهي
             </h2>
             <p className="text-4xl md:text-5xl font-black text-[#1C1B1B] tracking-tighter">
-              Why choose Berlin Food?
+              لماذا تختار Berlin Food؟
             </p>
           </div>
 
@@ -486,16 +486,16 @@ export default function LandingV1() {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl md:text-5xl font-black text-[#1C1B1B] tracking-tighter mb-2">
-                Explore the Map
+                استكشف الخريطة
               </h2>
               <p className="text-[#584237] font-medium">
-                Hundreds of flavors at your fingertips
+                مئات النكهات في متناول يدك
               </p>
             </div>
             <Link
               href="#"
               className="hidden sm:flex items-center gap-2 text-sm font-bold text-[#F27121] hover:translate-x-1 transition-transform">
-              View All Categories <ChevronRight size={18} />
+              عرض جميع الفئات <ChevronRight size={18} />
             </Link>
           </div>
 
@@ -511,7 +511,7 @@ export default function LandingV1() {
                 </div>
                 <h3 className="font-bold text-[#1C1B1B] mb-1">{cat.name}</h3>
                 <p className="text-xs text-[#584237] font-medium">
-                  {cat.count} listings
+                  {cat.count} خيار
                 </p>
               </Link>
             ))}
@@ -574,10 +574,10 @@ export default function LandingV1() {
                   </div>
                   <div>
                     <h4 className="text-base font-black text-[#1C1B1B]">
-                      Find Near You
+                       ابحث بالقرب منك
                     </h4>
                     <p className="text-xs font-bold text-[#584237]">
-                      Showing restaurants in delivery zone
+                       عرض المطاعم الواقعة ضمن نطاق التوصيل
                     </p>
                   </div>
                 </div>
@@ -585,24 +585,24 @@ export default function LandingV1() {
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="text-sm font-black text-[#F27121] uppercase tracking-[0.3em] mb-4">
-                Precision Delivery
+                 توصيل دقيق
               </h2>
               <h2 className="text-4xl md:text-6xl font-black text-[#1C1B1B] tracking-tighter leading-none mb-8">
-                Every corner of Berlin,
+                 كل ركن من أركان برلين،
                 <br />
-                <span className="text-[#F27121]">covered in minutes.</span>
+                 <span className="text-[#F27121]">نصل إليه خلال دقائق.</span>
               </h2>
               <p className="text-xl text-[#584237] font-medium leading-relaxed mb-10 max-w-lg">
-                Our smart routing system ensures your food stays at the perfect
-                temperature. Track your order with GPS precision from the
-                chef&apos;s hands to your doorstep.
+                 يضمن نظامنا الذكي لتخطيط المسارات بقاء طعامك في درجة الحرارة
+                 المثالية. تابع طلبك بدقة عبر نظام تحديد المواقع منذ خروجه من
+                 يدي الطاهي حتى وصوله إلى باب منزلك.
               </p>
               <ul className="space-y-6 mb-10">
                 {[
-                  "Live GPS tracking for all orders",
-                  "Verified restaurants with high ratings",
-                  "Fastest routes optimized by AI",
-                  "Dedicated support team available 24/7",
+                   "تتبع مباشر عبر نظام تحديد المواقع لجميع الطلبات",
+                   "مطاعم موثقة ذات تقييمات مرتفعة",
+                   "أسرع المسارات المحسنة بالذكاء الاصطناعي",
+                   "فريق دعم متخصص متاح على مدار الساعة طوال أيام الأسبوع",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4">
                     <div className="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600">
@@ -615,7 +615,7 @@ export default function LandingV1() {
                 ))}
               </ul>
               <button className="px-10 py-5 bg-[#1C1B1B] text-white rounded-2xl text-base font-bold shadow-xl shadow-black/10 hover:scale-[1.02] transition-transform">
-                Browse Area Restaurants
+                 تصفح مطاعم المنطقة
               </button>
             </div>
           </div>
@@ -628,20 +628,20 @@ export default function LandingV1() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div>
               <p className="text-xs font-black text-[#F27121] uppercase tracking-[0.2em] mb-3">
-                Today&apos;s Highlights
+                 مختارات اليوم
               </p>
               <h2 className="text-4xl md:text-6xl font-black text-[#1C1B1B] tracking-tighter">
-                Popular Near You
+                 الأكثر رواجاً بالقرب منك
               </h2>
             </div>
             <div className="flex items-center gap-4">
               <button className="flex items-center gap-2 px-6 py-3 bg-white shadow-sm border border-[#F0EDED] rounded-2xl text-sm font-bold text-[#1C1B1B] hover:bg-orange-50 hover:border-[#F27121]/20 transition-all">
                 <ArrowDownUp size={18} />
-                Sort by Rating
+                 الترتيب حسب التقييم
               </button>
               <button className="flex items-center gap-2 px-6 py-3 bg-[#F27121] text-white rounded-2xl text-sm font-bold shadow-lg shadow-orange-900/10 hover:scale-105 active:scale-95 transition-all">
                 <Search size={18} />
-                Filter
+                 تصفية
               </button>
             </div>
           </div>
@@ -704,7 +704,7 @@ export default function LandingV1() {
                     <div className="flex items-center gap-2 text-[#584237]">
                       <Truck size={16} className="text-green-600" />
                       <span className="text-sm font-bold uppercase tracking-wide">
-                        Free Delivery
+                         توصيل مجاني
                       </span>
                     </div>
                   </div>
@@ -715,7 +715,7 @@ export default function LandingV1() {
 
           <div className="text-center mt-16">
             <button className="px-12 py-5 bg-white border-2 border-[#F0EDED] text-[#1C1B1B] rounded-2xl text-base font-extrabold hover:border-[#F27121] hover:text-[#F27121] transition-all shadow-sm">
-              Load More Culinary Treasures
+              عرض المزيد من كنوز الطهي
             </button>
           </div>
         </div>
@@ -726,10 +726,10 @@ export default function LandingV1() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-sm font-black text-[#F27121] uppercase tracking-[0.3em] mb-4">
-              Social Proof
+              آراء مجتمعنا
             </h2>
             <p className="text-4xl md:text-5xl font-black text-[#1C1B1B] tracking-tighter">
-              Loved by Berliners
+              محبوب لدى سكان برلين
             </p>
           </div>
 
@@ -779,14 +779,14 @@ export default function LandingV1() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <p className="text-xs font-black text-[#F27121] uppercase tracking-[0.3em] mb-3">
-              Simple Process
+               خطوات بسيطة
             </p>
             <h2 className="text-5xl md:text-6xl font-black text-[#1C1B1B] tracking-tighter mb-6 underline decoration-[#F27121] decoration-8 underline-offset-8">
-              How It Works
+               كيف تعمل الخدمة
             </h2>
             <p className="text-xl text-[#584237] font-medium max-w-2xl mx-auto leading-relaxed">
-              Order your favorite Berlin cuisine in just three simple steps,
-              with no hidden fees.
+               اطلب مأكولاتك المفضلة في برلين بثلاث خطوات بسيطة فقط، من دون
+               أي رسوم خفية.
             </p>
           </div>
 
@@ -819,24 +819,23 @@ export default function LandingV1() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
               <p className="text-sm font-black text-[#F27121] uppercase tracking-[0.2em] mb-6">
-                Partnership Opportunities
+                 فرص الشراكة
               </p>
               <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8">
-                Grow Your Business
+                 نمّ أعمالك
                 <br />
-                <span className="text-[#F27121]">with Berlin Food</span>
+                 <span className="text-[#F27121]">مع Berlin Food</span>
               </h2>
               <p className="text-xl text-white/50 font-medium mb-12 leading-relaxed">
-                Join thousands of restaurants and couriers already delivering
-                excellence across Berlin. We provide the tools, you provide the
-                flavor.
+                 انضم إلى آلاف المطاعم ومندوبي التوصيل الذين يقدمون التميز في
+                 أنحاء برلين. نحن نوفر الأدوات، وأنتم تقدمون النكهة.
               </p>
               <div className="flex flex-wrap gap-6">
                 <button className="px-10 py-5 bg-[#F27121] text-white rounded-2xl text-base font-bold shadow-2xl shadow-orange-900/40 hover:scale-105 active:scale-95 transition-all">
-                  Apply as Restaurant
+                   قدّم طلب انضمام مطعمك
                 </button>
                 <button className="px-10 py-5 bg-white/5 text-white border-2 border-white/10 rounded-2xl text-base font-bold hover:bg-white/10 transition-all backdrop-blur-md">
-                  Join as Courier
+                   انضم كمندوب توصيل
                 </button>
               </div>
             </div>
@@ -844,7 +843,7 @@ export default function LandingV1() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#F27121] to-transparent opacity-20 rounded-full animate-pulse" />
               <Image
                 src={IMAGES.delivery}
-                alt="Delivery"
+                 alt="توصيل الطعام"
                 fill
                 className="rounded-[3rem] object-cover relative z-10 border-4 border-white/10 shadow-3xl"
               />
@@ -858,23 +857,23 @@ export default function LandingV1() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <h2 className="text-xs font-black text-[#F27121] uppercase tracking-[0.4em] mb-4">
-              Mobile Experience
+               تجربة الهاتف المحمول
             </h2>
             <h2 className="text-5xl md:text-7xl font-black text-[#1C1B1B] tracking-tighter mb-8 leading-tight">
-              Deliciousness in
+               مذاق شهي في
               <br />
-              <span className="text-[#F27121]">your pocket.</span>
+               <span className="text-[#F27121]">متناول يدك.</span>
             </h2>
             <p className="text-2xl text-[#584237] font-medium mb-12 max-w-xl leading-relaxed">
-              Order faster, track deliveries in real-time, and get exclusive
-              rewards with our state-of-the-art mobile app.
+               اطلب بسرعة أكبر، وتابع التوصيل لحظة بلحظة، واحصل على مكافآت
+               حصرية عبر تطبيقنا المتطور للهواتف المحمولة.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <button className="flex items-center gap-5 px-8 py-5 bg-[#1C1B1B] text-white rounded-3xl hover:scale-105 transition-all shadow-2xl shadow-black/20">
                 <span className="text-4xl">🍎</span>
                 <div className="text-start">
                   <p className="text-[10px] font-black opacity-40 uppercase tracking-widest">
-                    Download on the
+                     حمّله من
                   </p>
                   <p className="text-xl font-black">App Store</p>
                 </div>
@@ -883,7 +882,7 @@ export default function LandingV1() {
                 <span className="text-4xl">▶</span>
                 <div className="text-start">
                   <p className="text-[10px] font-black opacity-40 uppercase tracking-widest">
-                    Get it on
+                     احصل عليه من
                   </p>
                   <p className="text-xl font-black">Google Play</p>
                 </div>
@@ -895,14 +894,14 @@ export default function LandingV1() {
               <div className="w-full h-full bg-white rounded-[3.5rem] overflow-hidden relative border border-white/5 shadow-inner">
                 <Image
                   src={IMAGES.food1}
-                  alt="App UI"
+                   alt="واجهة التطبيق"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-2xl p-8 pt-12 rounded-t-[3rem] border-t border-[#F0EDED]">
                   <div className="w-16 h-1.5 bg-[#F27121] rounded-full mx-auto mb-6" />
                   <h4 className="text-2xl font-black text-[#1C1B1B] text-center mb-8">
-                    Ready to Eat?
+                     هل أنت مستعد لتناول الطعام؟
                   </h4>
                   <div className="space-y-4">
                     <div className="h-12 bg-[#F6F3F2] rounded-xl w-full flex items-center px-4 gap-3">
@@ -925,20 +924,20 @@ export default function LandingV1() {
           <div className="absolute top-0 start-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent" />
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-              Join the Berlin Foodies
+               انضم إلى عشاق الطعام في برلين
             </h2>
             <p className="text-xl text-white/80 font-bold mb-12 max-w-xl mx-auto">
-              Get the latest curated deals and secret culinary news delivered
-              directly to your inbox.
+               احصل على أحدث العروض المنتقاة وأخبار الطهي الحصرية مباشرة في
+               صندوق بريدك.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email address..."
+                 placeholder="أدخل عنوان بريدك الإلكتروني..."
                 className="flex-1 px-8 py-6 bg-white/95 backdrop-blur-md rounded-2xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-black/10 placeholder:text-[#584237]/50"
               />
               <button className="px-10 py-6 bg-[#1C1B1B] text-white rounded-2xl text-base font-black hover:scale-105 active:scale-95 transition-all shadow-2xl">
-                Subscribe
+                 اشترك
               </button>
             </div>
           </div>
@@ -959,8 +958,8 @@ export default function LandingV1() {
                 </span>
               </div>
               <p className="text-lg text-[#584237] font-medium max-w-sm mb-8 leading-relaxed">
-                Elevating the city&apos;s food experience, one perfect delivery
-                at a time. Crafted in the heart of Berlin.
+                 نرتقي بتجربة الطعام في المدينة، طلباً مثالياً تلو الآخر.
+                 صُنع في قلب برلين.
               </p>
               <div className="flex items-center gap-5">
                 {[
@@ -1018,39 +1017,39 @@ export default function LandingV1() {
             </div>
             {[
               {
-                title: "Quick Links",
+                 title: "روابط سريعة",
                 links: [
-                  "Browse Menu",
-                  "Special Deals",
-                  "Gift Cards",
-                  "Refer a Friend",
+                   "تصفح القائمة",
+                   "العروض الخاصة",
+                   "بطاقات الهدايا",
+                   "ادعُ صديقاً",
                 ],
               },
               {
-                title: "For Partners",
+                 title: "للشركاء",
                 links: [
-                  "Partner Login",
-                  "Restaurant Sign Up",
-                  "Marketing Tools",
-                  "Support Center",
+                   "دخول الشركاء",
+                   "تسجيل المطاعم",
+                   "أدوات التسويق",
+                   "مركز الدعم",
                 ],
               },
               {
-                title: "Working with Us",
+                 title: "العمل معنا",
                 links: [
-                  "Courier App",
-                  "Become a Courier",
-                  "Earnings",
-                  "Safety FAQ",
+                   "تطبيق مندوبي التوصيل",
+                   "كن مندوب توصيل",
+                   "الأرباح",
+                   "الأسئلة الشائعة حول السلامة",
                 ],
               },
               {
-                title: "Our Story",
+                 title: "قصتنا",
                 links: [
-                  "About Us",
-                  "Berlin Careers",
-                  "Press Kit",
-                  "Foodie Blog",
+                   "من نحن",
+                   "فرص العمل في برلين",
+                   "الملف الصحفي",
+                   "مدونة عشاق الطعام",
                 ],
               },
             ].map((col, i) => (
@@ -1074,10 +1073,10 @@ export default function LandingV1() {
           </div>
           <div className="pt-12 border-t border-[#F0EDED] flex flex-col md:flex-row items-center justify-between gap-8">
             <p className="text-base font-bold text-[#584237]">
-              © 2024 Berlin Food Inc. All culinary rights reserved.
+               © 2024 Berlin Food Inc. جميع حقوق الطهي محفوظة.
             </p>
             <div className="flex items-center gap-10">
-              {["Privacy Policy", "Terms of Service", "Cookie Settings"].map(
+               {["سياسة الخصوصية", "شروط الخدمة", "إعدادات ملفات تعريف الارتباط"].map(
                 (item) => (
                   <a
                     key={item}

@@ -39,7 +39,7 @@ function OnboardingHeader({
         </div>
 
         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mt-2">
-          Step {currentStep} of {totalSteps}
+           الخطوة {currentStep} من {totalSteps}
         </span>
       </div>
     </header>
@@ -95,15 +95,15 @@ function TextInput({
 const EDITORIAL_IMAGES = [
   {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDHACG752m5fwcvgqQFaBwdx6Ca-2XF1dUPJ5Ig4ZpZ5Q3BY4wDvDPTLntjtD3pbfGJ2YLfQLczd0Z8C9vaGL8RxN5q_gmRZznXaK8u9yt7nMSpuoDeLIqmeImfFtLt66S6wUfwLH9c_zrc_Pr1yXsRIhM8EbGblo9N3J3wOgmTYUfOVEJnsE4IMx1m0io5EsDJxu-m5FP3Vh0kAeZPcEiLWjKwPnFvRc4iBZyyNb_dG-Hs8S6xHGBoljEsNaU5P_3v9okYwzYkppp7",
-    alt: "Artisanal plating with microgreens",
+     alt: "تقديم حرفي مزين بالخضراوات الصغيرة",
   },
   {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBd2ivg2ijHSj8yBzcKC7TTZbrwy_gEcLP0oHoIidAKCvpOuTORXxz2qb-ih6pCXL6Ilmo-287yN08AIUIFaZsMgKSAMR4pgXHRBtRxe3SE3rfNMldCtNYI_Jxc_bQu8bgM5R4XWjmIqTAkr1Gq3xxgBlRP3LLkjJvSD8GicRBbRKhh0u3QbZkswuR9aELIwjVuv2ag_qqYcR8Yy7j_-aD5TiIlnuYUYEIvU2pqBH41gTI8FSCJKW0uO9FM3dXBFp7egquO3xg8zEOv",
-    alt: "Chef arranging ingredients",
+     alt: "طاهٍ يرتب المكونات",
   },
   {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCL-6KW9xoL7l1DOe7V8B6qPxln9wHUoRkwOOJOpq8vWgbBkj3SydGEtHKTVHT8uD9tSeZryQ9ETh3hkz2U9MnSeKVzDFHOSYijEQZi4-lMcJxDrOxoodntY7Un7-SqIRXiVDmINS9OQER6puJoJxJl5h599XVEfk73fFkVFVuCaOHvRi65r-nWBfBSqtihUBICKRqGnzZzYa_PtsH8fapdU8-4JNWc4fkVQVP0F-91Uq9a6yXJBQN6mSxroI4aK9-xClEDwWfdBPlM",
-    alt: "Berlin restaurant interior",
+     alt: "تصميم داخلي لمطعم في برلين",
   },
 ];
 
@@ -185,12 +185,11 @@ export default function OnboardingStep1Page() {
             {/* Headline */}
             <div className="mb-12">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4 leading-tight">
-                The journey to <br />
-                <span className="text-primary italic">exceptional</span> dining.
+                 رحلة الوصول إلى <br />
+                 <span className="text-primary italic">تجربة طعام استثنائية</span>.
               </h1>
               <p className="text-on-surface-variant text-lg leading-relaxed max-w-md">
-                Tell us a bit about yourself so we can curate your Berlin
-                culinary experience.
+                 أخبرنا قليلاً عن نفسك لنصمم لك تجربة طعام مميزة في برلين.
               </p>
             </div>
 
@@ -199,7 +198,7 @@ export default function OnboardingStep1Page() {
               {/* Name row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <FieldLabel htmlFor="firstName">First Name</FieldLabel>
+                   <FieldLabel htmlFor="firstName">الاسم الأول</FieldLabel>
                   <TextInput
                     id="firstName"
                     name="firstName"
@@ -210,7 +209,7 @@ export default function OnboardingStep1Page() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <FieldLabel htmlFor="lastName">Last Name</FieldLabel>
+                   <FieldLabel htmlFor="lastName">اسم العائلة</FieldLabel>
                   <TextInput
                     id="lastName"
                     name="lastName"
@@ -224,7 +223,7 @@ export default function OnboardingStep1Page() {
 
               {/* Phone */}
               <div className="flex flex-col gap-2">
-                <FieldLabel htmlFor="phone">Phone Number</FieldLabel>
+                 <FieldLabel htmlFor="phone">رقم الهاتف</FieldLabel>
                 <div className="relative">
                   {/* Country code divider */}
                   <div className="absolute start-6 top-1/2 -translate-y-1/2 flex items-center gap-2 pe-4 border-e border-outline-variant/30 pointer-events-none">
@@ -244,7 +243,7 @@ export default function OnboardingStep1Page() {
                   />
                 </div>
                 <p className="text-[11px] text-outline mt-1 ms-1 leading-tight">
-                  We&apos;ll send a secure verification code to this number.
+                   سنرسل رمز تحقق آمناً إلى هذا الرقم.
                 </p>
               </div>
 
@@ -272,7 +271,7 @@ export default function OnboardingStep1Page() {
                     hover:scale-[1.02] hover:shadow-[0_10px_25px_-5px_rgba(242,113,33,0.4)]
                     active:scale-95
                   ">
-                  Continue
+                   متابعة
                   <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
                 </button>
               </div>
@@ -286,7 +285,7 @@ export default function OnboardingStep1Page() {
 
       {/* Footer */}
       <footer className="fixed bottom-8 text-outline text-xs tracking-wide">
-        © 2024 Berlin Food · Secure Onboarding · Privacy First
+         © 2024 Berlin Food · تسجيل آمن · الخصوصية أولاً
       </footer>
     </div>
   );

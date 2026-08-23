@@ -51,7 +51,7 @@ export default function CreateMenuItemModal({
           setFormData((prev) => ({ ...prev, category_id: data[0].id }));
         }
       } catch (error) {
-        toast.error("Failed to fetch categories");
+         toast.error("تعذر جلب الفئات");
       } finally {
         setIsLoadingCategories(false);
       }
@@ -75,14 +75,14 @@ export default function CreateMenuItemModal({
       }
 
       await createMenuItem(supabase, { ...formData, image_url: finalImageUrl });
-      toast.success("Menu item created successfully");
+       toast.success("تم إنشاء عنصر القائمة بنجاح");
       onSuccess();
       onClose();
     } catch (error: unknown) {
       console.log(error);
 
       if (error instanceof Error) {
-        toast.error("Failed to create menu item", {
+         toast.error("تعذر إنشاء عنصر القائمة", {
           description: error.message,
         });
       }
@@ -96,7 +96,7 @@ export default function CreateMenuItemModal({
       <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         <div className="p-6 md:p-8 flex items-center justify-between border-b border-[#1C1B1B]/5">
           <h2 className="text-2xl font-black tracking-tight text-[#1C1B1B]">
-            Create Menu Item
+             إنشاء عنصر قائمة
           </h2>
           <button
             onClick={onClose}
@@ -108,7 +108,7 @@ export default function CreateMenuItemModal({
           <div className="grid grid-cols-2 gap-5">
             <div>
               <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-                Name
+                 الاسم
               </label>
               <input
                 required
@@ -118,12 +118,12 @@ export default function CreateMenuItemModal({
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-bold text-[#1C1B1B] transition-all"
-                placeholder="e.g. Truffle Pizza"
+                 placeholder="مثال: بيتزا بالكمأة"
               />
             </div>
             <div>
               <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-                Category
+                 الفئة
               </label>
               <select
                 required
@@ -134,7 +134,7 @@ export default function CreateMenuItemModal({
                 className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-bold text-[#1C1B1B] transition-all"
                 disabled={isLoadingCategories}>
                 <option value="" disabled>
-                  Select category...
+                   اختر فئة...
                 </option>
                 {categories.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -146,7 +146,7 @@ export default function CreateMenuItemModal({
           </div>
           <div>
             <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-              Description
+               الوصف
             </label>
             <textarea
               required
@@ -155,12 +155,12 @@ export default function CreateMenuItemModal({
                 setFormData({ ...formData, description: e.target.value })
               }
               className="w-full px-4 py-3 bg-[#F6F3F2] rounded-xl border-none focus:ring-2 focus:ring-[#F27121]/30 outline-none text-sm font-medium text-[#1C1B1B] transition-all min-h-[100px]"
-              placeholder="Delicious details..."></textarea>
+               placeholder="اكتب وصفًا شهيًا..."></textarea>
           </div>
           <div className="grid grid-cols-2 gap-5">
             <div>
               <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-                Price (€)
+                 السعر (€)
               </label>
               <input
                 required
@@ -179,7 +179,7 @@ export default function CreateMenuItemModal({
             </div>
             <div>
               <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-                Availability
+                 التوفر
               </label>
               <div className="flex items-center h-12">
                 <label className="relative inline-flex items-center cursor-pointer">
@@ -196,7 +196,7 @@ export default function CreateMenuItemModal({
                   />
                   <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F27121]"></div>
                   <span className="ms-3 text-sm font-bold text-[#1C1B1B]">
-                    {formData.is_available ? "In Stock" : "Out of Stock"}
+                     {formData.is_available ? "متوفر" : "غير متوفر"}
                   </span>
                 </label>
               </div>
@@ -204,7 +204,7 @@ export default function CreateMenuItemModal({
           </div>
           <div>
             <label className="block text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2">
-              Image Upload
+               رفع صورة
             </label>
             <input
               type="file"
@@ -222,7 +222,7 @@ export default function CreateMenuItemModal({
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">
                 <Image
                   src={URL.createObjectURL(imageFile)}
-                  alt="Preview"
+                   alt="معاينة"
                   unoptimized
                   width={40}
                   height={40}
@@ -240,7 +240,7 @@ export default function CreateMenuItemModal({
             )}
             <div className="mt-3">
               <span className="text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest mb-2 block">
-                Or Use Image URL
+                 أو استخدم رابط الصورة
               </span>
               <input
                 type="url"
@@ -257,7 +257,7 @@ export default function CreateMenuItemModal({
               <div className="mt-4 flex items-center gap-4 p-3 bg-white rounded-xl border border-[#e5e2e1] shadow-sm">
                 <Image
                   src={formData.image_url}
-                  alt="Preview"
+                   alt="معاينة"
                   unoptimized
                   width={40}
                   height={40}
@@ -268,10 +268,10 @@ export default function CreateMenuItemModal({
                 />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-[#1C1B1B] truncate">
-                    URL Preview
+                     معاينة الرابط
                   </p>
                   <p className="text-[10px] text-[#5c5b5b] font-medium mt-0.5 uppercase tracking-wide">
-                    External Image
+                     صورة خارجية
                   </p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function CreateMenuItemModal({
               type="button"
               onClick={onClose}
               className="px-6 py-3 rounded-full font-bold text-sm text-[#5c5b5b] hover:bg-[#F6F3F2] transition-colors">
-              Cancel
+               إلغاء
             </button>
             <button
               type="submit"
@@ -291,7 +291,7 @@ export default function CreateMenuItemModal({
               {isLoading ? (
                 <Loader2 size={18} className="animate-spin" />
               ) : (
-                "Create Item"
+                 "إنشاء العنصر"
               )}
             </button>
           </div>

@@ -107,11 +107,22 @@ const toStatusVariant = (
 
 const formatDate = (iso: string | null): string => {
   if (!iso) return "";
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
+  return new Intl.DateTimeFormat("ar", {
     day: "numeric",
+    month: "long",
     year: "numeric",
-  });
+  }).format(new Date(iso));
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  pending: "قيد الانتظار",
+  preparing: "قيد التحضير",
+  on_the_way: "في الطريق",
+  out_for_delivery: "في الطريق",
+  ready_for_pickup: "جاهز للاستلام",
+  ready: "جاهز",
+  delivered: "تم التوصيل",
+  cancelled: "ملغي",
 };
 
 const extractAddress = (addr: Json | null): string => {
@@ -177,7 +188,9 @@ const MyOrders = ({ ordersData }: MyOrdersProps) => {
           prev &&
           prev.map((o) => (o.id === id ? { ...o, status: newStatus } : o)),
       );
-      toast.success(`تم تحديث حالة الطلب إلى ${newStatus.replace(/_/g, " ")}`);
+      toast.success(
+        `تم تحديث حالة الطلب إلى ${STATUS_LABELS[newStatus] ?? "حالة غير معروفة"}`,
+      );
     } catch (error) {
       console.error("Failed to update status:", error);
       toast.error("فشل تحديث حالة الطلب. يرجى المحاولة مرة أخرى.");
@@ -322,7 +335,6 @@ const ActiveOrderCard = ({
     <div className="bg-white rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(28,27,27,0.07)] flex flex-col md:flex-row group hover:shadow-[0_16px_48px_rgba(28,27,27,0.12)] transition-shadow duration-300">
       <div className="relative w-full md:w-64 h-52 md:h-auto flex-shrink-0 overflow-hidden">
         {image && (
-          // eslint-disable-next-line @next/next/no-Image-element
           <Image
             src={image}
             alt={title}
@@ -510,7 +522,6 @@ const HistoryItem = ({
   <div className="flex items-center gap-5 p-4 rounded-2xl border border-[#EDE9E8] bg-white/60 hover:bg-white hover:shadow-md hover:border-[#E0DAD8] transition-all duration-200 group">
     <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden border border-[#EDE9E8]">
       {image && (
-        // eslint-disable-next-line @next/next/no-Image-element
         <Image
           src={image}
           alt={title}

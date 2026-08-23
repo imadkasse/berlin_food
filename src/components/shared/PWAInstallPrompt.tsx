@@ -48,7 +48,7 @@ export function PWAInstallPrompt() {
     const { outcome } = await deferredPrompt.userChoice;
     
     if (outcome === "accepted") {
-      toast.success("Thank you for installing Berlin Food!");
+      toast.success("شكرًا لتثبيت برلين فود!");
     }
     
     // We've used the prompt, and can't use it again, throw it away
@@ -71,9 +71,9 @@ export function PWAInstallPrompt() {
               <Smartphone size={24} strokeWidth={2.5} />
             </div>
             <div className="space-y-1">
-              <h4 className="text-sm font-bold text-on-surface">Install the App</h4>
+              <h4 className="text-sm font-bold text-on-surface">ثبّت التطبيق</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed">
-                Tap the share button <span className="inline-block p-1 bg-surface-container-low rounded">⎋</span> and then <span className="font-bold text-primary">"Add to Home Screen"</span>
+                اضغط على زر المشاركة <span className="inline-block p-1 bg-surface-container-low rounded">⎋</span> ثم اختر <span className="font-bold text-primary">«إضافة إلى الشاشة الرئيسية»</span>
               </p>
             </div>
             <button 
@@ -102,15 +102,15 @@ export function PWAInstallPrompt() {
             <Download size={24} strokeWidth={2.5} />
           </div>
           <div className="space-y-1 flex-1">
-            <h4 className="text-sm font-bold text-on-surface">Experience Berlin Food</h4>
+            <h4 className="text-sm font-bold text-on-surface">استمتع ببرلين فود</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Install our app for a faster and smoother culinary adventure in the city.
+              ثبّت تطبيقنا لتجربة طهي أسرع وأكثر سلاسة في المدينة.
             </p>
             <button
               onClick={handleInstallClick}
               className="mt-3 w-full py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary text-xs font-bold rounded-full shadow-lg transition-all active:scale-95 hover:shadow-primary-glow"
             >
-              Install the App
+              تثبيت التطبيق
             </button>
           </div>
           <button 

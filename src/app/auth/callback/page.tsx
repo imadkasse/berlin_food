@@ -31,8 +31,8 @@ export default function AuthCallback() {
 
         if (session?.user) {
           isProcessed.current = true;
-          toast.success("Login successfuly", {
-            description: `welcome ${session.user.email?.split("@")[0] || "user"} `,
+           toast.success("تم تسجيل الدخول بنجاح", {
+             description: `مرحباً ${session.user.email?.split("@")[0] || "مستخدم"} `,
           });
 
           const profile = await getProfile(supabase, session.user.id);
@@ -44,8 +44,8 @@ export default function AuthCallback() {
             async (event, currentSession) => {
               if (event === "SIGNED_IN" && currentSession?.user && !isProcessed.current) {
                 isProcessed.current = true;
-                toast.success("Login successfuly", {
-                  description: `welcome ${currentSession.user.email?.split("@")[0] || "user"} `,
+                 toast.success("تم تسجيل الدخول بنجاح", {
+                   description: `مرحباً ${currentSession.user.email?.split("@")[0] || "مستخدم"} `,
                 });
                 const profile = await getProfile(supabase, currentSession.user.id);
                 setUser(profile);
@@ -60,7 +60,7 @@ export default function AuthCallback() {
         }
       } catch (err: any) {
         setError(err.message);
-        toast.error("Failed to authenticate session");
+         toast.error("تعذر مصادقة الجلسة");
         setTimeout(() => router.push("/auth/login"), 2000);
       }
     };
@@ -78,7 +78,7 @@ export default function AuthCallback() {
           <div className="flex items-center gap-2">
             {!error && <Loader2 className="w-5 h-5 animate-spin text-primary" />}
             <p className="text-on-surface font-semibold text-lg tracking-wide">
-              {error ? "Authentication Failed" : "Completing your login..."}
+               {error ? "فشلت المصادقة" : "جارٍ إكمال تسجيل الدخول..."}
             </p>
           </div>
           {error && (

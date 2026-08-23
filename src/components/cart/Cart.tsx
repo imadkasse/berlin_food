@@ -71,24 +71,27 @@ const CartItemCard = ({
         {item.description}
       </p>
       <p className="text-[10px] text-outline tracking-widest uppercase mb-4">
-        ID: {item.id} • {item.order_id}
+        معرّف: {item.id} • {item.order_id}
       </p>
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center bg-surface-container-low rounded-full px-2 py-1">
           <button
             onClick={() => onDecrement(item.id)}
+            aria-label="إنقاص الكمية"
             className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
             <Minus size={13} />
           </button>
           <span className="px-4 font-bold text-base">{item.quantity}</span>
           <button
             onClick={() => onIncrement(item.id)}
+            aria-label="زيادة الكمية"
             className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
             <Plus size={13} />
           </button>
         </div>
         <button
           onClick={() => onRemove(item.id)}
+          aria-label={`إزالة ${item.name} من السلة`}
           className="text-error/60 hover:text-error transition-colors flex items-center gap-1.5 text-sm font-medium">
           <Trash2 size={16} />
         </button>
@@ -311,7 +314,7 @@ export default function Cart() {
           i: number,
         ) => ({
           id: a.id ?? String(i),
-          label: a.label ?? `Address ${i + 1}`,
+           label: a.label ?? `العنوان ${i + 1}`,
           lat: a.lat,
           lng: a.lng,
           formatted: a.formatted ?? a.address ?? undefined,

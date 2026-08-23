@@ -45,6 +45,21 @@ const ROLE_STYLES: Record<string, { dot: string; pill: string }> = {
   },
 };
 
+const ROLE_LABELS: Record<string, string> = {
+  admin: "مسؤول",
+  delivery: "مندوب توصيل",
+  manager: "مدير",
+  support: "دعم",
+  customer: "عميل",
+};
+
+const VEHICLE_LABELS: Record<string, string> = {
+  bicycle: "دراجة هوائية",
+  motorcycle: "دراجة نارية",
+  car: "سيارة",
+  van: "شاحنة صغيرة",
+};
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function UsersPage({ usersData }: { usersData: Profile[] }) {
@@ -82,20 +97,20 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
           <div className="flex items-center gap-3 mb-3">
             <div className="w-2 h-2 rounded-full bg-[#F27121] animate-pulse" />
             <span className="text-xs font-bold text-[#F27121] uppercase tracking-wider">
-              Berlin Food · Admin Panel
+              برلين فود · لوحة الإدارة
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h1 className="text-4xl md:text-5xl font-black text-[#1C1B1B] mb-2">
-                User Directory
+                دليل المستخدمين
               </h1>
               <p className="text-[#5c5b5b] text-sm max-w-2xl">
-                Manage all system users, roles, and delivery personnel
+                إدارة جميع مستخدمي النظام وأدوارهم وموظفي التوصيل
               </p>
             </div>
             <div className="flex gap-3">
-              <StatCard value={users.length} label="Total Users" />
+              <StatCard value={users.length} label="إجمالي المستخدمين" />
               {/* <StatCard value={onlineCount} label="Active Now" /> */}
             </div>
           </div>
@@ -111,7 +126,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
               />
               <input
                 type="text"
-                placeholder="Search by name, phone or ID..."
+                placeholder="ابحث بالاسم أو الهاتف أو المعرّف..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full ps-11 pe-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
@@ -121,27 +136,27 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
               className="px-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-bold text-[#1C1B1B] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20">
-              <option value="">All Roles</option>
-              <option value="admin">Admin</option>
-              <option value="manager">Manager</option>
-              <option value="delivery">Delivery</option>
-              <option value="support">Support</option>
-              <option value="customer">Customer</option>
+              <option value="">جميع الأدوار</option>
+              <option value="admin">مسؤول</option>
+              <option value="manager">مدير</option>
+              <option value="delivery">توصيل</option>
+              <option value="support">دعم</option>
+              <option value="customer">عميل</option>
             </select>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
               className="px-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-bold text-[#1C1B1B] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20">
-              <option value="">All Status</option>
-              <option value="true">Online</option>
-              <option value="false">Offline</option>
+              <option value="">جميع الحالات</option>
+              <option value="true">متصل</option>
+              <option value="false">غير متصل</option>
             </select>
           </div>
           <button
             onClick={() => setIsAddModalOpen(true)}
             className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-br from-[#F27121] to-[#9F4200] text-white rounded-xl text-sm font-bold shadow-lg shadow-orange-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
             <Plus size={18} />
-            <span>Add New User</span>
+            <span>إضافة مستخدم جديد</span>
           </button>
         </section>
 
@@ -151,11 +166,11 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
             <table className="w-full text-start min-w-[1000px]">
               <thead>
                 <tr className="bg-[#F6F3F2]/50 text-[#5c5b5b] text-[10px] font-bold uppercase tracking-wider border-b border-[#F0EDED]">
-                  <th className="px-6 py-4">User Details</th>
-                  <th className="px-6 py-4">Role & Status</th>
-                  <th className="px-6 py-4">Contact</th>
-                  <th className="px-6 py-4">Vehicle & Location</th>
-                  <th className="px-6 py-4 text-end">Actions</th>
+                  <th className="px-6 py-4">بيانات المستخدم</th>
+                  <th className="px-6 py-4">الدور والحالة</th>
+                  <th className="px-6 py-4">التواصل</th>
+                  <th className="px-6 py-4">المركبة والموقع</th>
+                  <th className="px-6 py-4 text-end">الإجراءات</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F0EDED]">
@@ -168,7 +183,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           size={32}
                         />
                         <span className="text-sm font-medium text-[#5c5b5b]">
-                          Loading users...
+                          جارٍ تحميل المستخدمين...
                         </span>
                       </div>
                     </td>
@@ -178,7 +193,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                     <td
                       colSpan={5}
                       className="px-6 py-20 text-center text-sm font-medium text-[#5c5b5b]">
-                      No users found matching your criteria.
+                      لم يُعثر على مستخدمين يطابقون معايير البحث.
                     </td>
                   </tr>
                 ) : (
@@ -195,7 +210,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           </div>
                           <div>
                             <span className="text-sm font-bold text-[#1C1B1B] block group-hover:text-[#F27121] transition-colors">
-                              {user.full_name || "Unnamed User"}
+                              {user.full_name || "مستخدم بلا اسم"}
                             </span>
                             <span className="text-[10px] font-mono text-[#9A9694]">
                               {user.id.slice(0, 8)}...
@@ -210,13 +225,13 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                             <span
                               className={`w-1.5 h-1.5 rounded-full ${ROLE_STYLES[user.role || "customer"].dot}`}
                             />
-                            {user.role}
+                            {ROLE_LABELS[user.role || "customer"] || user.role}
                           </span>
                           <div className="flex items-center gap-2 text-[10px] font-medium text-[#5c5b5b]">
                             <div
                               className={`w-1.5 h-1.5 rounded-full ${user.availability_status ? "bg-green-500" : "bg-gray-300"}`}
                             />
-                            {user.availability_status ? "Online" : "Offline"}
+                            {user.availability_status ? "متصل" : "غير متصل"}
                           </div>
                         </div>
                       </td>
@@ -225,13 +240,13 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           <div className="flex items-center gap-2 text-[#5c5b5b]">
                             <Phone size={14} />
                             <span className="font-medium">
-                              {user.phone_number || "No phone"}
+                              {user.phone_number || "لا يوجد هاتف"}
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-[#9A9694] text-xs">
                             <Clock size={12} />
                             <span>
-                              Updated{" "}
+                              آخر تحديث{" "}
                               {new Date(
                                 user.updated_at || "",
                               ).toLocaleDateString()}
@@ -244,13 +259,16 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                           {user.vehicle_type && (
                             <div className="flex items-center gap-2 text-[11px] font-bold text-[#1C1B1B]">
                               <Truck size={14} className="text-[#F27121]" />
-                              <span>{user.vehicle_type}</span>
+                              <span>
+                                {VEHICLE_LABELS[user.vehicle_type] ||
+                                  user.vehicle_type}
+                              </span>
                             </div>
                           )}
                           <div className="flex items-center gap-2 text-[11px] text-[#5c5b5b]">
                             <MapPin size={14} className="text-[#F27121]" />
                             <span className="truncate max-w-[150px]">
-                              {user.address ? "Location set" : "No location"}
+                              {user.address ? "الموقع محدد" : "لا يوجد موقع"}
                             </span>
                           </div>
                         </div>
@@ -263,7 +281,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                               setIsEditModalOpen(true);
                             }}
                             className="p-2 hover:bg-blue-50 text-blue-600 rounded-lg transition-colors"
-                            title="Edit User">
+                            title="تعديل المستخدم">
                             <Edit2 size={16} />
                           </button>
                           <button
@@ -272,7 +290,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                               setIsDeleteModalOpen(true);
                             }}
                             className="p-2 hover:bg-red-50 text-red-600 rounded-lg transition-colors"
-                            title="Delete User">
+                            title="حذف المستخدم">
                             <Trash2 size={16} />
                           </button>
                         </div>
@@ -382,14 +400,14 @@ function AddUserModal({
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to create user");
+      if (!res.ok) throw new Error(data.error || "تعذر إنشاء المستخدم");
 
       // setUsers((prev) => [...prev, data.profile]); // Add the new user to state
-      toast.success("User created successfully");
+      toast.success("تم إنشاء المستخدم بنجاح");
       onSuccess(data.profile);
     } catch (error: unknown) {
-      toast.error("Failed to create user", {
-        description: error instanceof Error ? error.message : "Unknown error",
+      toast.error("تعذر إنشاء المستخدم", {
+        description: error instanceof Error ? error.message : "خطأ غير معروف",
       });
     } finally {
       setLoading(false);
@@ -406,10 +424,10 @@ function AddUserModal({
             </div>
             <div>
               <h2 className="text-xl font-black text-[#1C1B1B]">
-                Add New User
+                إضافة مستخدم جديد
               </h2>
               <p className="text-xs text-[#5c5b5b]">
-                Create a new account and profile
+                إنشاء حساب وملف شخصي جديدين
               </p>
             </div>
           </div>
@@ -424,7 +442,7 @@ function AddUserModal({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Full Name
+                الاسم الكامل
               </label>
               <input
                 required
@@ -438,7 +456,7 @@ function AddUserModal({
             </div>
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Phone Number
+                رقم الهاتف
               </label>
               <input
                 required
@@ -454,7 +472,7 @@ function AddUserModal({
 
           <div className="space-y-1.5">
             <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-              Email Address
+              البريد الإلكتروني
             </label>
             <input
               required
@@ -469,7 +487,7 @@ function AddUserModal({
 
           <div className="space-y-1.5">
             <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-              Password
+              كلمة المرور
             </label>
             <input
               required
@@ -485,7 +503,7 @@ function AddUserModal({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Role
+                الدور
               </label>
               <select
                 value={formData.role}
@@ -493,17 +511,17 @@ function AddUserModal({
                   setFormData({ ...formData, role: e.target.value })
                 }
                 className="w-full px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#F27121]/20">
-                <option value="customer">Customer</option>
-                <option value="delivery">Delivery Driver</option>
-                <option value="manager">Manager</option>
-                <option value="support">Support</option>
-                <option value="admin">Admin</option>
+                <option value="customer">عميل</option>
+                <option value="delivery">مندوب توصيل</option>
+                <option value="manager">مدير</option>
+                <option value="support">دعم</option>
+                <option value="admin">مسؤول</option>
               </select>
             </div>
             {formData.role === "delivery" && (
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                  Vehicle
+                  المركبة
                 </label>
                 <select
                   value={formData.vehicle_type}
@@ -511,10 +529,10 @@ function AddUserModal({
                     setFormData({ ...formData, vehicle_type: e.target.value })
                   }
                   className="w-full px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#F27121]/20">
-                  <option value="bicycle">Bicycle</option>
-                  <option value="motorcycle">Motorcycle</option>
-                  <option value="car">Car</option>
-                  <option value="van">Van</option>
+                  <option value="bicycle">دراجة هوائية</option>
+                  <option value="motorcycle">دراجة نارية</option>
+                  <option value="car">سيارة</option>
+                  <option value="van">شاحنة صغيرة</option>
                 </select>
               </div>
             )}
@@ -525,7 +543,7 @@ function AddUserModal({
               type="button"
               onClick={onClose}
               className="flex-1 px-6 py-3 bg-[#F6F3F2] text-[#1C1B1B] font-bold rounded-xl hover:bg-[#F0EDED] transition-colors">
-              Cancel
+              إلغاء
             </button>
             <button
               disabled={loading}
@@ -534,7 +552,7 @@ function AddUserModal({
               {loading ? (
                 <Loader2 className="animate-spin" size={18} />
               ) : (
-                <span>Create User</span>
+                <span>إنشاء المستخدم</span>
               )}
             </button>
           </div>
@@ -577,11 +595,11 @@ function EditUserModal({
           formData.role === "delivery" ? formData.vehicle_type : null,
         availability_status: formData.availability_status,
       });
-      toast.success("Profile updated successfully");
+      toast.success("تم تحديث الملف الشخصي بنجاح");
       onSuccess(updated);
     } catch (error: unknown) {
-      toast.error("Failed to update profile", {
-        description: error instanceof Error ? error.message : "Unknown error",
+      toast.error("تعذر تحديث الملف الشخصي", {
+        description: error instanceof Error ? error.message : "خطأ غير معروف",
       });
     } finally {
       setLoading(false);
@@ -598,10 +616,10 @@ function EditUserModal({
             </div>
             <div>
               <h2 className="text-xl font-black text-[#1C1B1B]">
-                Edit Profile
+                تعديل الملف الشخصي
               </h2>
               <p className="text-xs text-[#5c5b5b]">
-                Update user details and permissions
+                تحديث بيانات المستخدم وصلاحياته
               </p>
             </div>
           </div>
@@ -616,7 +634,7 @@ function EditUserModal({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Full Name
+                الاسم الكامل
               </label>
               <input
                 required
@@ -630,7 +648,7 @@ function EditUserModal({
             </div>
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Phone Number
+                رقم الهاتف
               </label>
               <input
                 required
@@ -647,7 +665,7 @@ function EditUserModal({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Role
+                الدور
               </label>
               <select
                 value={formData.role}
@@ -655,16 +673,16 @@ function EditUserModal({
                   setFormData({ ...formData, role: e.target.value })
                 }
                 className="w-full px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                <option value="customer">Customer</option>
-                <option value="delivery">Delivery Driver</option>
-                <option value="manager">Manager</option>
-                <option value="support">Support</option>
-                <option value="admin">Admin</option>
+                <option value="customer">عميل</option>
+                <option value="delivery">مندوب توصيل</option>
+                <option value="manager">مدير</option>
+                <option value="support">دعم</option>
+                <option value="admin">مسؤول</option>
               </select>
             </div>
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Availability
+                حالة التوفر
               </label>
               <select
                 value={String(formData.availability_status)}
@@ -675,8 +693,8 @@ function EditUserModal({
                   })
                 }
                 className="w-full px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                <option value="true">Online</option>
-                <option value="false">Offline</option>
+                <option value="true">متصل</option>
+                <option value="false">غير متصل</option>
               </select>
             </div>
           </div>
@@ -684,7 +702,7 @@ function EditUserModal({
           {formData.role === "delivery" && (
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#1C1B1B] uppercase">
-                Vehicle Type
+                نوع المركبة
               </label>
               <select
                 value={formData.vehicle_type}
@@ -692,10 +710,10 @@ function EditUserModal({
                   setFormData({ ...formData, vehicle_type: e.target.value })
                 }
                 className="w-full px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                <option value="bicycle">Bicycle</option>
-                <option value="motorcycle">Motorcycle</option>
-                <option value="car">Car</option>
-                <option value="van">Van</option>
+                <option value="bicycle">دراجة هوائية</option>
+                <option value="motorcycle">دراجة نارية</option>
+                <option value="car">سيارة</option>
+                <option value="van">شاحنة صغيرة</option>
               </select>
             </div>
           )}
@@ -705,7 +723,7 @@ function EditUserModal({
               type="button"
               onClick={onClose}
               className="flex-1 px-6 py-3 bg-[#F6F3F2] text-[#1C1B1B] font-bold rounded-xl hover:bg-[#F0EDED] transition-colors">
-              Cancel
+              إلغاء
             </button>
             <button
               disabled={loading}
@@ -714,7 +732,7 @@ function EditUserModal({
               {loading ? (
                 <Loader2 className="animate-spin" size={18} />
               ) : (
-                <span>Save Changes</span>
+                <span>حفظ التغييرات</span>
               )}
             </button>
           </div>
@@ -748,12 +766,12 @@ function DeleteUserModal({
         body: JSON.stringify({ id: user.id }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to delete user");
-      toast.success("User deleted successfully");
+      if (!res.ok) throw new Error(data.error || "تعذر حذف المستخدم");
+      toast.success("تم حذف المستخدم بنجاح");
       onSuccess();
     } catch (error: unknown) {
-      toast.error("Failed to delete user", {
-        description: error instanceof Error ? error.message : "Unknown error",
+      toast.error("تعذر حذف المستخدم", {
+        description: error instanceof Error ? error.message : "خطأ غير معروف",
       });
     } finally {
       setLoading(false);
@@ -768,20 +786,20 @@ function DeleteUserModal({
             <Trash2 size={40} className="text-red-500" />
           </div>
           <h2 className="text-2xl font-black text-[#1C1B1B] mb-2">
-            Delete User?
+            حذف المستخدم؟
           </h2>
           <p className="text-[#5c5b5b] text-sm mb-8">
-            Are you sure you want to delete{" "}
+            هل أنت متأكد من حذف{" "}
             <span className="font-bold text-[#1C1B1B]">
-              {user.full_name || "this user"}
+              {user.full_name || "هذا المستخدم"}
             </span>
-            ? This action cannot be undone and will remove all associated data.
+            ؟ لا يمكن التراجع عن هذا الإجراء، وستُحذف جميع البيانات المرتبطة به.
           </p>
           <div className="flex gap-3">
             <button
               onClick={onClose}
               className="flex-1 px-6 py-3 bg-[#F6F3F2] text-[#1C1B1B] font-bold rounded-xl hover:bg-[#F0EDED] transition-colors">
-              Cancel
+              إلغاء
             </button>
             <button
               disabled={loading}
@@ -790,7 +808,7 @@ function DeleteUserModal({
               {loading ? (
                 <Loader2 className="animate-spin" size={18} />
               ) : (
-                <span>Delete Now</span>
+                <span>حذف الآن</span>
               )}
             </button>
           </div>

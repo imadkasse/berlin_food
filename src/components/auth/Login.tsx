@@ -106,8 +106,8 @@ export default function Login() {
     try {
       const { user } = await login({ email, password });
 
-      toast.success("Login successfuly", {
-        description: `welcome ${email.split("@")[0]} `,
+      toast.success("تم تسجيل الدخول بنجاح", {
+        description: `مرحباً ${email.split("@")[0]} `,
       });
       // save user on state
       const profile = await getProfile(supbase, user.id);
@@ -115,8 +115,8 @@ export default function Login() {
       // redirect  the user
       router.push(`/${profile?.role || "customer"}/profile`);
     } catch (err: unknown) {
-      toast.error("Access denied", {
-        description: err instanceof Error ? err.message : "Unknown error",
+      toast.error("تم رفض الوصول", {
+        description: err instanceof Error ? err.message : "حدث خطأ غير معروف",
       });
     } finally {
       setIsLoading(false);
@@ -145,12 +145,12 @@ export default function Login() {
         router.push(`/${profile?.role}/profile`);
       } else {
         // For OAuth flows that redirect the page, this serves as a fallback.
-        toast.info("Redirecting to Google...");
+         toast.info("جارٍ تحويلك إلى Google...");
       }
     } catch (err: unknown) {
-      toast.error("Access denied", {
+       toast.error("تم رفض الوصول", {
         description:
-          err instanceof Error ? err.message : "Google Invalid credentials. Please try again",
+           err instanceof Error ? err.message : "بيانات اعتماد Google غير صالحة. يرجى المحاولة مرة أخرى",
       });
     } finally {
       setIsLoadingGoogle(false);
@@ -178,12 +178,12 @@ export default function Login() {
         {/* Text content */}
         <div className="absolute bottom-16 left-16 right-16 z-10">
           <span className="text-white/70 tracking-[0.2em] uppercase text-xs mb-4 block font-bold">
-            The Culinary Frontier
+             آفاق الطهي
           </span>
 
           <h1 className="text-white text-5xl font-extrabold tracking-tighter leading-tight max-w-md">
-            Curating the Art of{" "}
-            <span className="text-primary-container">Berlin Dining</span>.
+             ننتقي فن{" "}
+             <span className="text-primary-container">تناول الطعام في برلين</span>.
           </h1>
 
           {/* Slide indicator dots */}
@@ -203,10 +203,10 @@ export default function Login() {
             <Logo />
             <div className="pt-4">
               <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">
-                Welcome Back, Alchemist
+                 أهلاً بعودتك أيها الخبير
               </h2>
               <p className="text-secondary mt-2 text-lg">
-                Enter your details to rediscover the city&apos;s finest.
+                 أدخل بياناتك لاكتشاف أرقى ما تقدمه المدينة من جديد.
               </p>
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function Login() {
               <label
                 htmlFor="email"
                 className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1">
-                Email Address
+                 عنوان البريد الإلكتروني
               </label>
               <input
                 id="email"
@@ -245,12 +245,12 @@ export default function Login() {
                 <label
                   htmlFor="password"
                   className="block text-sm font-semibold tracking-wide text-on-surface-variant">
-                  Password
+                   كلمة المرور
                 </label>
                 <Link
                   href="/auth/forgot-password"
                   className="text-sm font-bold text-primary hover:text-primary-container transition-colors">
-                  Forgot Password?
+                   هل نسيت كلمة المرور؟
                 </Link>
               </div>
 
@@ -275,7 +275,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                   aria-label={showPassword ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"}
                   className="
                     absolute end-4 top-1/2 -translate-y-1/2
                     text-outline hover:text-on-surface
@@ -304,7 +304,7 @@ export default function Login() {
                 ${isLoading ? "opacity-70 pointer-events-none" : ""}
               `}>
               {isLoading && <Loader2 className="w-5 h-5 animate-spin" />}
-              {isLoading ? "Logging in..." : "Login"}
+               {isLoading ? "جارٍ تسجيل الدخول..." : "تسجيل الدخول"}
             </button>
           </form>
 
@@ -312,7 +312,7 @@ export default function Login() {
           <div className="relative flex items-center py-2">
             <div className="flex-grow border-t border-outline-variant/30" />
             <span className="flex-shrink mx-4 text-xs font-bold text-outline uppercase tracking-widest">
-              Or continue with
+               أو المتابعة باستخدام
             </span>
             <div className="flex-grow border-t border-outline-variant/30" />
           </div>
@@ -333,11 +333,11 @@ export default function Login() {
 
           {/* Footer CTA */}
           <p className="text-center text-secondary text-sm">
-            New to the craft?{" "}
+             هل أنت جديد هنا؟{" "}
             <Link
               href="/auth/register"
               className="text-primary-container font-extrabold hover:underline ms-1">
-              Create an Account
+               إنشاء حساب
             </Link>
           </p>
         </div>

@@ -31,7 +31,7 @@ function StepProgressBar({
         />
       ))}
       <span className="ms-4 text-xs font-bold tracking-widest uppercase text-on-surface-variant">
-        Step {String(currentStep).padStart(2, "0")} /{" "}
+         الخطوة {String(currentStep).padStart(2, "0")} /{" "}
         {String(totalSteps).padStart(2, "0")}
       </span>
     </div>
@@ -132,7 +132,7 @@ export default function OnboardingStep2Page() {
           {/* Photo */}
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk7YU17Z6YpmObRBGCf6432nwq66b6rO_-JNheS14ZeqhHcbGFzCMHAfVqOnJxl9a26SA5OocBZ2QnmaA38x9s3RwORRpzIlvPk86rr0t5h7cz0BvYQb_E7T1uCCdym37lUFHs-Q6Pl6OvX0odRUnvJTFjc9-uBH2e5y5jh0B86RPN2rnuMu4O5wQF0lXBdFLFSJsyvIwR6DCwtwOqDKL8NFIGwnDdoY1ZmGkrba8-IoJj16JeKffNzvbRTO4EjSq9cKtYoTlqsre4"
-            alt="Moody Berlin industrial loft restaurant interior"
+             alt="تصميم داخلي لمطعم صناعي هادئ في برلين"
             unoptimized
             width={40}
             height={40}
@@ -145,15 +145,15 @@ export default function OnboardingStep2Page() {
               Berlin Food
             </span>
             <h1 className="text-white font-black italic tracking-tighter leading-[0.9] text-6xl">
-              CRAFTED
+               صُمم
               <br />
-              FOR THE
+               للباحثين
               <br />
-              CURIOUS.
+               عن الجديد.
             </h1>
             <p className="text-white/70 text-lg mt-6 max-w-sm leading-relaxed">
-              Join a community of urban alchemists redefining the culinary
-              landscape of Berlin.
+               انضم إلى مجتمع من خبراء المدينة الذين يعيدون تعريف مشهد الطهي
+               في برلين.
             </p>
           </div>
         </div>
@@ -165,11 +165,11 @@ export default function OnboardingStep2Page() {
           {/* Header */}
           <header className="mb-12">
             <h2 className="text-4xl font-extrabold text-on-surface tracking-tight mb-4">
-              Secure your access
+               أمّن وصولك
             </h2>
             <p className="text-lg text-on-surface-variant max-w-md leading-relaxed">
-              Create your credentials to manage orders, curate menus, and book
-              the city's finest tables.
+               أنشئ بيانات دخولك لإدارة الطلبات، وتنسيق القوائم، وحجز أفضل
+               الطاولات في المدينة.
             </p>
           </header>
 
@@ -180,7 +180,7 @@ export default function OnboardingStep2Page() {
               id="email"
               name="email"
               type="email"
-              label="Email Address"
+               label="عنوان البريد الإلكتروني"
               placeholder="lukas.schmidt@berlin.de"
               autoComplete="email"
               icon={<Mail className="w-5 h-5" />}
@@ -194,15 +194,15 @@ export default function OnboardingStep2Page() {
               id="password"
               name="password"
               type={showPassword ? "text" : "password"}
-              label="Password"
+               label="كلمة المرور"
               placeholder="••••••••••••"
               autoComplete="new-password"
               icon={<Lock className="w-5 h-5" />}
-              hint="Must contain at least 8 characters, one number, and one symbol."
+               hint="يجب أن تتكون من 8 أحرف على الأقل، وتتضمن رقماً ورمزاً واحداً."
               rightSlot={
                 <button
                   type="button"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                   aria-label={showPassword ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"}
                   onClick={() => setShowPassword((v) => !v)}
                   className="text-outline hover:text-on-surface transition-colors duration-200">
                   {showPassword ? (
@@ -228,7 +228,7 @@ export default function OnboardingStep2Page() {
                   transition-all duration-200
                   hover:scale-[1.02] active:scale-95
                 ">
-                Back
+                 رجوع
               </Link>
 
               <button
@@ -243,7 +243,7 @@ export default function OnboardingStep2Page() {
                   hover:scale-[1.02] hover:shadow-[0_10px_25px_-5px_rgba(242,113,33,0.4)]
                   active:scale-95
                 ">
-                Continue
+                 متابعة
                 <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
               </button>
             </div>
@@ -254,10 +254,10 @@ export default function OnboardingStep2Page() {
             <div className="flex items-start gap-4 text-on-surface-variant/60">
               <ShieldCheck className="w-5 h-5 flex-shrink-0 mt-0.5" />
               <p className="text-xs leading-relaxed">
-                Your data is encrypted and stored according to Berlin&apos;s strict
-                digital sovereignty standards.{" "}
+                 يتم تشفير بياناتك وتخزينها وفق معايير السيادة الرقمية الصارمة
+                 في برلين. {" "}
                 <Link href="/privacy" className="text-primary hover:underline">
-                  Learn more about our privacy policy.
+                   تعرّف على المزيد حول سياسة الخصوصية.
                 </Link>
               </p>
             </div>

@@ -19,12 +19,11 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
           <Package className="w-10 h-10 text-[#F27121]" />
         </div>
         <h2 className="text-3xl font-extrabold tracking-tight mb-3">
-          No active deliveries
+          لا توجد عمليات توصيل نشطة
         </h2>
         <p className="text-[#584237] text-center max-w-sm text-lg font-medium">
-          You currently don&apos;t have any orders assigned for delivery. Head
-          over to the <span className="font-bold text-[#1c1b1b]">Orders</span>{" "}
-          tab to pick one up!
+          لا توجد لديك حاليا أي طلبات مخصصة للتوصيل. انتقل إلى علامة تبويب{" "}
+          <span className="font-bold text-[#1c1b1b]">الطلبات</span> لاختيار طلب.
         </p>
       </div>
     );
@@ -34,14 +33,13 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
     <div className="min-h-screen bg-[#fcf9f8] text-[#1c1b1b] p-8 lg:p-10 pb-28 lg:pb-10">
       <header className="mb-10">
         <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
-          Delivery Queue
+          قائمة انتظار التوصيل
         </span>
         <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tighter leading-none mb-3">
-          My Routes
+          مساراتي
         </h1>
         <p className="text-[#584237] font-medium text-base">
-          You have {orders.length} active order{orders.length === 1 ? "" : "s"}{" "}
-          waiting to be delivered.
+          لديك {orders.length} من الطلبات النشطة بانتظار التوصيل.
         </p>
       </header>
 
@@ -76,10 +74,10 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
                   />
                   <div>
                     <p className="text-[10px] font-black uppercase text-[#584237] tracking-wider mb-1">
-                      Destination
+                       الوجهة
                     </p>
                     <p className="text-sm font-semibold leading-relaxed text-[#1c1b1b]">
-                      {address?.street || "No street address provided"}
+                       {address?.street || "لم يتم توفير عنوان الشارع"}
                     </p>
                     {!address?.street && address?.lat && (
                       <p className="text-xs font-mono text-[#584237] mt-1">
@@ -94,7 +92,7 @@ export default function ForDelivery({ orders }: { orders: Order[] }) {
                 href={`/delivery/for-delivery/${order.id}`}
                 className="w-full py-4 rounded-2xl bg-[#1c1b1b] hover:bg-[#F27121] text-white font-extrabold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-transparent hover:shadow-[#F27121]/30 group/btn">
                 <Navigation size={16} />
-                See Map & Navigate
+                 عرض الخريطة وبدء التنقل
                 <ArrowRight
                   size={16}
                   className="opacity-50 group-hover/btn:translate-x-1 transition-transform"

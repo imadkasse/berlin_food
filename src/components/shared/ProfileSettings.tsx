@@ -67,13 +67,13 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
       // update state
       setUser(data);
       // toast
-      toast.success("Updating user info successfully", {
-        description: `Update user info with Id :${user?.id} Successfull`,
+      toast.success("تم تحديث بيانات المستخدم بنجاح", {
+        description: `تم تحديث بيانات المستخدم ذي المعرّف: ${user?.id} بنجاح`,
       });
     } catch (error: any) {
       console.log(error);
-      toast.error("error when editing user info", {
-        description: `error : ${error.message}`,
+      toast.error("حدث خطأ أثناء تعديل بيانات المستخدم", {
+        description: `الخطأ: ${error.message}`,
       });
     } finally {
       setIsLoadingInfo(false);
@@ -88,14 +88,14 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
       // update state
       setUser(data);
       // toast
-      toast.success("Updating address info successfully", {
-        description: `Update address info with user Id :${user?.id} Successfull`,
+      toast.success("تم تحديث بيانات العنوان بنجاح", {
+        description: `تم تحديث بيانات العنوان للمستخدم ذي المعرّف: ${user?.id} بنجاح`,
       });
       setIsMapModalOpen(false);
     } catch (error: any) {
       console.log(error);
-      toast.error("error when editing address info", {
-        description: `error : ${error.message}`,
+      toast.error("حدث خطأ أثناء تعديل بيانات العنوان", {
+        description: `الخطأ: ${error.message}`,
       });
       setIsMapModalOpen(false);
     } finally {
@@ -106,17 +106,17 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
 
   const handleUpdatePassword = async () => {
     if (!passwords.new || !passwords.confirm) {
-      toast.error("Please fill in both password fields");
+      toast.error("يرجى ملء حقلي كلمة المرور");
       return;
     }
 
     if (passwords.new !== passwords.confirm) {
-      toast.error("Passwords do not match");
+      toast.error("كلمتا المرور غير متطابقتين");
       return;
     }
 
     if (passwords.new.length < 6) {
-      toast.error("Password must be at least 6 characters long");
+      toast.error("يجب أن تتكون كلمة المرور من 6 أحرف على الأقل");
       return;
     }
 
@@ -145,15 +145,15 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
     if (typeof window !== "undefined") {
       const ua = navigator.userAgent;
       const browser = ua.includes("Chrome")
-        ? "Chrome"
+                       ? "كروم"
         : ua.includes("Firefox")
-          ? "Firefox"
-          : "Safari";
+           ? "فايرفوكس"
+           : "سفاري";
       const os = ua.includes("Windows")
-        ? "Windows"
+         ? "ويندوز"
         : ua.includes("Mac")
-          ? "macOS"
-          : "Linux";
+           ? "ماك أو إس"
+           : "لينكس";
       setDeviceInfo({
         browser,
         os,
@@ -312,7 +312,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     </p>
                     {userAddress?.lat && (
                       <p className="text-[10px] font-mono mt-2 text-primary/60">
-                        GPS: {userAddress.lat}, {userAddress.lng}
+                         الإحداثيات: {userAddress.lat}, {userAddress.lng}
                       </p>
                     )}
                   </div>
@@ -334,7 +334,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   {/* New Password */}
                   <div className="space-y-2 relative">
                     <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
-                      New Password
+                       كلمة المرور الجديدة
                     </label>
                     <div className="relative">
                       <input
@@ -362,7 +362,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   {/* Confirm Password */}
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 ms-1">
-                      Confirm Password
+                       تأكيد كلمة المرور
                     </label>
                     <input
                       type={showPassword ? "text" : "password"}
@@ -420,7 +420,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
             <div className="rounded-3xl overflow-hidden aspect-square shadow-2xl group relative border-4 border-white">
               <Image
                 src={`https://ui-avatars.com/api/?name=${userState?.full_name}&background=random&size=512`}
-                alt={userState?.full_name || "Profile"}
+                 alt={userState?.full_name || "الصورة الشخصية"}
                 unoptimized
                 width={40}
                 height={40}
@@ -454,14 +454,14 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold text-on-surface truncate">
-                        {deviceInfo.browser} on {deviceInfo.os}
+                         {deviceInfo.browser} على {deviceInfo.os}
                       </h3>
                       <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-tighter">
                         الحالي
                       </span>
                     </div>
                     <p className="text-xs text-on-surface-variant mt-0.5">
-                      Berlin, Germany • نشط الآن
+                       برلين، ألمانيا • نشط الآن
                     </p>
                   </div>
                 </div>

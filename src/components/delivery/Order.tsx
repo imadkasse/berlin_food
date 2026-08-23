@@ -22,56 +22,60 @@ const STATUS_CFG: Record<
     dot: string;
     pill: string;
     action?: string;
+    actionKey?: "accept" | "pick_up" | "mark_delivered";
     actionStyle?: string;
   }
 > = {
   pending: {
-    label: "Pending",
+    label: "قيد الانتظار",
     dot: "bg-blue-400",
     pill: "bg-blue-50 text-blue-700 border-blue-100",
-    action: "Accept",
+    action: "قبول",
+    actionKey: "accept",
     actionStyle:
       "bg-white border border-[#e5e2e1] text-[#1c1b1b] hover:bg-[#f0eded]",
   },
   preparing: {
-    label: "Preparing",
+    label: "قيد التحضير",
     dot: "bg-yellow-400",
     pill: "bg-yellow-50 text-yellow-700 border-yellow-100",
   },
   ready_for_pickup: {
-    label: "Ready for Pickup",
+    label: "جاهز للاستلام",
     dot: "bg-purple-400",
     pill: "bg-purple-50 text-purple-700 border-purple-100",
-    action: "Pick Up",
+    action: "استلام",
+    actionKey: "pick_up",
     actionStyle: "bg-purple-500 text-white hover:bg-purple-600",
   },
   out_for_delivery: {
-    label: "Out for Delivery",
+    label: "في طريقه للتوصيل",
     dot: "bg-[#F27121] animate-pulse",
     pill: "bg-orange-50 text-[#9F4200] border-orange-100",
-    action: "Mark Delivered",
+    action: "تحديد كمُسلَّم",
+    actionKey: "mark_delivered",
     actionStyle: "bg-[#F27121] text-white hover:bg-[#9F4200]",
   },
   delivered: {
-    label: "Delivered",
+    label: "تم التوصيل",
     dot: "bg-green-500",
     pill: "bg-green-50 text-green-700 border-green-100",
   },
   cancelled: {
-    label: "Cancelled",
+    label: "ملغى",
     dot: "bg-red-400",
     pill: "bg-red-50 text-red-600 border-red-100",
   },
 };
 
 const FILTERS = [
-  "All",
-  "Out for Delivery",
-  "Ready for Pickup",
-  "Preparing",
-  "Pending",
-  "Delivered",
-  "Cancelled",
+  { value: "all", label: "الكل" },
+  { value: "out_for_delivery", label: "في طريقه للتوصيل" },
+  { value: "ready_for_pickup", label: "جاهز للاستلام" },
+  { value: "preparing", label: "قيد التحضير" },
+  { value: "pending", label: "قيد الانتظار" },
+  { value: "delivered", label: "تم التوصيل" },
+  { value: "cancelled", label: "ملغى" },
 ];
 
 function formatTime(iso: string | null) {
@@ -86,7 +90,7 @@ function formatTime(iso: string | null) {
 
 export default function Orders({ ordersData }: { ordersData: Order[] }) {
   const [search, setSearch] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("all");
   const [orders, setOrders] = useState<Order[]>(ordersData);
   const [loadingOrderId, setLoadingOrderId] = useState<string | null>(null);
 
@@ -95,15 +99,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
     const matchSearch = o.id.toLowerCase().includes(search.toLowerCase());
     // o.delivery_address?.street?.toLowerCase().includes(search.toLowerCase());
     const matchFilter =
-      activeFilter === "All" ||
-      (activeFilter === "Out for Delivery" &&
-        o.status === "out_for_delivery") ||
-      (activeFilter === "Ready for Pickup" &&
-        o.status === "ready_for_pickup") ||
-      (activeFilter === "Preparing" && o.status === "preparing") ||
-      (activeFilter === "Pending" && o.status === "pending") ||
-      (activeFilter === "Delivered" && o.status === "delivered") ||
-      (activeFilter === "Cancelled" && o.status === "cancelled");
+      activeFilter === "all" || activeFilter === o.status;
     return matchSearch && matchFilter;
   });
 
@@ -115,13 +111,13 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
       console.log(orderId);
 
       const data = await takeOrderToDelivery(supabase, user?.id!, orderId);
-      toast.success("accept order successfully", {
-        description: `accept order  with Id :${orderId} Successfull`,
+      toast.success("تم قبول الطلب بنجاح", {
+        description: `تم قبول الطلب ذي المعرّف: ${orderId} بنجاح`,
       });
     } catch (error: any) {
       console.log(error);
-      toast.error("error when accepting order", {
-        description: `error : ${error.message}`,
+      toast.error("حدث خطأ أثناء قبول الطلب", {
+        description: `الخطأ: ${error.message}`,
       });
     } finally {
       setLoadingOrderId(null);
@@ -134,15 +130,14 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
       <header className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
         <div>
           <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
-            Berlin Food · Delivery
+            برلين فود · التوصيل
           </span>
           <h1 className="text-5xl font-extrabold tracking-tighter leading-none">
-            My orders
+            طلباتي
           </h1>
           <p className="text-[#584237] mt-3 font-medium text-base">
-            {orders.length} total ·{" "}
+            الإجمالي: {orders.length} · النشطة: {" "}
             {orders.filter((o) => o.status === "out_for_delivery").length}{" "}
-            active
           </p>
         </div>
         <div className="relative w-full md:w-72">
@@ -152,7 +147,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
           />
           <input
             type="text"
-            placeholder="Search orders or address…"
+            placeholder="ابحث عن طلب أو عنوان..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full ps-11 pe-4 py-3.5 bg-[#f6f3f2] border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 text-sm font-medium placeholder:text-[#584237]"
@@ -164,32 +159,32 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
         {[
           {
-            label: "Pending",
+            label: "قيد الانتظار",
             count: orders.filter((o) => o.status === "pending").length,
             color: "text-blue-700 bg-blue-50 border-blue-100",
           },
           {
-            label: "Preparing",
+            label: "قيد التحضير",
             count: orders.filter((o) => o.status === "preparing").length,
             color: "text-yellow-700 bg-yellow-50 border-yellow-100",
           },
           {
-            label: "Ready",
+            label: "جاهز",
             count: orders.filter((o) => o.status === "ready_for_pickup").length,
             color: "text-purple-700 bg-purple-50 border-purple-100",
           },
           {
-            label: "Delivery",
+            label: "قيد التوصيل",
             count: orders.filter((o) => o.status === "out_for_delivery").length,
             color: "text-[#9F4200] bg-orange-50 border-orange-100",
           },
           {
-            label: "Delivered",
+            label: "تم التوصيل",
             count: orders.filter((o) => o.status === "delivered").length,
             color: "text-green-700 bg-green-50 border-green-100",
           },
           {
-            label: "Cancelled",
+            label: "ملغى",
             count: orders.filter((o) => o.status === "cancelled").length,
             color: "text-red-600 bg-red-50 border-red-100",
           },
@@ -207,14 +202,14 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
       <div className="flex items-center gap-3 overflow-x-auto pb-2 mb-8 scrollbar-none">
         {FILTERS.map((f) => (
           <button
-            key={f}
-            onClick={() => setActiveFilter(f)}
+            key={f.value}
+            onClick={() => setActiveFilter(f.value)}
             className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
-              activeFilter === f
+              activeFilter === f.value
                 ? "bg-[#F27121] text-white shadow-md shadow-[#F27121]/20"
                 : "bg-[#f6f3f2] text-[#584237] hover:bg-[#e5e2e1]"
             }`}>
-            {f}
+            {f.label}
           </button>
         ))}
       </div>
@@ -223,7 +218,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
       <div className="bg-white rounded-[2rem] overflow-hidden border border-[#e5e2e1] shadow-sm">
         {filtered.length === 0 ? (
           <div className="py-20 text-center text-[#584237] font-medium text-sm">
-            No orders match your search.
+            لا توجد طلبات تطابق بحثك.
           </div>
         ) : (
           <div className="divide-y divide-[#f0eded]">
@@ -272,8 +267,8 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                     {cfg.action && (
                       <button
                         onClick={() => {
-                          (cfg.action === "Accept" ||
-                            cfg.action === "Pick Up") &&
+                           (cfg.actionKey === "accept" ||
+                             cfg.actionKey === "pick_up") &&
                             handleTakeOrderToDelivery(order.id);
                         }}
                         disabled={
@@ -283,8 +278,8 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                           (order.status === "out_for_delivery" &&
                             order.delivery_id === user?.id) ||
                           // if delivery out_for_delivery , Accept its not allowed for you
-                          ((cfg.action === "Accept" ||
-                            cfg.action === "Pick Up") &&
+                           ((cfg.actionKey === "accept" ||
+                             cfg.actionKey === "pick_up") &&
                             orders.some(
                               (o) =>
                                 o.delivery_id === user?.id &&
@@ -298,7 +293,7 @@ export default function Orders({ ordersData }: { ordersData: Order[] }) {
                         {loadingOrderId === order.id ? (
                           <Loader2 className="animate-spin" size={14} />
                         ) : (
-                          <>{cfg.action}</>
+                           <>{cfg.action}</>
                         )}
                       </button>
                     )}

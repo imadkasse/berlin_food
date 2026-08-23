@@ -35,17 +35,25 @@ const VEHICLE_OPTIONS: {
   label: string;
   icon: React.ReactNode;
 }[] = [
-  { value: "bicycle", label: "Bicycle", icon: <Bike size={18} /> },
-  { value: "scooter", label: "Scooter", icon: <Bike size={18} /> },
-  { value: "car", label: "Car", icon: <Car size={18} /> },
-  { value: "van", label: "Van", icon: <Truck size={18} /> },
+  { value: "bicycle", label: "دراجة هوائية", icon: <Bike size={18} /> },
+  { value: "scooter", label: "دراجة نارية", icon: <Bike size={18} /> },
+  { value: "car", label: "سيارة", icon: <Car size={18} /> },
+  { value: "van", label: "شاحنة صغيرة", icon: <Truck size={18} /> },
 ];
 
+const ROLE_LABELS: Record<string, string> = {
+  delivery: "مندوب توصيل",
+};
+
+const VEHICLE_LABELS = Object.fromEntries(
+  VEHICLE_OPTIONS.map(({ value, label }) => [value, label]),
+);
+
 const STATS = [
-  { label: "Total Deliveries", value: "284", icon: <Package size={18} /> },
-  { label: "Total Earnings", value: "€1,420", icon: <Banknote size={18} /> },
-  { label: "Rating", value: "4.9 ★", icon: <Star size={18} /> },
-  { label: "On-Time Rate", value: "97%", icon: <CheckCircle size={18} /> },
+  { label: "إجمالي عمليات التوصيل", value: "284", icon: <Package size={18} /> },
+  { label: "إجمالي الأرباح", value: "€1,420", icon: <Banknote size={18} /> },
+  { label: "التقييم", value: "4.9 ★", icon: <Star size={18} /> },
+  { label: "نسبة الالتزام بالموعد", value: "97%", icon: <CheckCircle size={18} /> },
 ];
 
 // ─── Page ────────────────────────────────────────────────────────────────────
@@ -58,7 +66,7 @@ export default function Profile({
   const fallbackProfile: ProfileRow = {
     id: "new",
     address: "",
-    full_name: "No Name",
+    full_name: "من دون اسم",
     phone_number: "",
     role: "delivery",
     vehicle_type: "bicycle",
@@ -99,13 +107,13 @@ export default function Profile({
       // update state
       setUser(data);
       // toast
-      toast.success("Updating user info successfully", {
-        description: `Update user info with Id :${user?.id} Successfull`,
+      toast.success("تم تحديث معلومات المستخدم بنجاح", {
+        description: `تم تحديث معلومات المستخدم ذي المعرّف: ${user?.id} بنجاح`,
       });
     } catch (error: any) {
       console.log(error);
-      toast.error("error when editing user info", {
-        description: `error : ${error.message}`,
+      toast.error("حدث خطأ أثناء تعديل معلومات المستخدم", {
+        description: `الخطأ: ${error.message}`,
       });
     } finally {
       setIsLoading(false);
@@ -122,10 +130,10 @@ export default function Profile({
       {/* Header */}
       <header className="mb-12">
         <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
-          Berlin Food · Delivery
+          برلين فود · التوصيل
         </span>
         <h1 className="text-5xl font-extrabold tracking-tighter leading-none">
-          My Profile
+          ملفي الشخصي
         </h1>
       </header>
 
@@ -150,7 +158,10 @@ export default function Profile({
               {profile.full_name}
             </h2>
             <p className="text-white/70 text-sm font-medium mt-1 relative z-10 capitalize">
-              {profile.role} · {profile.vehicle_type || "-"}
+              {profile.role ? (ROLE_LABELS[profile.role] ?? "غير محدد") : "-"} ·{" "}
+              {profile.vehicle_type
+                ? (VEHICLE_LABELS[profile.vehicle_type] ?? "غير محدد")
+                : "-"}
             </p>
 
             {/* Rating Pill */}
@@ -171,7 +182,7 @@ export default function Profile({
               <span
                 className={`w-2 h-2 rounded-full ${profile.availability_status ? "bg-green-400 animate-pulse" : "bg-white/40"}`}
               />
-              {profile.availability_status ? "Available" : "Unavailable"}
+              {profile.availability_status ? "متاح" : "غير متاح"}
             </div>
           </div>
 
@@ -199,14 +210,14 @@ export default function Profile({
         <div className="lg:col-span-8 bg-[#f6f3f2] rounded-2xl p-8">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold tracking-tight">
-              Personal Information
+              المعلومات الشخصية
             </h3>
             {!editing ? (
               <button
                 onClick={startEdit}
                 className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#e5e2e1] text-[#1c1b1b] text-sm font-bold rounded-full hover:bg-[#e5e2e1] transition-all active:scale-95">
                 <Edit3 size={14} />
-                Edit Profile
+                تعديل الملف الشخصي
               </button>
             ) : (
               <div className="flex items-center gap-2">
@@ -214,7 +225,7 @@ export default function Profile({
                   onClick={cancelEdit}
                   className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#e5e2e1] text-[#584237] text-sm font-bold rounded-full hover:bg-[#e5e2e1] transition-all active:scale-95">
                   <X size={14} />
-                  Cancel
+                  إلغاء
                 </button>
                 <button
                   onClick={saveEdit}
@@ -225,7 +236,7 @@ export default function Profile({
                   ) : (
                     <>
                       <Save size={14} />
-                      Save Changes
+                       حفظ التغييرات
                     </>
                   )}
                 </button>
@@ -237,7 +248,7 @@ export default function Profile({
             {/* Full name */}
             <FieldRow
               icon={<User size={16} />}
-              label="Full Name"
+              label="الاسم الكامل"
               value={
                 editing ? (draft.full_name ?? "") : (profile.full_name ?? "—")
               }
@@ -248,7 +259,7 @@ export default function Profile({
             {/* Phone */}
             <FieldRow
               icon={<Phone size={16} />}
-              label="Phone Number"
+              label="رقم الهاتف"
               value={
                 editing
                   ? (draft.phone_number ?? "")
@@ -261,7 +272,7 @@ export default function Profile({
             {/* Rating - Read Only */}
             <div className="bg-white rounded-2xl p-5 border border-[#e5e2e1]">
               <p className="text-[10px] font-black uppercase tracking-widest text-[#584237] mb-3">
-                Delivery Rating
+                 تقييم التوصيل
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-[#F27121]">
@@ -278,7 +289,7 @@ export default function Profile({
                 <div className="ms-auto flex items-center gap-1.5 px-3 py-1 bg-gray-100 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
                   <span className="text-[10px] font-black text-gray-500 uppercase tracking-tighter">
-                    Read Only
+                     للقراءة فقط
                   </span>
                 </div>
               </div>
@@ -300,7 +311,7 @@ export default function Profile({
             {/* Vehicle type */}
             <div className="bg-white rounded-2xl p-5 border border-[#e5e2e1]">
               <p className="text-[10px] font-black uppercase tracking-widest text-[#584237] mb-4">
-                Vehicle Type
+                 نوع المركبة
               </p>
               {editing ? (
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -326,7 +337,9 @@ export default function Profile({
                     {/* {currentVehicle?.icon} */}
                   </div>
                   <span className="font-bold capitalize">
-                    {profile.vehicle_type ?? "—"}
+                    {profile.vehicle_type
+                      ? (VEHICLE_LABELS[profile.vehicle_type] ?? "غير محدد")
+                      : "—"}
                   </span>
                 </div>
               )}
@@ -336,7 +349,7 @@ export default function Profile({
             <div className="bg-white rounded-2xl p-5 border border-[#e5e2e1] flex items-center justify-between">
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-[#584237] mb-1">
-                  Availability
+                   التوفر
                 </p>
                 <p className="font-bold text-sm">
                   {(
@@ -344,8 +357,8 @@ export default function Profile({
                       ? draft.availability_status
                       : profile.availability_status
                   )
-                    ? "Available for deliveries"
-                    : "Currently unavailable"}
+                     ? "متاح لعمليات التوصيل"
+                     : "غير متاح حاليا"}
                 </p>
               </div>
               <button
@@ -372,7 +385,7 @@ export default function Profile({
             {/* Last updated */}
             {profile.updated_at && (
               <p className="text-[10px] text-[#584237] font-medium text-end">
-                Last updated:{" "}
+                 آخر تحديث:{" "}
                 {new Date(profile.updated_at).toLocaleString("de-DE")}
               </p>
             )}

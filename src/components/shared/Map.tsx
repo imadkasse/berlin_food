@@ -18,7 +18,7 @@ const LocateButton = ({
   const map = useMap();
 
   const handleLocate = () => {
-    if (!navigator.geolocation) return alert("Geolocation not supported");
+    if (!navigator.geolocation) return alert("تحديد الموقع الجغرافي غير مدعوم");
 
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
@@ -39,7 +39,7 @@ const LocateButton = ({
       type="button"
       onClick={handleLocate}
       className="absolute bottom-4 end-4 z-20 bg-primary text-on-primary p-3 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all"
-      title="Use my current location">
+       title="استخدم موقعي الحالي">
       <MapPin className="w-5 h-5" />
     </button>
   );

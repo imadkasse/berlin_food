@@ -49,32 +49,32 @@ const STATUS_CONFIG: Record<
   }
 > = {
   pending: {
-    label: "Pending",
+    label: "قيد الانتظار",
     dot: "bg-yellow-500",
     pill: "bg-yellow-50 text-yellow-700 border border-yellow-200",
   },
   preparing: {
-    label: "Preparing",
+    label: "قيد التحضير",
     dot: "bg-[#F27121] animate-pulse",
     pill: "bg-orange-50 text-[#9F4200] border border-orange-200",
   },
   ready_for_pickup: {
-    label: "Ready for Pickup",
+    label: "جاهز للاستلام",
     dot: "bg-blue-500",
     pill: "bg-blue-50 text-blue-700 border border-blue-200",
   },
   out_for_delivery: {
-    label: "Out for Delivery",
+    label: "خرج للتوصيل",
     dot: "bg-purple-500 animate-pulse",
     pill: "bg-purple-50 text-purple-700 border border-purple-200",
   },
   delivered: {
-    label: "Delivered",
+    label: "تم التوصيل",
     dot: "bg-green-500",
     pill: "bg-green-50 text-green-700 border border-green-200",
   },
   cancelled: {
-    label: "Cancelled",
+    label: "ملغى",
     dot: "bg-red-500",
     pill: "bg-red-50 text-red-700 border border-red-200",
   },
@@ -129,11 +129,11 @@ export default function OrderManager({
           prev ? { ...prev, status: newStatus } : null,
         );
       }
-      toast.success(`updating order status successfully`);
+       toast.success("تم تحديث حالة الطلب بنجاح");
     } catch (error: unknown) {
       console.log(error);
-      toast.error("error when accepting order", {
-        description: `error : ${error instanceof Error ? error.message : "Unknown error"}`,
+      toast.error("حدث خطأ أثناء قبول الطلب", {
+        description: `الخطأ: ${error instanceof Error ? error.message : "خطأ غير معروف"}`,
       });
     } finally {
       setLoadingOrderId(null);
@@ -148,14 +148,14 @@ export default function OrderManager({
           <div className="flex items-center gap-3 mb-3">
             <div className="w-2 h-2 rounded-full bg-[#F27121] animate-pulse" />
             <span className="text-xs font-bold text-[#F27121] uppercase tracking-wider">
-              Berlin Kitchen Dashboard
+              لوحة مطبخ برلين
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-[#1C1B1B] mb-2">
-            Order Manager
+            إدارة الطلبات
           </h1>
           <p className="text-[#5c5b5b] text-sm max-w-2xl">
-            Monitor and manage all incoming orders in real-time
+            راقب جميع الطلبات الواردة وأدرها لحظيًا
           </p>
         </header>
 
@@ -171,22 +171,22 @@ export default function OrderManager({
               </div>
             </div>
             <p className="text-white/80 text-xs font-semibold uppercase tracking-wide mb-1">
-              Avg Prep Time
+              متوسط وقت التحضير
             </p>
-            <h3 className="text-3xl font-black">18 min</h3>
+            <h3 className="text-3xl font-black">18 دقيقة</h3>
           </div>
 
           {/* In Progress */}
           <StatCard
             icon={<UtensilsCrossed size={24} className="text-[#F27121]" />}
-            label="In Progress"
+            label="قيد التنفيذ"
             value="8"
           />
 
           {/* Completed Today */}
           <StatCard
             icon={<CheckCircle size={24} className="text-[#F27121]" />}
-            label="Completed Today"
+            label="المكتملة اليوم"
             value="42"
           />
         </section>
@@ -204,7 +204,7 @@ export default function OrderManager({
                 />
                 <input
                   type="text"
-                  placeholder="Search orders or customers..."
+                  placeholder="ابحث عن الطلبات أو العملاء..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full ps-11 pe-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
@@ -215,11 +215,11 @@ export default function OrderManager({
               <div className="flex items-center gap-2">
                 <button className="flex items-center gap-2 px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm font-bold text-[#1C1B1B] hover:bg-[#F0EDED] transition-colors">
                   <Filter size={16} />
-                  <span>Filter</span>
+                  <span>تصفية</span>
                 </button>
                 <button className="flex items-center gap-2 px-4 py-2.5 bg-[#F6F3F2] rounded-xl text-sm font-bold text-[#1C1B1B] hover:bg-[#F0EDED] transition-colors">
                   <Download size={16} />
-                  <span>Export</span>
+                  <span>تصدير</span>
                 </button>
                 <button className="p-2.5 bg-[#F6F3F2] rounded-xl hover:bg-[#F0EDED] transition-colors">
                   <RefreshCw size={18} className="text-[#1C1B1B]" />
@@ -233,12 +233,12 @@ export default function OrderManager({
             <table className="w-full min-w-[1000px]">
               <thead>
                 <tr className="bg-[#F6F3F2]/50 text-[#5c5b5b] text-xs font-bold uppercase tracking-wide">
-                  <th className="px-6 py-4 text-start">Order</th>
-                  <th className="px-6 py-4 text-start">Customer</th>
-                  <th className="px-6 py-4 text-start">Items</th>
-                  <th className="px-6 py-4 text-start">Status</th>
-                  <th className="px-6 py-4 text-start">Total</th>
-                  <th className="px-6 py-4 text-end">Actions</th>
+                  <th className="px-6 py-4 text-start">الطلب</th>
+                  <th className="px-6 py-4 text-start">العميل</th>
+                  <th className="px-6 py-4 text-start">العناصر</th>
+                  <th className="px-6 py-4 text-start">الحالة</th>
+                  <th className="px-6 py-4 text-start">الإجمالي</th>
+                  <th className="px-6 py-4 text-end">الإجراءات</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F0EDED]">
@@ -256,7 +256,7 @@ export default function OrderManager({
                     <td
                       colSpan={6}
                       className="px-6 py-12 text-center text-[#5c5b5b] text-sm">
-                      No orders found
+                      لم يُعثر على طلبات
                     </td>
                   </tr>
                 )}
@@ -267,9 +267,9 @@ export default function OrderManager({
           {/* Pagination */}
           <div className="px-6 py-4 flex items-center justify-between">
             <p className="text-xs text-[#5c5b5b] font-semibold">
-              Showing {(currentPage - 1) * pageSize + 1}–
+              عرض {(currentPage - 1) * pageSize + 1}–
               {Math.min(currentPage * pageSize, totalCount)} of {totalCount}{" "}
-              orders
+               طلبًا
             </p>
 
             <div className="flex items-center gap-2">
@@ -371,7 +371,7 @@ function OrderRow({
           <span className="text-xs text-[#5c5b5b] flex items-center gap-1 mt-0.5">
             <Clock size={12} />
             {toDay === order.created_at
-              ? `Today ${new Date(order.created_at as string).toLocaleTimeString()}`
+              ? `اليوم ${new Date(order.created_at as string).toLocaleTimeString()}`
               : new Date(order.created_at as string).toLocaleString()}
           </span>
         </div>
@@ -387,7 +387,7 @@ function OrderRow({
                 src={`https://ui-avatars.com/api/?name=${(order.customer as { full_name: string })?.full_name}&background=random&size=48`}
                 alt={
                   (order.customer as { full_name: string })?.full_name ||
-                  "Profile"
+                   "الملف الشخصي"
                 }
                 unoptimized
                 width={40}
@@ -498,7 +498,7 @@ function OrderRow({
         <button
           onClick={onViewDetails}
           className="px-4 py-2 bg-[#1C1B1B] text-white text-xs font-bold rounded-lg hover:bg-stone-800 transition-colors">
-          View Details
+              عرض التفاصيل
         </button>
       </td>
     </tr>
@@ -533,7 +533,7 @@ function OrderDetailsModal({
         <div className="sticky top-0 bg-white border-b border-[#F0EDED] px-8 py-6 flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-black text-[#1C1B1B]">
-              Order Details
+              تفاصيل الطلب
             </h2>
             <p className="text-sm text-[#5c5b5b] mt-1">
               {`ORD-` + order.id?.split("-")[0].toUpperCase()}
@@ -558,7 +558,7 @@ function OrderDetailsModal({
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-semibold text-[#5c5b5b] uppercase tracking-wide">
-                Status:
+                 الحالة:
               </span>
               {loading === order.id ? (
                 <Loader2 className="animate-spin" size={14} />
@@ -588,7 +588,7 @@ function OrderDetailsModal({
           {/* Customer Information */}
           <div>
             <h3 className="text-sm font-bold text-[#1C1B1B] uppercase tracking-wide mb-4">
-              Customer Information
+               معلومات العميل
             </h3>
             <div className="bg-[#F6F3F2] rounded-xl p-5 space-y-3">
               <div className="flex items-center gap-3">
@@ -599,7 +599,7 @@ function OrderDetailsModal({
                       src={`https://ui-avatars.com/api/?name=${(order.customer as { full_name: string })?.full_name}&background=random&size=48`}
                       alt={
                         (order.customer as { full_name: string })?.full_name ||
-                        "Profile"
+                         "الملف الشخصي"
                       }
                       unoptimized
                       width={40}
@@ -629,7 +629,7 @@ function OrderDetailsModal({
                   <MapPin size={16} className="mt-0.5 flex-shrink-0" />
                   <span>
                     {(order.delivery_address as { address: string })?.address ||
-                      "only lat and lng provided"}{" "}
+                       "تم توفير خط العرض وخط الطول فقط"}{" "}
                   </span>
                 </div>
               )}
@@ -639,7 +639,7 @@ function OrderDetailsModal({
           {/* Order Items */}
           <div>
             <h3 className="text-sm font-bold text-[#1C1B1B] uppercase tracking-wide mb-4">
-              Order Items
+               عناصر الطلب
             </h3>
             <div className="space-y-3">
               {(order.items as Order_info_items[]).map(
@@ -662,7 +662,7 @@ function OrderDetailsModal({
                         {item.menu_item?.name}
                       </p>
                       <p className="text-xs text-[#5c5b5b] mt-1">
-                        Quantity: {item.quantity}
+                         الكمية: {item.quantity}
                       </p>
                     </div>
                     <div className="text-end">
@@ -670,7 +670,7 @@ function OrderDetailsModal({
                         €{(item.price * item.quantity).toFixed(2)}
                       </p>
                       <p className="text-xs text-[#5c5b5b] mt-1">
-                        €{item.price.toFixed(2)} each
+                         €{item.price.toFixed(2)} للقطعة
                       </p>
                     </div>
                   </div>
@@ -683,18 +683,18 @@ function OrderDetailsModal({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h3 className="text-sm font-bold text-[#1C1B1B] uppercase tracking-wide mb-3">
-                Payment Method
+                 طريقة الدفع
               </h3>
               <div className="bg-[#F6F3F2] rounded-xl p-4 flex items-center gap-2">
                 <CreditCard size={18} className="text-[#5c5b5b]" />
                 <span className="font-semibold text-[#1C1B1B] text-sm">
-                  'Cash'
+                   نقدًا
                 </span>
               </div>
             </div>
             <div>
               <h3 className="text-sm font-bold text-[#1C1B1B] uppercase tracking-wide mb-3">
-                Total Amount
+                 المبلغ الإجمالي
               </h3>
               <div className="bg-[#F27121] text-white rounded-xl p-4">
                 <p className="text-2xl font-black">
@@ -727,10 +727,10 @@ function OrderDetailsModal({
           <button
             onClick={onClose}
             className="px-6 py-2.5 bg-[#F6F3F2] text-[#1C1B1B] font-bold text-sm rounded-lg hover:bg-[#F0EDED] transition-colors">
-            Close
+             إغلاق
           </button>
           <button className="px-6 py-2.5 bg-[#F27121] text-white font-bold text-sm rounded-lg hover:bg-[#9F4200] transition-colors">
-            Print Order
+             طباعة الطلب
           </button>
         </div>
       </div>

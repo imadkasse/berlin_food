@@ -33,12 +33,12 @@ export default function ForgotPassword() {
     try {
       await forgotPassword(supabase, email);
       setIsSubmitted(true);
-      toast.success("Reset link sent", {
-        description: "Please check your email for the reset password link.",
+       toast.success("تم إرسال رابط إعادة التعيين", {
+         description: "يرجى التحقق من بريدك الإلكتروني للعثور على رابط إعادة تعيين كلمة المرور.",
       });
     } catch (err: unknown) {
-      toast.error("Error", {
-        description: err instanceof Error ? err.message : "Failed to send reset email",
+       toast.error("حدث خطأ", {
+         description: err instanceof Error ? err.message : "تعذر إرسال رسالة إعادة التعيين",
       });
     } finally {
       setIsLoading(false);
@@ -59,12 +59,12 @@ export default function ForgotPassword() {
           </div>
           <div className="pt-4">
             <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">
-              {isSubmitted ? "Check your Inbox" : "Forgot Password?"}
+               {isSubmitted ? "تحقق من صندوق بريدك" : "هل نسيت كلمة المرور؟"}
             </h2>
             <p className="text-secondary mt-2 text-lg">
               {isSubmitted 
-                ? "We've sent a recovery link to your email address." 
-                : "Enter your email to receive a password reset link."}
+                 ? "أرسلنا رابط استرداد إلى عنوان بريدك الإلكتروني."
+                 : "أدخل بريدك الإلكتروني لتلقي رابط إعادة تعيين كلمة المرور."}
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function ForgotPassword() {
                 htmlFor="email"
                 className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
               >
-                Email Address
+                 عنوان البريد الإلكتروني
               </label>
               <div className="relative">
                 <input
@@ -114,7 +114,7 @@ export default function ForgotPassword() {
               `}
             >
               {isLoading && <Loader2 className="w-5 h-5 animate-spin" />}
-              {isLoading ? "Sending link..." : "Send Reset Link"}
+               {isLoading ? "جارٍ إرسال الرابط..." : "إرسال رابط إعادة التعيين"}
             </button>
           </form>
         ) : (
@@ -123,7 +123,7 @@ export default function ForgotPassword() {
               onClick={() => setIsSubmitted(false)}
               className="w-full h-14 rounded-full flex gap-2 items-center justify-center bg-surface-container-high text-on-surface font-bold text-lg transition-all duration-200 hover:bg-surface-container-highest"
             >
-              Try another email
+               تجربة بريد إلكتروني آخر
             </button>
           </div>
         )}
@@ -134,7 +134,7 @@ export default function ForgotPassword() {
             className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Login
+             العودة إلى تسجيل الدخول
           </Link>
         </div>
       </div>

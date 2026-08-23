@@ -184,7 +184,13 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                   {user?.full_name!}
                 </h3>
                 <p className="text-xs text-on-surface-variant font-medium">
-                  {user?.role!}
+                   {user?.role === "customer"
+                     ? "عميل"
+                     : user?.role === "delivery"
+                       ? "مندوب توصيل"
+                       : user?.role === "admin"
+                         ? "مسؤول"
+                         : "مستخدم"}
                 </p>
               </div>
             </div>
@@ -193,7 +199,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
           {/* ── Navigation ── */}
           <nav
             className="flex flex-col gap-1 flex-1"
-            aria-label="Main navigation">
+             aria-label="التنقل الرئيسي">
             {navItems.map(({ id, label, icon: Icon, href }) => {
               const isActive =
                 pathname === href || pathname.startsWith(href + "/");
@@ -295,7 +301,7 @@ export function Sidebar({ onClose, role }: SidebarProps) {
           flex items-stretch
           safe-area-pb"
         style={{ boxShadow: "0 -4px 24px -4px rgba(28,27,27,0.10)" }}
-        aria-label="Main navigation">
+         aria-label="التنقل الرئيسي">
         {navItems.map(({ id, label, icon: Icon, href }) => {
           const isActive = pathname === href || pathname.startsWith(href + "/");
 

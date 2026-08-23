@@ -45,28 +45,28 @@ interface DishProps {
 const STATS: StatCardProps[] = [
   {
     icon: <CreditCard size={22} />,
-    label: "Total Revenue",
+    label: "إجمالي الإيرادات",
     value: "€42,850.00",
     badge: "+12.5%",
     badgePositive: true,
   },
   {
     icon: <UtensilsCrossed size={22} />,
-    label: "Total Orders",
+    label: "إجمالي الطلبات",
     value: "1,284",
     badge: "+8.2%",
     badgePositive: true,
   },
   {
     icon: <BarChart2 size={22} />,
-    label: "Average Order Value",
+    label: "متوسط قيمة الطلب",
     value: "€33.40",
     badge: "-2.1%",
     badgePositive: false,
   },
   {
     icon: <UserPlus size={22} />,
-    label: "New Customers",
+    label: "العملاء الجدد",
     value: "412",
     badge: "+24.0%",
     badgePositive: true,
@@ -74,37 +74,37 @@ const STATS: StatCardProps[] = [
 ];
 
 const CHART_BARS = [
-  { day: "Mon", revenue: 6200 },
-  { day: "Tue", revenue: 8100 },
-  { day: "Wed", revenue: 5500 },
-  { day: "Thu", revenue: 9400 },
-  { day: "Fri", revenue: 4200 },
-  { day: "Sat", revenue: 10800 },
-  { day: "Sun", revenue: 8600 },
+  { day: "الاثنين", revenue: 6200 },
+  { day: "الثلاثاء", revenue: 8100 },
+  { day: "الأربعاء", revenue: 5500 },
+  { day: "الخميس", revenue: 9400 },
+  { day: "الجمعة", revenue: 4200 },
+  { day: "السبت", revenue: 10800 },
+  { day: "الأحد", revenue: 8600 },
 ];
 
 // 75 out of 100 — represents 75% efficiency on the gauge
-const GAUGE_DATA = [{ name: "Efficiency", value: 75 }];
+const GAUGE_DATA = [{ name: "الكفاءة", value: 75 }];
 
 const TOP_DISHES: DishProps[] = [
   {
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAYVmR-LFwdIEzpynsMRvCx8ost3NGYNNwRuYcRlobOZO_W8O0FtwuzJ3Yvzwht_tEQXwO_3tIIaUPmIfPryFYqybocKLvIErVIMRzavoeE1ouyx3B_cUNqgJPixDJYoPXiLIfhFIVBIeU08OXhdHhseVmxfOY6HXUd_Hmm83BuHilngHB1bzu8f3HCnME4cWnSZsJwdnr07kCIKfdu5eUpzQuerpin73rrOQa-16dxW3GB-4PrRUHhzoidKnJwAQgp0I1aj_7R5hQt",
-    name: "Berlin Signature Currywurst",
+    name: "كاري فورست برلين المميز",
     sold: 342,
     pct: 85,
   },
   {
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAUyHShj6bBvTEspzdh9lIqHA-ioAobEM55DGmytGF3wuMR9mgxQvMwljz1-oA2NU10NAJVXvfhjdKyTPFFDdTnN326DiVOAWX0kObXVgyvIKvykd3I_JZ6A_z2nz0TMreD6ypQ3u2ZNVMzZUA6Knx0Q6n92wmUC2ozmmE067QU94RJDtOGYTwK3SfKDPHxRcPmqaSFV8Rek-oXUHtqPz9mTOaDhlJaUx0GvyigzpZ-WE7HGVBJ4-I-ZOvt7yjeW0b-yeXYnLQ8i-eH",
-    name: "The Mitte Wagyu Burger",
+    name: "برغر واغيو ميته",
     sold: 284,
     pct: 70,
   },
   {
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDINSzbDYNtsKAilR2pFx8DbadOYqn7UHa3H8lw8QFihw30GJWGYX0UNOtDBQsryrgWjlmOpaqa3Hpl01XzmrCU48WjcYkJUKUkdX42l93xEcUlgUrF4fvfFN6ee5attAws4oFoIP5CPJGi6HJSrQJD0G1VRwqNvsxrIOpaBBJdZrwSic860auLCHbGXhD7ZFpW3vhIw3d3E-6vt399WrinLUauLHE6jm_cPB3ZKKp9lQHQ1lpKhCCP4pu3jeCebjzPfAfAhV3cNC1v",
-    name: "Spree-Side Vegan Bowl",
+    name: "طبق سبري النباتي",
     sold: 198,
     pct: 55,
   },
@@ -141,17 +141,17 @@ export default function Dashboard() {
       <header className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
         <div>
           <span className="text-sm font-bold text-[#F27121] tracking-[0.2em] uppercase mb-2 block">
-            Berlin Food Ecosystem
+            منظومة برلين فود
           </span>
           <h2 className="text-5xl font-extrabold tracking-tighter text-[#1c1b1b] leading-none">
-            Kitchen Performance
+            أداء المطبخ
           </h2>
         </div>
 
         <div className="flex gap-3 items-center">
           <div className="px-5 py-3 bg-[#f6f3f2] rounded-full flex items-center gap-2 border border-[#e5e2e1]">
             <Calendar size={16} className="text-[#F27121]" />
-            <span className="font-bold text-sm">Oct 24 – Oct 30, 2023</span>
+            <span className="font-bold text-sm">24 أكتوبر – 30 أكتوبر 2023</span>
           </div>
           <button className="w-11 h-11 bg-[#e5e2e1] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
             <Bell size={18} className="text-[#1c1b1b]" />
@@ -172,12 +172,12 @@ export default function Dashboard() {
         <div className="lg:col-span-8 bg-[#f6f3f2] p-8 rounded-2xl">
           <div className="flex justify-between items-center mb-8">
             <h3 className="text-xl font-bold tracking-tight">
-              Weekly Revenue Trends
+              اتجاهات الإيرادات الأسبوعية
             </h3>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-[#F27121] inline-block" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#584237]">
-                Last 7 Days
+                آخر 7 أيام
               </span>
             </div>
           </div>
@@ -220,28 +220,28 @@ export default function Dashboard() {
         <div className="lg:col-span-4 bg-[#e5e2e1] p-8 rounded-2xl flex flex-col justify-between">
           <div>
             <h3 className="text-xl font-bold tracking-tight mb-7">
-              Live Orders
+              الطلبات المباشرة
             </h3>
             <div className="space-y-5">
               <LiveOrderRow
                 dot="bg-green-500 animate-pulse"
-                label="In Preparation"
+                label="قيد التحضير"
                 count="12"
               />
               <LiveOrderRow
                 dot="bg-orange-400"
-                label="Ready for Pickup"
+                label="جاهزة للاستلام"
                 count="08"
               />
               <LiveOrderRow
                 dot="bg-stone-300"
-                label="Completed (Today)"
+                label="المكتملة (اليوم)"
                 count="142"
               />
             </div>
           </div>
           <button className="w-full mt-8 py-4 bg-white rounded-full text-[#9f4200] font-bold uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform shadow-sm">
-            View Kitchen Screen
+            عرض شاشة المطبخ
           </button>
         </div>
       </div>
@@ -251,7 +251,7 @@ export default function Dashboard() {
         {/* Kitchen Efficiency Gauge */}
         <div className="lg:col-span-5 bg-[#f6f3f2] p-8 rounded-2xl flex flex-col items-center">
           <h3 className="text-xl font-bold tracking-tight self-start mb-2">
-            Kitchen Efficiency
+            كفاءة المطبخ
           </h3>
 
           <div className="relative w-52 h-52">
@@ -278,25 +278,25 @@ export default function Dashboard() {
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
               <span className="text-4xl font-black tracking-tighter">18.4</span>
               <span className="text-[10px] font-bold text-[#584237] uppercase tracking-widest mt-0.5">
-                Min Avg Prep
+                متوسط دقائق التحضير
               </span>
             </div>
           </div>
 
           <p className="text-sm font-medium text-[#584237] text-center max-w-[220px] mt-2">
-            You are performing{" "}
+            أداؤك أسرع بنسبة{" "}
             <span className="text-green-600 font-bold inline-flex items-center gap-1">
               <TrendingUp size={13} />
-              12% faster
+              12%
             </span>{" "}
-            than last week&apos;s average.
+            من متوسط الأسبوع الماضي.
           </p>
         </div>
 
         {/* Top Selling Dishes */}
         <div className="lg:col-span-7 bg-[#f6f3f2] p-8 rounded-2xl">
           <h3 className="text-xl font-bold tracking-tight mb-7">
-            Top Selling Dishes
+            الأطباق الأكثر مبيعًا
           </h3>
           <div className="space-y-6">
             {TOP_DISHES.map((dish) => (
@@ -372,7 +372,7 @@ function DishRow({ image, name, sold, pct }: DishProps) {
         <div className="flex justify-between items-end mb-2 gap-2">
           <h4 className="font-bold text-sm truncate">{name}</h4>
           <span className="text-xs font-bold text-[#584237] flex-shrink-0">
-            {sold} sold
+            بيع {sold}
           </span>
         </div>
         <div className="w-full h-2 bg-[#e5e2e1] rounded-full overflow-hidden">

@@ -32,12 +32,12 @@ export default function ResetPassword() {
     e.preventDefault();
     
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
+       toast.error("كلمتا المرور غير متطابقتين");
       return;
     }
 
     if (password.length < 6) {
-      toast.error("Password must be at least 6 characters");
+       toast.error("يجب أن تتكون كلمة المرور من 6 أحرف على الأقل");
       return;
     }
 
@@ -45,13 +45,13 @@ export default function ResetPassword() {
 
     try {
       await resetPassword(supabase, password);
-      toast.success("Password updated", {
-        description: "Your password has been reset successfully. You can now login with your new password.",
+       toast.success("تم تحديث كلمة المرور", {
+         description: "تمت إعادة تعيين كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة.",
       });
       router.push("/auth/login");
     } catch (err: unknown) {
-      toast.error("Error", {
-        description: err instanceof Error ? err.message : "Failed to reset password",
+       toast.error("حدث خطأ", {
+         description: err instanceof Error ? err.message : "تعذر إعادة تعيين كلمة المرور",
       });
     } finally {
       setIsLoading(false);
@@ -72,10 +72,10 @@ export default function ResetPassword() {
           </div>
           <div className="pt-4">
             <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">
-              Reset Password
+               إعادة تعيين كلمة المرور
             </h2>
             <p className="text-secondary mt-2 text-lg">
-              Choose a strong password to secure your account.
+               اختر كلمة مرور قوية لتأمين حسابك.
             </p>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function ResetPassword() {
               htmlFor="password"
               className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
             >
-              New Password
+               كلمة المرور الجديدة
             </label>
             <div className="relative">
               <input
@@ -123,7 +123,7 @@ export default function ResetPassword() {
               htmlFor="confirmPassword"
               className="block text-sm font-semibold tracking-wide text-on-surface-variant ms-1"
             >
-              Confirm Password
+               تأكيد كلمة المرور
             </label>
             <div className="relative">
               <input
@@ -160,7 +160,7 @@ export default function ResetPassword() {
             `}
           >
             {isLoading && <Loader2 className="w-5 h-5 animate-spin" />}
-            {isLoading ? "Updating password..." : "Reset Password"}
+             {isLoading ? "جارٍ تحديث كلمة المرور..." : "إعادة تعيين كلمة المرور"}
           </button>
         </form>
       </div>

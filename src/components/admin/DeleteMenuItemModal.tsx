@@ -30,11 +30,11 @@ export default function DeleteMenuItemModal({ isOpen, onClose, onSuccess, item }
       // 2. Delete menu item
       await deleteMenuItem(supabase, item.id);
       
-      toast.success("Menu item deleted successfully");
+       toast.success("تم حذف عنصر القائمة بنجاح");
       onSuccess();
       onClose();
     } catch (error: any) {
-      toast.error("Failed to delete menu item", { description: error.message });
+       toast.error("تعذر حذف عنصر القائمة", { description: error.message });
     } finally {
       setIsLoading(false);
     }
@@ -47,9 +47,9 @@ export default function DeleteMenuItemModal({ isOpen, onClose, onSuccess, item }
           <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mb-4 border border-red-100">
             <AlertTriangle className="text-red-500 w-8 h-8" />
           </div>
-          <h2 className="text-xl font-black tracking-tight text-[#1C1B1B] mb-2">Delete Menu Item</h2>
+          <h2 className="text-xl font-black tracking-tight text-[#1C1B1B] mb-2">حذف عنصر القائمة</h2>
           <p className="text-sm font-medium text-[#5c5b5b] leading-relaxed mb-6">
-            Are you sure you want to delete <span className="font-bold text-[#1C1B1B]">"{item.name}"</span>? This action cannot be undone.
+            هل أنت متأكد من حذف <span className="font-bold text-[#1C1B1B]">&quot;{item.name}&quot;</span>؟ لا يمكن التراجع عن هذا الإجراء.
           </p>
           
           <div className="flex w-full gap-3">
@@ -58,14 +58,14 @@ export default function DeleteMenuItemModal({ isOpen, onClose, onSuccess, item }
               disabled={isLoading}
               className="flex-1 px-4 py-3 rounded-xl font-bold text-sm text-[#5c5b5b] hover:bg-[#F6F3F2] transition-colors"
             >
-              Cancel
+               إلغاء
             </button>
             <button 
               onClick={handleDelete}
               disabled={isLoading} 
               className="flex-1 bg-red-500 text-white px-4 py-3 rounded-xl font-bold text-sm shadow-md shadow-red-500/20 hover:bg-red-600 transition-all flex items-center justify-center"
             >
-              {isLoading ? <Loader2 size={18} className="animate-spin" /> : "Delete"}
+               {isLoading ? <Loader2 size={18} className="animate-spin" /> : "حذف"}
             </button>
           </div>
         </div>

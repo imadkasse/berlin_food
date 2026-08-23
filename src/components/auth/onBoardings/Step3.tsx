@@ -40,8 +40,8 @@ export default function AddressStep() {
       );
       router.push("/menu");
     } catch (error: unknown) {
-      toast.error("error", {
-        description: error instanceof Error ? error.message : "Unknown error",
+       toast.error("حدث خطأ", {
+         description: error instanceof Error ? error.message : "حدث خطأ غير معروف",
       });
       console.log(error);
     } finally {
@@ -56,14 +56,13 @@ export default function AddressStep() {
         <div className="lg:col-span-5 flex flex-col gap-8 order-2 lg:order-1">
           <header className="flex flex-col gap-4">
             <span className="text-sm font-bold uppercase tracking-[0.1em] text-primary">
-              Step 3 of 3
+               الخطوة 3 من 3
             </span>
             <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter leading-[0.9] text-on-surface uppercase">
-              Where <br /> should we <br /> deliver?
+               أين <br /> نوصّل <br /> طلبك؟
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-sm mt-2">
-              Pin your location on the map. We&apos;ll ensure your meal reaches you
-              exactly where you are.
+               ثبّت موقعك على الخريطة، وسنضمن وصول وجبتك إليك بدقة.
             </p>
           </header>
 
@@ -96,12 +95,12 @@ export default function AddressStep() {
             </div>
             <div>
               <p className="font-bold text-on-surface text-lg">
-                {isLocked ? "Location Set" : "Berlin Central"}
+                 {isLocked ? "تم تحديد الموقع" : "وسط برلين"}
               </p>
               <p className="text-sm text-on-surface-variant">
                 {isLocked
                   ? `${profileData.address.lat?.toFixed(4)}, ${profileData.address.lng?.toFixed(4)}`
-                  : "Drag the map to refine your delivery spot."}
+                   : "حرّك الخريطة لتحسين موقع التوصيل."}
               </p>
             </div>
           </div>
@@ -112,7 +111,7 @@ export default function AddressStep() {
               onClick={handleSubmit}
               className="w-full py-5 rounded-full bg-primary text-on-primary font-bold text-xl shadow-xl shadow-primary/20 flex items-center justify-center gap-3 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:grayscale"
               disabled={!isLocked || loading}>
-              Finish Registration
+               إنهاء التسجيل
               {loading ? (
                 <Loader2 className="w-6 h-6 animate-spin" />
               ) : isLocked ? (
@@ -124,7 +123,7 @@ export default function AddressStep() {
             <Link
               href="/auth/register/contact"
               className="text-center font-bold text-on-surface-variant hover:text-on-surface transition-colors">
-              Back
+               رجوع
             </Link>
           </div>
         </div>
@@ -150,7 +149,7 @@ export default function AddressStep() {
             <div className="absolute -bottom-12 end-0 flex items-center gap-2 px-4 py-2 bg-surface-container-high/50 backdrop-blur-md rounded-full border border-outline-variant/10">
               <ShieldCheck className="w-4 h-4 text-primary" />
               <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">
-                Secure Data Processing
+                 معالجة آمنة للبيانات
               </span>
             </div>
           </div>

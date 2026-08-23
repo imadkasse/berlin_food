@@ -24,7 +24,7 @@ const RouteMap = dynamic(() => import("./MapDestination"), {
     <div className="w-full h-[500px] flex flex-col items-center justify-center bg-[#f6f3f2] rounded-[1.5rem] animate-pulse">
       <Loader2 className="w-8 h-8 animate-spin text-[#F27121] mb-2" />
       <span className="text-[#584237] font-medium text-sm">
-        Loading navigation map...
+        جار تحميل خريطة التنقل...
       </span>
     </div>
   ),
@@ -48,15 +48,15 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
           <Package className="w-10 h-10 text-[#F27121]" />
         </div>
         <h2 className="text-3xl font-extrabold tracking-tight mb-3">
-          Order Not Found
+          لم يتم العثور على الطلب
         </h2>
         <p className="text-[#584237] text-center max-w-sm text-lg font-medium mb-6">
-          This order might have been completed or doesn&apos;t exist.
+          ربما اكتمل هذا الطلب أو أنه غير موجود.
         </p>
         <Link
           href="/delivery/for-delivery"
           className="px-6 py-3 bg-[#1c1b1b] text-white rounded-xl font-bold hover:bg-[#333]">
-          Back to Routes
+          العودة إلى المسارات
         </Link>
       </div>
     );
@@ -72,15 +72,15 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
       // Simulate API call to mark as delivered
       await updateOrderStatus(supabase, order_id, "delivered");
 
-      toast.success("Order Delivered!", {
-        description: `Order #${order.id.split("-")[0]} has been successfully dropped off.`,
+      toast.success("تم توصيل الطلب!", {
+        description: `تم تسليم الطلب رقم ${order.id.split("-")[0]} بنجاح.`,
       });
 
       // Redirect back to queue
       router.push("/delivery/for-delivery");
     } catch (err: unknown) {
-      toast.error("Failed to update status", {
-        description: err instanceof Error ? err.message : "Unknown error",
+      toast.error("تعذر تحديث الحالة", {
+        description: err instanceof Error ? err.message : "خطأ غير معروف",
       });
     } finally {
       setIsDelivering(false);
@@ -94,18 +94,18 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
           href="/delivery/for-delivery"
           className="inline-flex items-center gap-2 text-[#584237] hover:text-[#1c1b1b] font-bold text-sm mb-6 transition-colors">
           <ArrowLeft size={16} />
-          Back to list
+          العودة إلى القائمة
         </Link>
         <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
-          Active Route
+          المسار النشط
         </span>
         <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tighter leading-none">
-          Order #{order.id.split("-")[0]}
+          الطلب رقم {order.id.split("-")[0]}
         </h1>
         <div className="flex items-center gap-2 mt-4 text-[#584237] font-medium text-sm">
           <span className="px-3 py-1 bg-orange-50 text-[#9F4200] border border-orange-100 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F27121] animate-pulse" />
-            Out for Delivery
+            في طريقه للتوصيل
           </span>
           <span>·</span>
           <span className="font-bold text-[#1c1b1b]">
@@ -132,14 +132,14 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
                 />
                 <div className="absolute top-4 start-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-bold shadow-lg border border-[#e5e2e1] flex items-center gap-2 z-[400] pointer-events-none">
                   <Navigation className="w-4 h-4 text-[#F27121]" />
-                  Active Navigation
+                   التنقل نشط
                 </div>
               </div>
             ) : (
               <div className="w-full h-[500px] flex flex-col items-center justify-center bg-[#f6f3f2] rounded-[1.5rem]">
                 <MapPin className="w-12 h-12 text-[#584237]/30 mb-3" />
                 <p className="text-[#584237] font-medium text-lg">
-                  Customer coordinates unavailable.
+                   إحداثيات العميل غير متاحة.
                 </p>
               </div>
             )}
@@ -151,23 +151,23 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
           <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-[#e5e2e1] flex flex-col h-full sticky top-8">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-[#1c1b1b]">
               <Package className="text-[#F27121] w-5 h-5" />
-              Delivery Manifest
+               تفاصيل التوصيل
             </h3>
 
             <div className="space-y-6 flex-grow">
               <div>
                 <p className="text-[10px] text-[#584237] font-black uppercase tracking-widest mb-1.5 opacity-70">
-                  Customer ID
+                   معرّف العميل
                 </p>
                 <p className="font-bold text-lg leading-tight break-all">
-                  {order.customer_id || "Guest"}
+                   {order.customer_id || "ضيف"}
                 </p>
               </div>
 
               {customerAddress?.street && (
                 <div>
                   <p className="text-[10px] text-[#584237] font-black uppercase tracking-widest mb-1.5 opacity-70">
-                    Street Address
+                     عنوان الشارع
                   </p>
                   <p className="font-semibold text-[#1c1b1b] bg-[#f6f3f2] p-4 rounded-2xl leading-relaxed">
                     {customerAddress.street}
@@ -177,14 +177,14 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
 
               <div>
                 <p className="text-[10px] text-[#584237] font-black uppercase tracking-widest mb-1.5 opacity-70">
-                  GPS Coordinates
+                   إحداثيات نظام تحديد المواقع
                 </p>
                 <div className="flex gap-2 font-medium text-[#1c1b1b] font-mono text-sm">
                   <span className="bg-[#f6f3f2] px-3 py-2 rounded-xl border border-[#e5e2e1]">
-                    Lat: {customerAddress?.lat?.toFixed(5) || "N/A"}
+                     خط العرض: {customerAddress?.lat?.toFixed(5) || "غير متاح"}
                   </span>
                   <span className="bg-[#f6f3f2] px-3 py-2 rounded-xl border border-[#e5e2e1]">
-                    Lng: {customerAddress?.lng?.toFixed(5) || "N/A"}
+                     خط الطول: {customerAddress?.lng?.toFixed(5) || "غير متاح"}
                   </span>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function ActiveDelivery({ order }: { order: Order | null }) {
                 ) : (
                   <CheckCircle className="w-5 h-5" />
                 )}
-                Mark as Delivered
+                 تحديد كمُسلَّم
               </button>
             </div>
           </div>

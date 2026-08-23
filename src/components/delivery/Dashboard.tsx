@@ -54,9 +54,9 @@ interface ProfileRow {
 
 const PROFILE: ProfileRow = {
   id: "usr_01",
-  full_name: "Lukas Schmidt",
+  full_name: "لوكاس شميدت",
   phone_number: "+49 30 1234 5678",
-  address: "Mitte, Berlin",
+  address: "ميته، برلين",
   role: "delivery",
   vehicle_type: "bicycle",
   availability_status: true,
@@ -64,34 +64,34 @@ const PROFILE: ProfileRow = {
 };
 
 const WEEK_BARS = [
-  { day: "Mon", deliveries: 8 },
-  { day: "Tue", deliveries: 12 },
-  { day: "Wed", deliveries: 7 },
-  { day: "Thu", deliveries: 15 },
-  { day: "Fri", deliveries: 10 },
-  { day: "Sat", deliveries: 18 },
-  { day: "Sun", deliveries: 14 },
+  { day: "الاثنين", deliveries: 8 },
+  { day: "الثلاثاء", deliveries: 12 },
+  { day: "الأربعاء", deliveries: 7 },
+  { day: "الخميس", deliveries: 15 },
+  { day: "الجمعة", deliveries: 10 },
+  { day: "السبت", deliveries: 18 },
+  { day: "الأحد", deliveries: 14 },
 ];
 
 const STATUS_CFG: Record<string, { label: string; dot: string; pill: string }> =
   {
     delivered: {
-      label: "Delivered",
+      label: "تم التوصيل",
       dot: "bg-green-500",
       pill: "bg-green-50 text-green-700 border-green-100",
     },
     out_for_delivery: {
-      label: "Out for Delivery",
+      label: "في طريقه للتوصيل",
       dot: "bg-[#F27121] animate-pulse",
       pill: "bg-orange-50 text-[#9F4200] border-orange-100",
     },
     pending: {
-      label: "Pending",
+      label: "قيد الانتظار",
       dot: "bg-blue-400",
       pill: "bg-blue-50 text-blue-700 border-blue-100",
     },
     cancelled: {
-      label: "Cancelled",
+      label: "ملغى",
       dot: "bg-red-400",
       pill: "bg-red-50 text-red-600 border-red-100",
     },
@@ -110,7 +110,7 @@ const DeliveriesTooltip = ({
   return (
     <div className="bg-[#1c1b1b] text-white px-4 py-3 rounded-xl shadow-xl text-xs">
       <p className="font-black mb-1">{label}</p>
-      <p className="text-[#F27121] font-bold">{payload[0].value} deliveries</p>
+      <p className="text-[#F27121] font-bold">{payload[0].value} عملية توصيل</p>
     </div>
   );
 };
@@ -142,13 +142,13 @@ export default function Dashboard({
       <header className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
         <div>
           <span className="text-[10px] font-black text-[#F27121] tracking-[0.25em] uppercase mb-2 block">
-            Berlin Food · Delivery
+            برلين فود · التوصيل
           </span>
           <h1 className="text-5xl font-extrabold tracking-tighter leading-none">
-            Dashboard
+            لوحة التحكم
           </h1>
           <p className="text-[#584237] mt-3 font-medium text-base">
-            Welcome back, {PROFILE.full_name?.split(" ")[0]} 👋
+            مرحبا بعودتك، {PROFILE.full_name?.split(" ")[0]} 👋
           </p>
         </div>
 
@@ -164,7 +164,7 @@ export default function Dashboard({
           ) : (
             <ToggleLeft size={20} className="text-[#584237]" />
           )}
-          {available ? "Available for Deliveries" : "Set as Unavailable"}
+          {available ? "متاح لعمليات التوصيل" : "تعيين كغير متاح"}
         </button>
       </header>
 
@@ -172,28 +172,28 @@ export default function Dashboard({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
         <StatCard
           icon={<Package size={20} />}
-          label="Active Order"
+          label="الطلب النشط"
           value="1"
-          sub="In transit now"
+          sub="في الطريق الآن"
           accent
         />
         <StatCard
           icon={<CheckCircle size={20} />}
-          label="Completed Today"
+          label="المكتملة اليوم"
           value={String(completedToday)}
-          sub="Out of 3 assigned"
+          sub="من أصل 3 طلبات مخصصة"
         />
         <StatCard
           icon={<Banknote size={20} />}
-          label="Today's Earnings"
+          label="أرباح اليوم"
           value={`€${earningsToday.toFixed(2)}`}
-          sub="12% per delivery"
+          sub="12% لكل عملية توصيل"
         />
         <StatCard
           icon={<Clock size={20} />}
-          label="Avg. Delivery"
-          value="18 min"
-          sub="This week"
+          label="متوسط مدة التوصيل"
+          value="18 دقيقة"
+          sub="هذا الأسبوع"
         />
       </div>
 
@@ -206,12 +206,12 @@ export default function Dashboard({
         <div className="lg:col-span-7 bg-[#f6f3f2] p-8 rounded-2xl">
           <div className="flex justify-between items-center mb-8">
             <h3 className="text-xl font-bold tracking-tight">
-              Weekly Deliveries
+               عمليات التوصيل الأسبوعية
             </h3>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-[#F27121] inline-block" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#584237]">
-                Last 7 Days
+                 آخر 7 أيام
               </span>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function Dashboard({
         {/* Recent orders */}
         <div className="lg:col-span-5 bg-[#f6f3f2] p-8 rounded-2xl">
           <h3 className="text-xl font-bold tracking-tight mb-6">
-            Recent Orders
+             الطلبات الأخيرة
           </h3>
           <div className="space-y-3">
             {recentOrdersData.map((order: Order) => {
@@ -345,7 +345,7 @@ function ActiveOrderBanner({ order }: { order: Order }) {
         </div>
         <div>
           <p className="text-white/70 text-[10px] font-black uppercase tracking-widest mb-1">
-            Active Delivery · #{order.id.split("-")[0].toUpperCase()}
+             عملية توصيل نشطة · #{order.id.split("-")[0].toUpperCase()}
           </p>
           <h3 className="text-white font-black text-xl ">
             {/* {order.delivery_address?.street}, {order.delivery_address?.city}  */}
@@ -358,11 +358,11 @@ function ActiveOrderBanner({ order }: { order: Order }) {
           href={`/delivery/for-delivery/${order.id}`}
           className="flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2.5 rounded-full">
           <MapPin size={14} className="text-white" />
-          <span className="text-white text-xs font-bold">Navigate</span>
+           <span className="text-white text-xs font-bold">بدء التنقل</span>
         </Link>
         <div className="flex items-center gap-2 bg-white text-[#9F4200] px-4 py-2.5 rounded-full">
           <CheckCircle size={14} />
-          <span className="text-xs font-black">Mark Delivered</span>
+           <span className="text-xs font-black">تحديد كمُسلَّم</span>
         </div>
       </div>
     </div>

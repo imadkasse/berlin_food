@@ -16,11 +16,11 @@ export default function Loading() {
           <div className="flex items-center gap-3">
             <Loader2 className="w-6 h-6 animate-spin text-[#F27121]" />
             <h2 className="text-2xl md:text-3xl font-extrabold tracking-tighter text-[#1c1b1b]">
-              Loading...
+              جارٍ التحميل...
             </h2>
           </div>
           <p className="text-[#584237] font-medium text-sm text-center">
-            Fetching the latest details
+             جارٍ جلب أحدث التفاصيل
           </p>
         </div>
       </div>

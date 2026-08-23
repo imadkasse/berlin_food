@@ -50,20 +50,20 @@ interface InventoryRow {
 const INVENTORY: InventoryRow[] = [
   {
     id: 1,
-    name: "Heirloom Garden Salad",
+    name: "سلطة الحديقة التراثية",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCpize8z75XQXbe2ledmjDda7sIB4YdoikHO4rRCBGbRS5jeKCgZT7Uk8Pc1RyuTFQaNsJwzpaXPFgVmF0P2cDfzmSAlsNBN6IX8PF1zNc4u9jPBGXRH5l-MQUJtu49zJ55eqqCmYxBY7C3sJlle9sAGGBKl6jEFdYymy83ybxkhwRcuAxnG-f4oFc7VAIf3NG22TVdDfEQpnh4LsFbBGo-PXVPlklpB2bWA3_SQb4jC1TpGNw1vVRxYbrLcU0D8u0I6nCpM3XFFKZG",
-    category: "Appetizer",
+    category: "مقبلات",
     price: 16,
     orders: 412,
     active: true,
   },
   {
     id: 2,
-    name: "Reserve Wagyu Burger",
+    name: "برغر واغيو الفاخر",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuC7lZbbnul5DWQCbZFuTffUr5w4S1rBVGI38ep3JVnoPE-tTXjRszzNuj4GpJB3mpcFyUA5pMuJ0mljLrtZ4ZF4ZUtLouOmbaaX5PGtdQZZCxAEIwBZKbfg-R_-wbDhsgyzOsHi0xWUNB9xuwaInEEoNmAVeGadtfdh8Ph_1R1iLv7h99zg0NmDrkaVp6Fd7T8Ng0YJRPa6kDoQ9nIye3_bkE6Sptpa2KkTF7rUezBk8LXEGwyrEksmE6NeE_-D9wy7obAu0pjOUki-",
-    category: "Main Course",
+    category: "طبق رئيسي",
     price: 34,
     orders: 890,
     active: true,
@@ -72,23 +72,23 @@ const INVENTORY: InventoryRow[] = [
 
 const STATS = [
   {
-    label: "Total Items",
+    label: "إجمالي العناصر",
     value: "124",
-    badge: "+4 this month",
+    badge: "+4 هذا الشهر",
     icon: null,
   },
   {
-    label: "Active Menu",
+    label: "القائمة النشطة",
     value: "86%",
     icon: <UtensilsCrossed size={22} className="text-[#F27121] opacity-40" />,
   },
   {
-    label: "Top Category",
-    value: "Signature Grills",
+    label: "الفئة الأبرز",
+    value: "مشاوي مميزة",
     icon: <Star size={18} className="text-yellow-500" fill="currentColor" />,
   },
   {
-    label: "Avg. Rating",
+    label: "متوسط التقييم",
     value: "4.8",
     stars: true,
   },
@@ -166,14 +166,13 @@ export default function MenuEditor({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-[#F27121] font-bold text-[10px] tracking-[0.22em] uppercase mb-2 block">
-              Management
+              الإدارة
             </span>
             <h2 className="text-4xl font-black text-[#1C1B1B] tracking-tight leading-none mb-3">
-              Menu Editor
+              محرر القائمة
             </h2>
             <p className="text-[#5c5b5b] max-w-md font-medium text-sm leading-relaxed">
-              Curate your seasonal offerings, adjust pricing, and maintain the
-              culinary excellence of Berlin Food.
+              نسّق عروضك الموسمية، واضبط الأسعار، وحافظ على التميز الطهوي لبرلين فود.
             </p>
           </div>
 
@@ -182,7 +181,7 @@ export default function MenuEditor({
             <div className="relative group">
               <input
                 type="text"
-                placeholder="Search dish…"
+                placeholder="ابحث عن طبق..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="ps-10 pe-4 py-3 bg-white border-none rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#F27121]/20 w-56 shadow-sm transition-all"
@@ -198,7 +197,7 @@ export default function MenuEditor({
               onClick={() => setIsModalOpen(true)}
               className="bg-[#F27121] text-white px-5 py-3 rounded-full font-bold flex items-center gap-2 shadow-lg shadow-[#F27121]/20 hover:scale-[1.02] active:scale-95 transition-all text-sm">
               <Plus size={16} strokeWidth={2.5} />
-              Add New
+              إضافة جديد
             </button>
           </div>
         </div>
@@ -241,7 +240,7 @@ export default function MenuEditor({
 
         {/* ── Filter Bar ── */}
         <div className="flex items-center gap-3 mb-8 overflow-x-auto pb-2 scrollbar-none">
-          {[{ id: "all", name: "All Items" }, ...categoriesData].map((cat) => (
+           {[{ id: "all", name: "جميع العناصر" }, ...categoriesData].map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
@@ -260,7 +259,7 @@ export default function MenuEditor({
             }}
             className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap bg-white text-[#F27121] border border-dashed border-[#F27121] hover:bg-[#F27121]/5 shadow-sm">
             <FolderPlus size={16} />
-            Add Category
+             إضافة فئة
           </button>
 
           {/* View toggle */}
@@ -300,10 +299,10 @@ export default function MenuEditor({
               <PlusCircle size={28} />
             </div>
             <span className="text-base font-bold text-[#1C1B1B]">
-              Add New Recipe
+               إضافة وصفة جديدة
             </span>
             <p className="text-sm text-[#5c5b5b] mt-2 max-w-[180px] font-medium leading-relaxed">
-              Expand your culinary collection with a new seasonal masterpiece.
+               وسّع مجموعتك الطهوية بتحفة موسمية جديدة.
             </p>
           </button>
         </div>
@@ -313,14 +312,14 @@ export default function MenuEditor({
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-2xl font-black text-[#1C1B1B] tracking-tight">
-                Inventory Management
+                إدارة المخزون
               </h3>
               <p className="text-[10px] text-[#5c5b5b] font-bold uppercase tracking-widest mt-1">
-                Real-time supply &amp; demand
+                العرض والطلب لحظيًا
               </p>
             </div>
             <button className="flex items-center gap-2 text-[#F27121] text-sm font-bold px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all">
-              Export PDF
+              تصدير PDF
               <Download size={14} />
             </button>
           </div>
@@ -331,11 +330,11 @@ export default function MenuEditor({
                 <thead>
                   <tr className="bg-stone-50/50 border-b border-[#1C1B1B]/5">
                     {[
-                      "Item Name",
-                      "Category",
-                      "Price",
-                      "Orders",
-                      "Status",
+                       "اسم العنصر",
+                       "الفئة",
+                       "السعر",
+                       "الطلبات",
+                       "الحالة",
                       "",
                     ].map((col, i) => (
                       <th
@@ -380,7 +379,7 @@ export default function MenuEditor({
                       </td>
                       <td className="px-6 py-4">
                         <span className="bg-green-50 text-green-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-green-100">
-                          Active
+                           نشط
                         </span>
                       </td>
                       <td className="px-6 py-4 text-end">
@@ -469,7 +468,7 @@ function MenuCard({
               className={`w-2 h-2 rounded-full ${item.is_available ? "bg-green-500" : "bg-red-500"}`}
             />
             <span className="text-[10px] font-bold text-[#5c5b5b] uppercase tracking-widest">
-              {item.is_available ? "In Stock" : "Sold Out"}
+               {item.is_available ? "متوفر" : "نفد المخزون"}
             </span>
           </div>
 
