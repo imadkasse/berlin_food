@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "برلين فود",
   description: "خدمة توصيل طعام برلين المميزة",
   manifest: "/manifest.json",
-  themeColor: "#9f4200",
+  // themeColor: "#9f4200",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { PWAInstallPrompt } from "@/components/shared/PWAInstallPrompt";
+// import { PWAInstallPrompt } from "@/components/shared/PWAInstallPrompt";
 
 export default function RootLayout({
   children,
@@ -34,7 +34,7 @@ export default function RootLayout({
       className={`${cairo.variable} h-full antialiased`}>
       <body className="font-cairo min-h-full flex flex-col">
         {children}
-          <PWAInstallPrompt />
+          {/* <PWAInstallPrompt /> */}
         <Toaster position="top-right" richColors dir="rtl" />
       </body>
     </html>

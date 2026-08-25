@@ -62,10 +62,22 @@ export async function updateProfileRole(
   return data;
 }
 
-export async function getAllProfiles(supabase: SupabaseClient<Database>) {
-  const { data, error } = await supabase.from("profiles").select("*");
+export async function getAllProfiles(
+  supabase: SupabaseClient<Database>,
+  page: number,
+  pageSize: number,
+): Promise<{ profiles: Profile[]; count: number }> {
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+  const { data, error, count } = await supabase
+    .from("profiles")
+    .select("*", { count: "exact" })
+    .order("updated_at", { ascending: false, nullsFirst: false })
+    .order("id", { ascending: true })
+    .range(from, to);
+
   if (error) throw error;
-  return data;
+  return { profiles: data ?? [], count: count ?? 0 };
 }
 
 export async function deleteProfile(

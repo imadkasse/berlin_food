@@ -7,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Project: Berlin Food
 
 ## Overview
-Berlin Food is  web application for browsing restaurant menus and placing orders.
+Berlin Food is a web application for browsing restaurant menus and placing orders. Note that `Berlin Food` is strictly the application name, not a physical restaurant in Berlin.
 
 ## Tech Stack
 - **Frontend**: Next.js

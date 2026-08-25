@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Search,
   Plus,
@@ -12,10 +12,13 @@ import {
   Loader2,
   Truck,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { updateProfile } from "@/api/profiles";
 import { Database } from "@/types/database.types";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -62,9 +65,21 @@ const VEHICLE_LABELS: Record<string, string> = {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
-export default function UsersPage({ usersData }: { usersData: Profile[] }) {
+type UsersPageProps = {
+  usersData: Profile[];
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+};
+
+export default function UsersPage({
+  usersData,
+  totalCount,
+  currentPage,
+  pageSize,
+}: UsersPageProps) {
+  const router = useRouter();
   const [users, setUsers] = useState<Profile[]>(usersData);
-  const [loading, _setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
@@ -74,20 +89,43 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<Profile | null>(null);
 
+  useEffect(() => {
+    setUsers(usersData);
+  }, [usersData]);
+
   const filteredUsers = useMemo(() => {
-    return users.filter((u) => {
-      const q = search.toLowerCase();
-      const matchQ =
-        !q ||
-        (u.full_name ?? "").toLowerCase().includes(q) ||
-        (u.phone_number ?? "").toLowerCase().includes(q) ||
-        u.id.toLowerCase().includes(q);
-      const matchR = !roleFilter || u.role === roleFilter;
-      const matchS =
-        statusFilter === "" || String(u.availability_status) === statusFilter;
-      return matchQ && matchR && matchS;
+    const normalizedSearch = search.trim().toLowerCase();
+    return users.filter((user) => {
+      const matchesSearch =
+        !normalizedSearch ||
+        [user.full_name, user.phone_number, user.id].some((value) =>
+          value?.toLowerCase().includes(normalizedSearch),
+        );
+      const matchesRole = !roleFilter || user.role === roleFilter;
+      const matchesStatus =
+        !statusFilter || String(user.availability_status) === statusFilter;
+      return matchesSearch && matchesRole && matchesStatus;
     });
-  }, [users, search, roleFilter, statusFilter]);
+  }, [roleFilter, search, statusFilter, users]);
+
+  const totalPages = Math.ceil(totalCount / pageSize);
+  const displayedUsers = filteredUsers;
+
+  const pageNumbers = (() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    const pages = new Set<number>([1, totalPages, currentPage]);
+    if (currentPage > 1) pages.add(currentPage - 1);
+    if (currentPage < totalPages) pages.add(currentPage + 1);
+    const sorted = Array.from(pages).sort((a, b) => a - b);
+    const result: (number | "ellipsis")[] = [];
+    sorted.forEach((page, index) => {
+      if (index > 0 && page - sorted[index - 1] > 1) result.push("ellipsis");
+      result.push(page);
+    });
+    return result;
+  })();
 
   return (
     <div className="min-h-screen bg-[#F6F3F2] p-6 md:p-10">
@@ -110,7 +148,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
               </p>
             </div>
             <div className="flex gap-3">
-              <StatCard value={users.length} label="إجمالي المستخدمين" />
+              <StatCard value={totalCount} label="إجمالي المستخدمين" />
               {/* <StatCard value={onlineCount} label="Active Now" /> */}
             </div>
           </div>
@@ -127,6 +165,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
               <input
                 type="text"
                 placeholder="ابحث بالاسم أو الهاتف أو المعرّف..."
+                maxLength={100}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full ps-11 pe-4 py-2.5 bg-white border border-[#F0EDED] rounded-xl text-sm font-medium text-[#1C1B1B] placeholder:text-[#5c5b5b] focus:outline-none focus:ring-2 focus:ring-[#F27121]/20"
@@ -174,21 +213,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F0EDED]">
-                {loading ? (
-                  <tr>
-                    <td colSpan={5} className="px-6 py-20 text-center">
-                      <div className="flex flex-col items-center gap-2">
-                        <Loader2
-                          className="animate-spin text-[#F27121]"
-                          size={32}
-                        />
-                        <span className="text-sm font-medium text-[#5c5b5b]">
-                          جارٍ تحميل المستخدمين...
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                ) : filteredUsers.length === 0 ? (
+                {displayedUsers.length === 0 ? (
                   <tr>
                     <td
                       colSpan={5}
@@ -197,7 +222,7 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
                     </td>
                   </tr>
                 ) : (
-                  filteredUsers.map((user) => (
+                  displayedUsers.map((user) => (
                     <tr
                       key={user.id}
                       className="hover:bg-[#F6F3F2]/30 transition-colors group">
@@ -301,6 +326,63 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
               </tbody>
             </table>
           </div>
+          {totalCount > 0 && (
+            <footer
+              className="flex flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between bg-[#F6F3F2]/30"
+              dir="rtl">
+              {displayedUsers.length > 0 && (
+                <p className="text-sm font-medium text-[#5c5b5b]">
+                  عرض {(currentPage - 1) * pageSize + 1} إلى{" "}
+                  {(currentPage - 1) * pageSize + displayedUsers.length}{" "}
+                  من {totalCount} مستخدم
+                </p>
+              )}
+              {totalPages > 1 && (
+                <nav
+                  aria-label="التنقل بين صفحات المستخدمين"
+                  className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    aria-label="الصفحة السابقة"
+                    disabled={currentPage <= 1}
+                    onClick={() => router.push(`?page=${currentPage - 1}`)}
+                    className="flex h-9 items-center gap-1 rounded-lg px-2 text-sm font-bold text-[#5c5b5b] hover:bg-white disabled:cursor-not-allowed disabled:opacity-40">
+                    <ChevronRight size={16} />
+                    <span className="hidden sm:inline">السابق</span>
+                  </button>
+                  {pageNumbers.map((page, index) =>
+                    page === "ellipsis" ? (
+                      <span
+                        key={`ellipsis-${index}`}
+                        className="px-2 text-[#9A9694]"
+                        aria-hidden="true">
+                        …
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        key={page}
+                        aria-label={`الصفحة ${page}`}
+                        aria-current={page === currentPage ? "page" : undefined}
+                        onClick={() => router.push(`?page=${page}`)}
+                        className={`h-9 min-w-9 rounded-lg px-2 text-sm font-bold transition-colors ${page === currentPage ? "bg-[#F27121] text-white" : "text-[#5c5b5b] hover:bg-white"}`}>
+                        {page}
+                      </button>
+                    ),
+                  )}
+                  <button
+                    type="button"
+                    aria-label="الصفحة التالية"
+                    disabled={currentPage >= totalPages}
+                    onClick={() => router.push(`?page=${currentPage + 1}`)}
+                    className="flex h-9 items-center gap-1 rounded-lg px-2 text-sm font-bold text-[#5c5b5b] hover:bg-white disabled:cursor-not-allowed disabled:opacity-40">
+                    <span className="hidden sm:inline">التالي</span>
+                    <ChevronLeft size={16} />
+                  </button>
+                </nav>
+              )}
+            </footer>
+          )}
         </section>
       </div>
 
@@ -308,9 +390,9 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
       {isAddModalOpen && (
         <AddUserModal
           onClose={() => setIsAddModalOpen(false)}
-          onSuccess={(newUser) => {
-            setUsers((prev) => [...prev, newUser]);
+          onSuccess={() => {
             setIsAddModalOpen(false);
+            router.refresh();
           }}
         />
       )}
@@ -335,8 +417,8 @@ export default function UsersPage({ usersData }: { usersData: Profile[] }) {
           user={selectedUser}
           onClose={() => setIsDeleteModalOpen(false)}
           onSuccess={() => {
-            setUsers((prev) => prev.filter((u) => u.id !== selectedUser.id));
             setIsDeleteModalOpen(false);
+            router.refresh();
           }}
         />
       )}

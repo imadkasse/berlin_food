@@ -14,6 +14,7 @@ import {
   Users2,
   LogIn,
   UserPlus,
+  ClipboardList,
 } from "lucide-react";
 import { logout } from "@/api/auth";
 import { toast } from "sonner";
@@ -115,6 +116,12 @@ export function Sidebar({ onClose, role }: SidebarProps) {
                 label: "المستخدمين",
                 icon: Users2,
                 href: "/admin/users",
+              },
+              {
+                id: "delivery-requests",
+                label: "طلبات الإنضمام",
+                icon: ClipboardList,
+                href: "/admin/delivery-requests",
               },
               {
                 id: "profile",

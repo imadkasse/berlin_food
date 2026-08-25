@@ -309,7 +309,7 @@ export function ProfileSettings({ user }: { user: UserType | null }) {
                     </h3>
                     <p className="text-sm text-on-surface-variant mt-1 leading-relaxed">
                       {/* Edit in next feature */}
-                      {"لم يتم تعيين عنوان. استخدم الخريطة لتحديد موقعك."}
+                      {userAddress.lat && `تم تعيين موقعك`}
                     </p>
                     {userAddress?.lat && (
                       <p className="text-[10px] font-mono mt-2 text-primary/60">

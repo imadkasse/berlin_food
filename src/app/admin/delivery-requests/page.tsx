@@ -1,21 +1,18 @@
-import UsersPage from "@/components/admin/Users";
-import { getAllProfiles } from "@/api/profiles";
+import { getAllRequests } from "@/api/admin";
+import DeliveryRequests from "@/components/admin/DeliveryRequests";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
 const PAGE_SIZE = 5;
-
-const page = async ({
+export default async function DeliveryRequestsPage({
   searchParams,
 }: {
   searchParams: Promise<{ page?: string }>;
-}) => {
-  const cookiesStore = await cookies();
-  const supabase = createClient(cookiesStore);
+}) {
+  const cookieStore = await cookies();
   const { page: pageParam } = await searchParams;
-  const currentPage = pageParam ? Number(pageParam) : 1;
-
+  const parsedPage = Number.parseInt(pageParam ?? "1", 10);
+  const currentPage = Number.isNaN(parsedPage) ? 1 : Math.max(parsedPage, 1);
   if (
     (pageParam !== undefined && !/^[1-9]\d*$/.test(pageParam)) ||
     !Number.isSafeInteger(currentPage)
@@ -23,25 +20,20 @@ const page = async ({
     redirect("/admin/users?page=1");
   }
 
-  const { profiles: usersData, count: totalCount } = await getAllProfiles(
-    supabase,
+  const { requests, count: totalPages } = await getAllRequests(
+    createClient(cookieStore),
     currentPage,
     PAGE_SIZE,
   );
-  const totalPages = Math.ceil(totalCount / PAGE_SIZE);
-
   if (currentPage > Math.max(totalPages, 1)) {
     redirect(`/admin/users?page=${Math.max(totalPages, 1)}`);
   }
-
   return (
-    <UsersPage
-      usersData={usersData}
-      totalCount={totalCount}
-      currentPage={currentPage}
+    <DeliveryRequests
+      requests={requests}
+      totalCount={totalPages}
       pageSize={PAGE_SIZE}
+      currentPage={currentPage}
     />
   );
-};
-
-export default page;
+}
