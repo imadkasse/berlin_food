@@ -125,7 +125,7 @@ export default function LandingV1() {
             </Link>
           </div>
           <Link
-            href="/menu"
+            href="/"
             className={styles.menuButton}
             aria-label="فتح قائمة الطعام">
             <Menu size={21} />
